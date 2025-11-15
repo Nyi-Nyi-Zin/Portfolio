@@ -17,5 +17,5 @@ export function useMobileMenuLock(isOpen: boolean, onClose: () => void) {
       document.removeEventListener("keydown", handleEscape);
       document.body.style.overflow = "unset";
     };
-  }, [isOpen]);
+  }, [isOpen, onClose]);
 }

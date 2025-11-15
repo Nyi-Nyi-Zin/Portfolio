@@ -24,7 +24,9 @@ export function NavButton({
     >
       {/* Animated background */}
       <span
-        className={`absolute inset-0 origin-${fillOrigin} ${
+        className={`absolute inset-0 ${
+          fillOrigin === "left" ? "origin-left" : "origin-right"
+        } ${
           isActive ? "scale-x-100 bg-primary" : "scale-x-0"
         } transition-transform duration-300 ease-in-out z-0`}
       />

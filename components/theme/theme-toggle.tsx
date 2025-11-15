@@ -13,27 +13,7 @@ import {
 export function ThemeToggle() {
   const [theme, setTheme] = useState<"light" | "dark" | "system">("system");
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as
-      | "light"
-      | "dark"
-      | "system"
-      | null;
-    const initialTheme = savedTheme || "system";
-    setTheme(initialTheme);
-    applyTheme(initialTheme);
-
-    // Listen for system theme changes
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleChange = () => {
-      if (theme === "system") {
-        applyTheme("system");
-      }
-    };
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, [theme]);
-
+  // Apply the selected theme
   const applyTheme = (selectedTheme: "light" | "dark" | "system") => {
     if (selectedTheme === "system") {
       const prefersDark = window.matchMedia(
@@ -47,6 +27,32 @@ export function ThemeToggle() {
       );
     }
   };
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") as
+      | "light"
+      | "dark"
+      | "system"
+      | null;
+    const initialTheme = savedTheme || "system";
+    setTheme(initialTheme);
+    applyTheme(initialTheme);
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = () => {
+      const currentTheme = localStorage.getItem("theme") || "system";
+      if (currentTheme === "system") {
+        applyTheme("system");
+      }
+    };
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
+  useEffect(() => {
+    applyTheme(theme);
+  }, [theme]);
 
   const changeTheme = (newTheme: "light" | "dark" | "system") => {
     setTheme(newTheme);
@@ -70,16 +76,13 @@ export function ThemeToggle() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => changeTheme("light")}>
-          <Sun className="mr-2 h-4 w-4" />
-          Light
+          <Sun className="mr-2 h-4 w-4" /> Light
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => changeTheme("dark")}>
-          <Moon className="mr-2 h-4 w-4" />
-          Dark
+          <Moon className="mr-2 h-4 w-4" /> Dark
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => changeTheme("system")}>
-          <Monitor className="mr-2 h-4 w-4" />
-          System
+          <Monitor className="mr-2 h-4 w-4" /> System
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
