@@ -1,4 +1,5 @@
 import { NavLinkId } from "@/lib/constants";
+import { useEffect, useState } from "react";
 
 interface NavButtonProps {
   link: {
@@ -16,6 +17,15 @@ export function NavButton({
   fillOrigin,
   onClick,
 }: NavButtonProps) {
+  const [currentOrigin, setCurrentOrigin] = useState(fillOrigin);
+
+  // Update origin only when becoming active
+  useEffect(() => {
+    if (isActive) {
+      setCurrentOrigin(fillOrigin);
+    }
+  }, [isActive, fillOrigin]);
+
   return (
     <button
       onClick={() => onClick(link.id)}
@@ -25,15 +35,15 @@ export function NavButton({
       {/* Animated background */}
       <span
         className={`absolute inset-0 ${
-          fillOrigin === "left" ? "origin-left" : "origin-right"
+          currentOrigin === "left" ? "origin-left" : "origin-right"
         } ${
           isActive ? "scale-x-100 bg-primary" : "scale-x-0"
-        } transition-transform duration-300 ease-in-out z-0`}
+        } transition-all duration-300 ease-in delay-75 z-0`}
       />
 
       {/* Text label */}
       <span
-        className={`relative z-20 ${
+        className={`relative z-20 transition-colors duration-300 ${
           isActive ? "text-white dark:text-white" : ""
         }`}
       >

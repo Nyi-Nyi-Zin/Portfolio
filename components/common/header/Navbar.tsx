@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "./ui/button";
+import { Button } from "../../ui/button";
 import { NavLinkId, navLinks } from "@/lib/constants";
 import { Menu, X } from "lucide-react";
-import { ThemeToggle } from "./theme/theme-toggle";
-import { NavButton } from "@/components/NavButton";
+import { ThemeToggle } from "../../theme/theme-toggle";
+import { NavButton } from "@/components/common/header/NavButton";
 import { useSectionObserver } from "@/hooks/useSectionObserver";
 import { useMobileMenuLock } from "@/hooks/useMobileMenuLock";
 import { scrollToSection } from "@/utils/scroll";
@@ -36,10 +36,10 @@ function Navbar() {
 
   return (
     <nav
-      className="sticky top-0 z-50 bg-background text-foreground shadow-lg"
+      className="sticky top-0 z-50 bg-background text-foreground shadow-md"
       aria-label="Main navigation"
     >
-      <div className="mx-4 md:mx-10 flex items-center justify-between py-2">
+      <div className="mx-4 md:mx-10 flex items-center justify-between py-3">
         {/* Logo */}
         <Button
           variant="ghost"
@@ -50,7 +50,7 @@ function Navbar() {
         </Button>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex space-x-3 rounded-2xl p-3 border">
+        <ul className="hidden md:flex space-x-3 rounded-2xl p-3 shadow-lg border  overflow-visible">
           {observedLinks.map((link) => (
             <li key={link.id}>
               <NavButton
