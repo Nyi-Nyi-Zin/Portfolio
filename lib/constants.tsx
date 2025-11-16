@@ -26,7 +26,6 @@ export const Skills = [
   "Node js",
   "Express.js",
   "Nest js",
-  "Flutter",
   "Gin",
   "Fiber",
   "Echo",

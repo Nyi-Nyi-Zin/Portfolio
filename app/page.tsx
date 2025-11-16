@@ -9,7 +9,7 @@ import Skill from "@/components/home/Skill";
 
 export default function Index() {
   return (
-    <main className="flex flex-col bg-zinc-50 dark:bg-black font-sans w-full">
+    <main className="flex flex-col bg-zinc-50 dark:bg-black font-sans w-full px-8">
       <Home />
       <About />
       <Experience />

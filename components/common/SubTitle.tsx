@@ -8,13 +8,13 @@ interface SubTitleProps {
 
 export const SubTitle = ({ children, className }: SubTitleProps) => {
   return (
-    <h1
+    <h2
       className={cn(
         "text-xl md:text-2xl lg:text-3xl font-bold text-black",
         className
       )}
     >
       {children}
-    </h1>
+    </h2>
   );
 };

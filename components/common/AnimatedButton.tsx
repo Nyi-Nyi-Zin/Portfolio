@@ -61,7 +61,7 @@ const AnimatedTextButton: React.FC<AnimatedButtonProps> = ({
           }}
           className={
             className ||
-            "px-10 py-5 bg-white text-purple-600 font-bold text-xl rounded-2xl shadow-2xl border hover:shadow-3xl  cursor-pointer"
+            "px-10 py-4 bg-white text-purple-600 font-bold text-xl rounded-2xl shadow-2xl border hover:shadow-3xl  cursor-pointer"
           }
         >
           <motion.span

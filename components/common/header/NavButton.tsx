@@ -19,7 +19,6 @@ export function NavButton({
 }: NavButtonProps) {
   const [currentOrigin, setCurrentOrigin] = useState(fillOrigin);
 
-  // Update origin only when becoming active
   useEffect(() => {
     if (isActive) {
       setCurrentOrigin(fillOrigin);
