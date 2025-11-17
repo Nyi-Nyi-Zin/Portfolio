@@ -1,16 +1,17 @@
+import { BriefcaseBusiness, Code, ShieldCheck, Zap } from "lucide-react";
+
 export const navLinks = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
+  { id: "education", label: "Education" },
   { id: "experience", label: "Experience" },
   { id: "skill", label: "Skill" },
+  { id: "service", label: "Service" },
   { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
-  { id: "education", label: "Education" },
-  { id: "service", label: "Service" },
-  // { id: "blogs", label: "Blogs" },
 ] as const;
 
-export const Skills = [
+export const skills = [
   "Golang",
   "React js",
   "Java Script",
@@ -45,6 +46,29 @@ export const Skills = [
   "Docker",
   "Jenkin",
   "Progressive Web Apps",
+];
+
+export const aboutCardData = [
+  {
+    title: "Years Experience",
+    value: "3+",
+    icon: <BriefcaseBusiness color="red" size={48} />,
+  },
+  {
+    title: "Projects Completed",
+    value: "50+",
+    icon: <Code color="blue" size={48} />,
+  },
+  {
+    title: "Technologies",
+    value: "15+",
+    icon: <Zap color="green" size={48} />,
+  },
+  {
+    title: "Certificates",
+    value: "5+",
+    icon: <ShieldCheck color="purple" size={48} />,
+  },
 ];
 
 export type NavLinkId = (typeof navLinks)[number]["id"];
