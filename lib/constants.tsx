@@ -48,27 +48,33 @@ export const skills = [
   "Progressive Web Apps",
 ];
 
+export type IconName = "briefcase" | "code" | "zap" | "shield";
+
 export const aboutCardData = [
   {
     title: "Years Experience",
     value: "3+",
-    icon: <BriefcaseBusiness color="red" size={48} />,
+    icon: "briefcase" as IconName,
+    color: "red",
   },
   {
     title: "Projects Completed",
     value: "50+",
-    icon: <Code color="blue" size={48} />,
+    icon: "code" as IconName,
+    color: "blue",
   },
   {
     title: "Technologies",
     value: "15+",
-    icon: <Zap color="green" size={48} />,
+    icon: "zap" as IconName,
+    color: "green",
   },
   {
     title: "Certificates",
     value: "5+",
-    icon: <ShieldCheck color="purple" size={48} />,
+    icon: "shield" as IconName,
+    color: "purple",
   },
-];
+] as const;
 
 export type NavLinkId = (typeof navLinks)[number]["id"];

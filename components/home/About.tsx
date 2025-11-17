@@ -7,7 +7,7 @@ function About() {
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col items-center  border-b border-zinc-300 py-15"
+      className="min-h-screen flex flex-col items-center border-b border-zinc-300 py-15"
     >
       <Title className="text-4xl font-bold py-5">About Me</Title>
 
@@ -19,13 +19,15 @@ function About() {
         frontend and backend. Committed to continuous learning, solving complex
         problems, and delivering high-quality software.
       </Text>
-      <div className="grid lg:grid-cols-4 grid-cols-2 w-full my-10 gap-5 ">
-        {aboutCardData.map((item, index) => (
+
+      <div className="grid lg:grid-cols-4 grid-cols-2 w-full my-10 gap-5">
+        {aboutCardData.map((item) => (
           <AboutCard
-            key={index}
-            icon={item.icon}
-            value={item.value}
+            key={item.title}
             title={item.title}
+            value={item.value}
+            icon={item.icon}
+            color={item.color}
           />
         ))}
       </div>
