@@ -12,12 +12,12 @@ export default function Index() {
     <main className="flex flex-col bg-zinc-50 dark:bg-black font-sans w-full px-8">
       <Home />
       <About />
+      <Education />
       <Experience />
       <Skill />
+      <Service />
       <Project />
       <Contact />
-      <Education />
-      <Service />
       {/* <Blog /> */}
     </main>
   );

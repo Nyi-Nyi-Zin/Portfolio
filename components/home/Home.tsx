@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Title } from "../common/Title";
 import { Text } from "../common/Text";
 import AnimatedTextButton from "../common/AnimatedButton";
-import { Skills } from "@/lib/constants";
+import { skills } from "@/lib/constants";
 import { Button } from "../ui/button";
 import { ArrowRight, Eye } from "lucide-react";
 
@@ -20,7 +20,7 @@ function Home() {
         </Text>
 
         <div className="flex space-y-8 items-center justify-center lg:justify-start  ">
-          <AnimatedTextButton texts={Skills} interval={2000} />
+          <AnimatedTextButton texts={skills} interval={2000} />
         </div>
 
         <div className="flex gap-3 flex-col lg:flex-row">
