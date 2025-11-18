@@ -7,7 +7,7 @@ function About() {
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col items-center border-b border-zinc-300 py-15"
+      className="min-h-screen flex flex-col items-center border-b border-zinc-300 py-8"
     >
       <Title className="text-4xl font-bold py-5">About Me</Title>
 

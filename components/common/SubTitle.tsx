@@ -10,7 +10,7 @@ export const SubTitle = ({ children, className }: SubTitleProps) => {
   return (
     <h2
       className={cn(
-        "text-xl md:text-2xl lg:text-3xl font-bold text-black",
+        "text-xl md:text-2xl lg:text-3xl  text-slate-600",
         className
       )}
     >

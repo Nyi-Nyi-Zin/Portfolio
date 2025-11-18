@@ -77,4 +77,52 @@ export const aboutCardData = [
   },
 ] as const;
 
+export const experience = [
+  {
+    title: "Senior Software Engineer",
+    company: "Wann Saung",
+    companyUrl:
+      "https://www.linkedin.com/company/myanmar-information-technology-pte-ltd",
+    period: "Nov 2025 - Present",
+    location: "Yangon Region, Myanmar • Remote",
+    keyAchievements: [
+      "Developed enterprise web applications using Angular and Spring Boot",
+      "Built scalable APIs with Node.js and Java Spring framework",
+      "Designed and optimized relational databases (MySQL, PostgreSQL)",
+      "Implemented secure authentication and authorization systems",
+      "Integrated third-party services and APIs for enhanced functionality",
+    ],
+  },
+  {
+    title: "Full Stack Software Developer",
+    company: "Triosys",
+    companyUrl:
+      "https://www.linkedin.com/company/myanmar-information-technology-pte-ltd",
+    period: "April 2025 - Nov 2025",
+    location: "Yangon Region, Myanmar • Hybrid",
+    keyAchievements: [
+      "Developed enterprise web applications using Angular and Spring Boot",
+      "Built scalable APIs with Node.js and Java Spring framework",
+      "Designed and optimized relational databases (MySQL, PostgreSQL)",
+      "Implemented secure authentication and authorization systems",
+      "Integrated third-party services and APIs for enhanced functionality",
+    ],
+  },
+  {
+    title: "Full Stack Developer",
+    company: "Domi Tech",
+    companyUrl:
+      "https://www.linkedin.com/company/myanmar-information-technology-pte-ltd",
+    period: "Jan 2023 - Feb 2025",
+    location: "Thandwe , Myanmar • Hybrid",
+    keyAchievements: [
+      "Developed enterprise web applications using Angular and Spring Boot",
+      "Built scalable APIs with Node.js and Java Spring framework",
+      "Designed and optimized relational databases (MySQL, PostgreSQL)",
+      "Implemented secure authentication and authorization systems",
+      "Integrated third-party services and APIs for enhanced functionality",
+    ],
+  },
+];
+
 export type NavLinkId = (typeof navLinks)[number]["id"];

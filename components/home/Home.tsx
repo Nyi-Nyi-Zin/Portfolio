@@ -19,7 +19,7 @@ function Home() {
           Full-Stack Developer | Next.js, Golang, React.js, Express.js Expert
         </Text>
 
-        <div className="flex space-y-8 items-center justify-center lg:justify-start  ">
+        <div className="flex space-y-8 items-center justify-center lg:justify-start py-8 ">
           <AnimatedTextButton texts={skills} interval={2000} />
         </div>
 
