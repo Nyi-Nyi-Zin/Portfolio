@@ -18,7 +18,7 @@ const tags = [
   { value: "react", label: "react" },
 ] as const;
 
-type TagValue = (typeof tags)[number]["value"];
+export type TagValue = (typeof tags)[number]["value"];
 
 interface TagTabsProps {
   value: TagValue;

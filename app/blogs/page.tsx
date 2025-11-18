@@ -13,37 +13,13 @@ import { useMobileMenuLock } from "@/hooks/useMobileMenuLock";
 import { scrollToSection } from "@/utils/scroll";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
-import { TagTabs } from "@/components/tag-tabs";
+import { TagTabs, TagValue } from "@/components/tag-tabs";
 import { Card } from "@/components/ui/card";
 
-export default function BlogLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const [selectedTab, setSelectedTab] = useState("sharing");
-  const [activeSection, setActiveSection] = useState<NavLinkId>("home");
-  const [prevSection, setPrevSection] = useState<NavLinkId | null>(null);
+export default function BlogLayout() {
+  const [selectedTab, setSelectedTab] = useState<TagValue>("sharing");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  useSectionObserver(activeSection, setActiveSection, setPrevSection);
-  useMobileMenuLock(isMobileMenuOpen, () => setIsMobileMenuOpen(false));
-
-  const observedLinks = navLinks;
-
-  const handleScroll = (id: NavLinkId) => {
-    scrollToSection(id);
-    setIsMobileMenuOpen(false);
-  };
-
-  const getFillOrigin = (id: NavLinkId): "left" | "right" => {
-    if (!prevSection) return "left";
-
-    const currentIndex = observedLinks.findIndex((l) => l.id === id);
-    const prevIndex = observedLinks.findIndex((l) => l.id === prevSection);
-
-    return currentIndex > prevIndex ? "left" : "right";
-  };
   return (
     <>
       <nav
@@ -96,19 +72,6 @@ export default function BlogLayout({
 
             {/* Mobile Menu */}
             <div className="md:hidden absolute top-full left-0 right-0 border-t border-ring/40 shadow-xl bg-background z-50 w-[50%] h-screen">
-              <ul className="flex flex-col p-4 space-y-2 ">
-                {observedLinks.map((link) => (
-                  <li key={link.id}>
-                    <NavButton
-                      link={link}
-                      isActive={activeSection === link.id}
-                      fillOrigin={getFillOrigin(link.id)}
-                      onClick={handleScroll}
-                    />
-                  </li>
-                ))}
-              </ul>
-
               {/* Mobile Actions */}
               <div className="flex flex-col gap-2 p-4 border-t border-ring/50 items-end">
                 <ThemeToggle />
@@ -134,7 +97,7 @@ export default function BlogLayout({
               <p className="mt-6">12.2.2000</p>
             </Link>
           </Card>
-          <Card className="h-75 flex items-start justify-between  ">
+          {/* <Card className="h-75 flex items-start justify-between  ">
             <div className=" mx-5">
               <Image
                 src="/Miracle.jpg"
@@ -217,7 +180,7 @@ export default function BlogLayout({
               <p className="text-slate-600 text-start ">Hello World</p>
               <p className="mt-6">12.2.2000</p>
             </div>
-          </Card>
+          </Card> */}
         </div>
       </Card>
     </>

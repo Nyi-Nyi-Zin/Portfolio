@@ -97,7 +97,7 @@ function Navbar() {
         <>
           {/* Backdrop - Blurs the background content */}
           <div
-            className="md:hidden fixed inset-0 top-16 bg-black/20 backdrop-blur-sm z-40"
+            className="md:hidden fixed inset-0 top-23 bg-black/20 backdrop-blur-sm z-40"
             onClick={() => setIsMobileMenuOpen(false)}
             aria-hidden="true"
           />
