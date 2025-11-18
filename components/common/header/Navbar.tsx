@@ -3,12 +3,14 @@
 import { useState } from "react";
 import { Button } from "../../ui/button";
 import { NavLinkId, navLinks } from "@/lib/constants";
-import { Menu, X } from "lucide-react";
+import { Menu, X, BookOpen } from "lucide-react";
 import { ThemeToggle } from "../../theme/theme-toggle";
 import { NavButton } from "@/components/common/header/NavButton";
 import { useSectionObserver } from "@/hooks/useSectionObserver";
 import { useMobileMenuLock } from "@/hooks/useMobileMenuLock";
 import { scrollToSection } from "@/utils/scroll";
+import Link from "next/link";
+import Image from "next/image";
 
 function Navbar() {
   const [activeSection, setActiveSection] = useState<NavLinkId>("home");
@@ -36,21 +38,23 @@ function Navbar() {
 
   return (
     <nav
-      className="sticky top-0 z-50 bg-background text-foreground shadow-md"
+      className="sticky top-0 z-50 bg-[#FFFFFF] dark:bg-[#101522] text-foreground shadow-md"
       aria-label="Main navigation"
     >
       <div className="mx-4 md:mx-10 flex items-center justify-between py-3">
-        {/* Logo */}
-        <Button
-          variant="ghost"
-          className="text-foreground hover:text-primary transition-colors font-semibold text-lg"
-          onClick={() => handleScroll("home")}
+        <Link
+          href={"/"}
+          className=" flex gap-0 rounded-2xl  hover:bg-linear-to-r hover:from-blue-100 hover:via-blue-100 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:via-blue-800/20 dark:hover:to-blue-900/20 p-2"
         >
-          Portfolio
-        </Button>
+          <Image alt="logo" src={"/logo.png"} width={50} height={40} />
+          <div>
+            <p className="text-blue-400 text-base">NyiNyiZin</p>
+            <p className="text-sm">PORTFOLIO</p>
+          </div>
+        </Link>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex space-x-3 rounded-2xl p-3 shadow-lg border  overflow-visible">
+        <ul className="hidden md:flex space-x-3 rounded-2xl p-3 dark:bg-[#1A222F] shadow-lg border overflow-visible ">
           {observedLinks.map((link) => (
             <li key={link.id}>
               <NavButton
@@ -62,24 +66,14 @@ function Navbar() {
             </li>
           ))}
         </ul>
-
+        <Button variant="destructive" asChild>
+          <Link href="/blogs" className="flex items-center gap-2">
+            <BookOpen />
+            Blogs
+          </Link>
+        </Button>
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center gap-4">
-          <Button
-            variant="default"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-          >
-            Let's Talk
-          </Button>
-
-          <Button
-            variant="ghost"
-            aria-label="Change language"
-            className="hover:bg-muted/50 transition-colors"
-          >
-            🌐
-          </Button>
-
           <ThemeToggle />
         </div>
 
@@ -98,43 +92,37 @@ function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu with Backdrop */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-muted/60 border-t border-ring/50 shadow-xl">
-          <ul className="flex flex-col p-4 space-y-2">
-            {observedLinks.map((link) => (
-              <li key={link.id}>
-                <NavButton
-                  link={link}
-                  isActive={activeSection === link.id}
-                  fillOrigin={getFillOrigin(link.id)}
-                  onClick={handleScroll}
-                />
-              </li>
-            ))}
-          </ul>
+        <>
+          {/* Backdrop - Blurs the background content */}
+          <div
+            className="md:hidden fixed inset-0 top-16 bg-black/20 backdrop-blur-sm z-40"
+            onClick={() => setIsMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
 
-          {/* Mobile Actions */}
-          <div className="flex flex-col gap-2 p-4 border-t border-ring/50">
-            <Button
-              variant="default"
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
-            >
-              Let's Talk
-            </Button>
+          {/* Mobile Menu */}
+          <div className="md:hidden absolute top-full left-0 right-0 border-t border-ring/40 shadow-xl bg-background z-50 w-[50%] h-screen">
+            <ul className="flex flex-col p-4 space-y-2 ">
+              {observedLinks.map((link) => (
+                <li key={link.id}>
+                  <NavButton
+                    link={link}
+                    isActive={activeSection === link.id}
+                    fillOrigin={getFillOrigin(link.id)}
+                    onClick={handleScroll}
+                  />
+                </li>
+              ))}
+            </ul>
 
-            <div className="flex gap-2">
-              <Button
-                variant="ghost"
-                aria-label="Change language"
-                className="flex-1 hover:bg-muted/50 transition-colors"
-              >
-                🌐
-              </Button>
+            {/* Mobile Actions */}
+            <div className="flex flex-col gap-2 p-4 border-t border-ring/50 items-end">
               <ThemeToggle />
             </div>
           </div>
-        </div>
+        </>
       )}
     </nav>
   );
