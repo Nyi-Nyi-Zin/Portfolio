@@ -29,7 +29,7 @@ export function NavButton({
     <button
       onClick={() => onClick(link.id)}
       aria-current={isActive ? "page" : undefined}
-      className="relative overflow-hidden px-4 py-2 rounded-lg text-foreground dark:text-foreground-dark focus:outline-none btn-gradient-hover"
+      className="relative overflow-hidden px-4 py-2 rounded-lg text-foreground dark:text-foreground-dark focus:outline-none btn-gradient-hover w-full text-start"
     >
       {/* Animated background */}
       <span
