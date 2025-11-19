@@ -10,12 +10,12 @@ function Home() {
   return (
     <section
       id="home"
-      className="min-h-screen flex lg:flex-row flex-col   border-b border-zinc-300 w-full  mx-auto justify-between gap-12 items-center"
+      className="min-h-screen flex lg:flex-row flex-col   border-b border-zinc-300 w-full  mx-auto justify-between gap-12 items-center my-5 lg:my-0"
     >
       <div className="flex-1 space-y-6 ">
         <Title className="lg:text-start text-center">Nyi Nyi Zin</Title>
 
-        <Text className="text-center lg:text-start">
+        <Text className="text-center w-full lg:text-start ">
           Full-Stack Developer | Next.js, Golang, React.js, Express.js Expert
         </Text>
 

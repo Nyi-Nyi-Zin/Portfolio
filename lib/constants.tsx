@@ -94,7 +94,7 @@ export const experience = [
     ],
   },
   {
-    title: "Full Stack Software Developer",
+    title: "Full Stack Developer",
     company: "Triosys",
     companyUrl:
       "https://www.linkedin.com/company/myanmar-information-technology-pte-ltd",

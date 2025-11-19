@@ -1,10 +1,9 @@
-// lib/blogs.ts
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
 export type BlogPost = {
-  id: string; // slug (filename)
+  id: string;
   title: string;
   date: string;
   image: string;
@@ -16,30 +15,41 @@ export type BlogPost = {
 const postsDirectory = path.join(process.cwd(), "content/blogs");
 
 export function getBlogPosts(): BlogPost[] {
-  const fileNames = fs.readdirSync(postsDirectory);
+  try {
+    const fileNames = fs.readdirSync(postsDirectory);
 
-  const allPostsData = fileNames
-    .filter((fileName) => fileName.endsWith(".mdx")) // Only .mdx files
-    .map((fileName) => {
-      const id = fileName.replace(/\.mdx$/, "");
-      const fullPath = path.join(postsDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, "utf8");
+    const allPostsData = fileNames
+      .filter((fileName) => fileName.endsWith(".mdx")) // Only .mdx files
+      .map((fileName) => {
+        const id = fileName.replace(/\.mdx$/, "");
+        const fullPath = path.join(postsDirectory, fileName);
 
-      const matterResult = matter(fileContents);
+        try {
+          const fileContents = fs.readFileSync(fullPath, "utf8");
+          const matterResult = matter(fileContents);
 
-      return {
-        id,
-        ...(matterResult.data as {
-          title: string;
-          date: string;
-          image: string;
-          description: string;
-          category: string;
-        }),
-      };
-    });
+          return {
+            id,
+            ...(matterResult.data as {
+              title: string;
+              date: string;
+              image: string;
+              description: string;
+              category: string;
+            }),
+          };
+        } catch (fileErr) {
+          console.error(`Error reading blog post: ${fullPath}`, fileErr);
+          return null;
+        }
+      })
+      .filter((post): post is BlogPost => post !== null); // Remove failed reads
 
-  return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
+    return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
+  } catch (err) {
+    console.error(`Error reading blog posts from ${postsDirectory}`, err);
+    return [];
+  }
 }
 
 export function getPostBySlug(slug: string) {

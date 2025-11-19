@@ -1,41 +1,46 @@
-"use client";
-
 import { useEffect } from "react";
-import { NavLinkId, navLinks } from "@/lib/constants";
+import { NavLinkId } from "@/lib/constants";
 
-export function useSectionObserver(
+export const useSectionObserver = (
   activeSection: NavLinkId,
-  setActiveSection: (id: NavLinkId) => void,
-  setPrevSection: (id: NavLinkId | null) => void
-) {
+  setActiveSection: (
+    section: NavLinkId | ((prev: NavLinkId) => NavLinkId)
+  ) => void,
+  setPrevSection: (section: NavLinkId | null) => void
+) => {
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting);
-        if (visible.length === 0) return;
+    const observerOptions: IntersectionObserverInit = {
+      root: null,
+      rootMargin: "-50% 0px -50% 0px",
+      threshold: 0,
+    };
 
-        const mostVisible = visible.reduce((prev, curr) =>
-          curr.intersectionRatio > prev.intersectionRatio ? curr : prev
-        );
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id as NavLinkId;
 
-        const newSection = mostVisible.target.id as NavLinkId;
-
-        if (newSection !== activeSection) {
-          setPrevSection(activeSection);
-          setActiveSection(newSection);
+          setActiveSection((prev: NavLinkId) => {
+            if (prev !== id) {
+              setPrevSection(prev);
+            }
+            return id;
+          });
         }
-      },
-      {
-        threshold: Array.from({ length: 11 }, (_, i) => i / 10),
-        rootMargin: "-100px 0px -66% 0px",
-      }
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
     );
 
-    navLinks.forEach((link) => {
-      const section = document.getElementById(link.id);
-      if (section) observer.observe(section);
-    });
+    const sections = document.querySelectorAll("section[id]");
+    sections.forEach((section) => observer.observe(section));
 
-    return () => observer.disconnect();
-  }, [activeSection]);
-}
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+      observer.disconnect();
+    };
+  }, []);
+};

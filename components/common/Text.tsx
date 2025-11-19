@@ -1,22 +1,22 @@
 import { cn } from "@/lib/utils";
-import React from "react";
+import React, { CSSProperties } from "react";
 
 interface TextProps {
   className?: string;
   children: React.ReactNode;
-  style?: string;
+  style?: CSSProperties; // use proper style object
 }
 
 export const Text = ({ children, className, style }: TextProps) => {
   return (
-    <span
+    <p
       className={cn(
-        "text-base md:text-lg text-slate-600 dark:text-slate-300 ", // default normal text styles
-        className,
-        style
+        "text-base md:text-lg text-slate-600 dark:text-slate-300", // default styles
+        className
       )}
+      style={style}
     >
       {children}
-    </span>
+    </p>
   );
 };

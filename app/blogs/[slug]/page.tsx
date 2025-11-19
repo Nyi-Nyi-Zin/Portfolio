@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -25,19 +24,16 @@ export async function generateMetadata(props: PageProps) {
   };
 }
 
-// --- Static Generation (Build Time) ---
 export async function generateStaticParams() {
   const posts = getBlogPosts();
   return posts.map((post) => ({
-    slug: post.id, // getBlogPosts ထဲမှာ id ကို filename ထားခဲ့တာမှတ်မိလား?
+    slug: post.id,
   }));
 }
 
-// --- Main Component ---
 export default async function BlogDetailPage(props: PageProps) {
   const params = await props.params;
 
-  // Fetch MDX content
   const post = getPostBySlug(params.slug);
 
   if (!post) {
@@ -74,9 +70,9 @@ export default async function BlogDetailPage(props: PageProps) {
               {post.meta.date}
             </div>
 
-            <div className="flex flex-wrap gap-3 items-center">
+            <div className="flex flex-wrap gap-3 items-center ">
               <Badge
-                variant="secondary"
+                variant="default"
                 className="text-sm font-medium px-3 py-1 uppercase tracking-wider"
               >
                 {post.meta.category}
