@@ -1,24 +1,7 @@
 "use client";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-
-const tags = [
-  { value: "all", label: "All" },
-  { value: "sharing", label: "sharing" },
-  { value: "api", label: "API" },
-  { value: "testing", label: "testing" },
-  { value: "ai", label: "ai" },
-  { value: "golang", label: "Golang" },
-  { value: "webhook", label: "web hook" },
-  { value: "extensions", label: "extensions" },
-  { value: "expo", label: "Expo" },
-  { value: "docker", label: "docker" },
-  { value: "typescript", label: "typescript" },
-  { value: "react", label: "react" },
-] as const;
-
-export type TagValue = (typeof tags)[number]["value"];
+import { tags, TagValue } from "@/lib/constants";
 
 interface TagTabsProps {
   value: TagValue;

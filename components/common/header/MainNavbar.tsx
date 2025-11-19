@@ -12,7 +12,7 @@ import { scrollToSection } from "@/utils/scroll";
 import Link from "next/link";
 import Image from "next/image";
 
-function Navbar() {
+function MainNavbar() {
   const [activeSection, setActiveSection] = useState<NavLinkId>("home");
   const [prevSection, setPrevSection] = useState<NavLinkId | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -44,12 +44,12 @@ function Navbar() {
       <div className="mx-4 md:mx-10 flex items-center justify-between py-3">
         <Link
           href={"/"}
-          className=" flex gap-0 rounded-2xl  hover:bg-linear-to-r hover:from-blue-100 hover:via-blue-100 hover:to-blue-100 dark:hover:from-blue-900/20 dark:hover:via-blue-800/20 dark:hover:to-blue-900/20 p-2"
+          className="flex gap-0 rounded-2xl hover:bg-linear-to-r hover:from-blue-100 hover:via-blue-50 hover:to-white dark:hover:from-blue-900/20 dark:hover:via-blue-800/20 dark:hover:to-transparent p-2"
         >
           <Image alt="logo" src={"/logo.png"} width={50} height={40} />
-          <div>
-            <p className="text-blue-400 text-base">NyiNyiZin</p>
-            <p className="text-sm">PORTFOLIO</p>
+          <div className="hidden sm:block">
+            <p className="text-slate-600 text-base font-bold px-2">NyiNyiZin</p>
+            <p className="text-sm text-slate-700 px-2">Portfolio</p>
           </div>
         </Link>
 
@@ -128,4 +128,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default MainNavbar;
