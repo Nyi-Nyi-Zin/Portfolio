@@ -1,12 +1,21 @@
 import React from "react";
+import SkillsSection from "./SkillSection";
+import { Title } from "../common/Title";
+import { SubTitle } from "../common/SubTitle";
+import { Text } from "../common/Text";
 
 function Skill() {
   return (
     <section
       id="skill"
-      className="min-h-screen flex items-center justify-center border-b border-zinc-300"
+      className="min-h-screen  border-b border-zinc-300 py-10"
     >
-      <h1 className="text-4xl font-bold">Skill Section</h1>
+      <Title className="text-center">Skills</Title>
+      <Text className="text-center">
+        Comprehensive technical expertise and professional competencies
+        developed through years of hands-on experience
+      </Text>
+      <SkillsSection />
     </section>
   );
 }

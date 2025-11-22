@@ -36,9 +36,8 @@ export default function BlogPostList({ initialPosts }: BlogPageProps) {
   }, [searchKey, selectedTab, initialPosts]);
 
   return (
-    <div className="w-full flex flex-col items-center my-5">
-      <div className="w-full max-w-5xl px-5 flex flex-col gap-6">
-        {/* ဒီအပိုင်းက အတူတူပါပဲ */}
+    <div className="w-full flex flex-col items-center  dark:bg-[#0F172A]">
+      <div className="w-full max-w-5xl px-5 flex flex-col gap-6 my-5">
         <Card className="p-2 bg-white/50 backdrop-blur supports-backdrop-filter:bg-white/50 h-full">
           <TagTabs value={selectedTab} onValueChange={setSelectedTab} />
         </Card>
@@ -50,14 +49,12 @@ export default function BlogPostList({ initialPosts }: BlogPageProps) {
                 key={blog.id}
                 className="h-full w-full overflow-hidden hover:shadow-lg transition-all duration-300 group border-muted"
               >
-                {/* ID က string (filename) ဖြစ်သွားပြီမို့လို့ /blogs/overview-of-zustand လိုမျိုးဖြစ်မယ် */}
                 <Link
                   href={`/blogs/${blog.id}`}
                   className="flex flex-col gap-5 h-full"
                 >
                   <div className="flex flex-col gap-2 px-3 lg:px-5">
                     <div className="w-full h-40 md:h-44 lg:h-36 relative overflow-hidden rounded-2xl">
-                      {/* Image src string ဖြစ်ရမယ် */}
                       <Image
                         src={blog.image}
                         fill

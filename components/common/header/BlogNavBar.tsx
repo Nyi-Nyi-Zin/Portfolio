@@ -30,8 +30,8 @@ function BlogNavBar() {
           <div className="hidden sm:block">
             {" "}
             {/* Optional: Hide text on super small phones if needed */}
-            <p className="text-slate-600 text-base font-bold px-2">NyiNyiZin</p>
-            <p className="text-sm text-slate-700 px-2">Portfolio</p>
+            <p className="text-base font-bold px-2">NyiNyiZin</p>
+            <p className="text-sm  px-2">Portfolio</p>
           </div>
         </Link>
 
