@@ -1,7 +1,7 @@
 import { TagValue } from "@/lib/constants";
 
 export type BlogPost = {
-  // id: string;
+  id: string;
   title: string;
   description: string;
   date: string;

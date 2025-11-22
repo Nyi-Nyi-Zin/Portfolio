@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Database,
@@ -20,8 +20,6 @@ import {
   GitBranch,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-// --- CUSTOM ICONS ---
 
 const ReactIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-[#61DAFB]">
@@ -226,7 +224,7 @@ interface Skill {
   id: string;
   name: string;
   category: SkillCategory;
-  icon: React.ReactNode;
+  icon: ReactNode;
   level: "Expert" | "Advanced" | "Intermediate";
   description: string;
   proficiency: number;
@@ -591,7 +589,7 @@ const skills: Skill[] = [
   },
 ];
 
-const categories: { name: SkillCategory; icon: React.ReactNode }[] = [
+const categories: { name: SkillCategory; icon: ReactNode }[] = [
   { name: "All", icon: <Sparkles className="w-4 h-4" /> },
   { name: "Frontend", icon: <Layout className="w-4 h-4" /> },
   { name: "Backend", icon: <Server className="w-4 h-4" /> },
