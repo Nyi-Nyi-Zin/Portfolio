@@ -9,11 +9,11 @@ import { Card } from "@/components/ui/card";
 import { TagTabs } from "@/components/tag-tabs";
 import { useSearch } from "@/store/useSearch";
 import { TagValue } from "@/lib/constants";
-import { BlogPost } from "@/lib/blogs"; // Type ကို import လှမ်းလုပ်
+import type { SerializedBlogPost } from "@/lib/blogs"; // Type ကို import လှမ်းလုပ်
 
 // Props နဲ့ Data လက်ခံမယ်
 interface BlogPageProps {
-  initialPosts: BlogPost[];
+  initialPosts: SerializedBlogPost[];
 }
 
 export default function BlogPostList({ initialPosts }: BlogPageProps) {

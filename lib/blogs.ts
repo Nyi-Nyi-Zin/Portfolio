@@ -8,11 +8,19 @@ export interface BlogPost {
   date: Date;
   image: string;
   category: string;
-  // detail is stored as JSON in the DB. Narrow the type instead of `any`.
-  detail: { content?: string } | Record<string, unknown> | null;
+  detail: unknown;
   createdAt: Date;
   updatedAt: Date;
 }
+
+export type SerializedBlogPost = Omit<
+  BlogPost,
+  "date" | "createdAt" | "updatedAt"
+> & {
+  date: string;
+  createdAt: string;
+  updatedAt: string;
+};
 
 interface GetBlogPostsOptions {
   category?: string | null;
