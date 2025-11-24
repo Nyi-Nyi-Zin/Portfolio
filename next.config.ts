@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
     turbopackFileSystemCacheForDev: true,
   },
   reactCompiler: true,
+  images: {
+    domains: ["example.com"],
+  },
 };
 
 export default nextConfig;

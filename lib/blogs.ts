@@ -1,85 +1,70 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
+// lib/blogs.ts
+import { prisma } from "./prisma";
 
-export type BlogPost = {
+export interface BlogPost {
   id: string;
   title: string;
-  date: string;
-  image: string;
   description: string;
+  date: Date;
+  image: string;
   category: string;
-  content?: string;
-};
-
-const postsDirectory = path.join(process.cwd(), "content/blogs");
-
-export function getBlogPosts(): BlogPost[] {
-  try {
-    const fileNames = fs.readdirSync(postsDirectory);
-
-    const allPostsData = fileNames
-      .filter((fileName) => fileName.endsWith(".mdx")) // Only .mdx files
-      .map((fileName) => {
-        const id = fileName.replace(/\.mdx$/, "");
-        const fullPath = path.join(postsDirectory, fileName);
-
-        try {
-          const fileContents = fs.readFileSync(fullPath, "utf8");
-          const matterResult = matter(fileContents);
-
-          return {
-            id,
-            ...(matterResult.data as {
-              title: string;
-              date: string;
-              image: string;
-              description: string;
-              category: string;
-            }),
-          };
-        } catch (fileErr) {
-          console.error(`Error reading blog post: ${fullPath}`, fileErr);
-          return null;
-        }
-      })
-      .filter((post): post is BlogPost => post !== null); // Remove failed reads
-
-    return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
-  } catch (err) {
-    console.error(`Error reading blog posts from ${postsDirectory}`, err);
-    return [];
-  }
+  detail: any;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-export function getPostBySlug(slug: string) {
-  const realSlug = slug.replace(/\.mdx$/, "");
-  const fullPath = path.join(postsDirectory, `${realSlug}.mdx`);
-
-  try {
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-    const { data, content } = matter(fileContents);
-
-    return {
-      slug: realSlug,
-      meta: data as {
-        title: string;
-        date: string;
-        image: string;
-        description: string;
-        category: string;
-      },
-      content,
-    };
-  } catch (err) {
-    console.error(`Error reading blog post: ${fullPath}`, err);
-    return null;
-  }
+interface GetBlogPostsOptions {
+  category?: string | null;
+  page?: number;
+  limit?: number;
 }
 
-export function calculateReadingTime(content: string) {
-  const wordsPerMinute = 200;
-  const words = content.trim().split(/\s+/).length;
-  const time = Math.ceil(words / wordsPerMinute);
-  return `${time} min read`;
+export async function getBlogPosts({
+  category,
+  page = 1,
+  limit = 10,
+}: GetBlogPostsOptions = {}): Promise<{
+  blogs: BlogPost[];
+  pagination: { total: number; page: number; limit: number; pages: number };
+}> {
+  const skip = (page - 1) * limit;
+  const where = category ? { category } : {};
+
+  const [blogs, total] = await Promise.all([
+    prisma.blog.findMany({
+      where,
+      skip,
+      take: limit,
+      orderBy: { date: "desc" },
+    }),
+    prisma.blog.count({ where }),
+  ]);
+
+  return {
+    blogs,
+    pagination: {
+      total,
+      page,
+      limit,
+      pages: Math.ceil(total / limit),
+    },
+  };
+}
+
+export async function getPostById(id: string): Promise<BlogPost | null> {
+  return prisma.blog.findUnique({
+    where: { id },
+  });
+}
+
+export function calculateReadingTime(
+  text: string,
+  wordsPerMinute = 200
+): string {
+  if (!text) return "1 min read"; // fallback
+
+  const words = text.trim().split(/\s+/).length;
+  const minutes = Math.ceil(words / wordsPerMinute);
+
+  return `${minutes} min read`;
 }

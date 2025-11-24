@@ -1,4 +1,5 @@
 import BlogNavBar from "@/components/common/header/BlogNavBar";
+import Footer from "@/components/common/footer/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,9 +13,10 @@ export default function BlogLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="lg:col-span-8">
+    <>
       <BlogNavBar />
-      {children}
-    </main>
+      <main className="lg:col-span-8">{children}</main>
+      {/* <Footer /> */}
+    </>
   );
 }

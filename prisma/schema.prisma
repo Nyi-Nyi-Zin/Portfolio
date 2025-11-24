@@ -1,0 +1,20 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"  
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Blog {
+  id          String   @id
+  title       String
+  description String
+  date        DateTime @default(now())
+  image       String
+  category    String
+  detail      Json
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

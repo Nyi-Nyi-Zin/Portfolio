@@ -1,17 +1,9 @@
-import Footer from "@/components/common/footer/Footer";
-import Navbar from "@/components/common/header/MainNavbar";
-
-// app/(main)/layout.tsx - Main site with header/footer
-export default function MainLayout({
+// app/(root)/layout.tsx - Container layout (no navbar/footer here)
+// Child layouts handle their own navbar/footer structure
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      <Navbar />
-      <main>{children}</main>
-      <Footer />
-    </>
-  );
+  return <>{children}</>;
 }
