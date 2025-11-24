@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   },
   reactCompiler: true,
   images: {
-    domains: ["example.com"],
+    domains: ["iili.io"],
   },
 };
 
