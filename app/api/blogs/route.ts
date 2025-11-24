@@ -66,10 +66,15 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json(blog, { status: 201 });
-  } catch (error: any) {
-    console.error("Blog create error:", error.message);
+  } catch (error) {
+    // Narrow unknown error safely
+    const err = error as Error | undefined;
+    console.error("Blog create error:", err?.message ?? String(error));
     return NextResponse.json(
-      { error: "Failed to create blog", details: error.message },
+      {
+        error: "Failed to create blog",
+        details: err?.message ?? String(error),
+      },
       { status: 500 }
     );
   }

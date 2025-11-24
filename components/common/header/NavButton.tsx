@@ -17,13 +17,8 @@ export function NavButton({
   fillOrigin,
   onClick,
 }: NavButtonProps) {
-  const [currentOrigin, setCurrentOrigin] = useState(fillOrigin);
-
-  useEffect(() => {
-    if (isActive) {
-      setCurrentOrigin(fillOrigin);
-    }
-  }, [isActive, fillOrigin]);
+  // Avoid calling setState inside effect; derive origin from props.
+  const currentOrigin = fillOrigin;
 
   return (
     <button

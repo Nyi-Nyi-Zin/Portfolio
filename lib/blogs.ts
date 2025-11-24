@@ -8,7 +8,8 @@ export interface BlogPost {
   date: Date;
   image: string;
   category: string;
-  detail: any;
+  // detail is stored as JSON in the DB. Narrow the type instead of `any`.
+  detail: { content?: string } | Record<string, unknown> | null;
   createdAt: Date;
   updatedAt: Date;
 }
