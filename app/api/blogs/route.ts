@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-    // s
+
     const blog = await prisma.blog.create({
       data: {
         title,
@@ -61,6 +61,7 @@ export async function POST(request: NextRequest) {
         image,
         category,
         detail,
+        date: new Date(), // Add date field
       },
     });
 

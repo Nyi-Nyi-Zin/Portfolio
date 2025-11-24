@@ -270,7 +270,7 @@ export type BlogScalarWhereWithAggregatesInput = {
 }
 
 export type BlogCreateInput = {
-  id: string
+  id?: string
   title: string
   description: string
   date?: Date | string
@@ -282,7 +282,7 @@ export type BlogCreateInput = {
 }
 
 export type BlogUncheckedCreateInput = {
-  id: string
+  id?: string
   title: string
   description: string
   date?: Date | string
@@ -318,7 +318,7 @@ export type BlogUncheckedUpdateInput = {
 }
 
 export type BlogCreateManyInput = {
-  id: string
+  id?: string
   title: string
   description: string
   date?: Date | string
