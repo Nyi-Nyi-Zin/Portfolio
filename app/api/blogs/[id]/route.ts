@@ -1,36 +1,35 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-// GET single blog by ID
-export async function GET(
-  _request: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  try {
-    const blog = await prisma.blog.findUnique({
-      where: { id: params.id },
-    });
+interface Params {
+  params: { id: string };
+}
 
-    if (!blog) {
+// GET single blog
+export async function GET(_req: NextRequest, { params }: Params) {
+  const { id } = params;
+
+  try {
+    const blog = await prisma.blog.findUnique({ where: { id } });
+
+    if (!blog)
       return NextResponse.json({ error: "Blog not found" }, { status: 404 });
-    }
 
     return NextResponse.json(blog);
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json(
-      { error: "Failed to fetch blog", details: (error as Error).message },
+      { error: "Failed to fetch blog", details: error.message },
       { status: 500 }
     );
   }
 }
 
 // PUT update blog
-export async function PUT(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function PUT(req: NextRequest, { params }: Params) {
+  const { id } = params;
+
   try {
-    const data = await request.json();
+    const data = await req.json();
 
     const detail =
       data.detail && typeof data.detail === "string"
@@ -38,7 +37,7 @@ export async function PUT(
         : data.detail;
 
     const blog = await prisma.blog.update({
-      where: { id: params.id },
+      where: { id },
       data: {
         ...(data.title && { title: data.title }),
         ...(data.description && { description: data.description }),
@@ -49,35 +48,28 @@ export async function PUT(
     });
 
     return NextResponse.json(blog);
-  } catch (error) {
-    console.error("Error updating blog:", error);
+  } catch (error: any) {
     return NextResponse.json(
-      {
-        error: "Failed to update blog",
-        details: error instanceof Error ? error.message : String(error),
-      },
+      { error: "Failed to update blog", details: error.message },
       { status: 500 }
     );
   }
 }
 
 // DELETE blog
-export async function DELETE(
-  _request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(_req: NextRequest, { params }: Params) {
+  const { id } = params;
+
   try {
-    const blog = await prisma.blog.findUnique({ where: { id: params.id } });
-    if (!blog) {
+    const blog = await prisma.blog.findUnique({ where: { id } });
+    if (!blog)
       return NextResponse.json({ error: "Blog not found" }, { status: 404 });
-    }
 
-    await prisma.blog.delete({ where: { id: params.id } });
-
+    await prisma.blog.delete({ where: { id } });
     return NextResponse.json({ message: "Blog deleted successfully" });
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json(
-      { error: "Failed to delete blog", details: (error as Error).message },
+      { error: "Failed to delete blog", details: error.message },
       { status: 500 }
     );
   }
