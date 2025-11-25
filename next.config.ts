@@ -6,7 +6,9 @@ const nextConfig: NextConfig = {
   },
   reactCompiler: true,
   images: {
-    domains: ["iili.io"],
+    remotePatterns: [
+      { hostname: "iili.io", protocol: "https", pathname: "/**" },
+    ],
   },
 };
 

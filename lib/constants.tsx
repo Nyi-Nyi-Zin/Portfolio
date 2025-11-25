@@ -135,6 +135,7 @@ export const tags = [
   { value: "database", label: "Database" },
   { value: "system design", label: "System Design" },
   { value: "security", label: "Security" },
+  { value: "testing", label: "Testing" },
 ] as const;
 
 export type TagValue = (typeof tags)[number]["value"];
