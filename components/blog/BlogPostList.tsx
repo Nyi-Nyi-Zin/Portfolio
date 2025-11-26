@@ -1,4 +1,3 @@
-// components/BlogPostList.tsx (သို့မဟုတ် မင်းရဲ့ မူရင်း file name)
 "use client";
 
 import { useState, useMemo } from "react";
@@ -11,7 +10,6 @@ import { useSearch } from "@/store/useSearch";
 import { TagValue } from "@/lib/constants";
 import type { SerializedBlogPost } from "@/lib/blogs"; // Type ကို import လှမ်းလုပ်
 
-// Props နဲ့ Data လက်ခံမယ်
 interface BlogPageProps {
   initialPosts: SerializedBlogPost[];
 }
@@ -20,7 +18,6 @@ export default function BlogPostList({ initialPosts }: BlogPageProps) {
   const [selectedTab, setSelectedTab] = useState<TagValue>("all");
   const searchKey = useSearch((state) => state.searchKey);
 
-  // BLOG_POSTS အစား initialPosts props ကိုသုံးမယ်
   const filteredBlogs = useMemo(() => {
     return initialPosts.filter((post) => {
       const searchLower = searchKey.toLowerCase();
@@ -73,7 +70,7 @@ export default function BlogPostList({ initialPosts }: BlogPageProps) {
                   </div>
 
                   <div className="mt-auto px-5 text-muted-foreground text-xs font-medium pb-4">
-                    {blog.date}
+                    {new Date(blog.date).toLocaleDateString()}
                   </div>
                 </Link>
               </Card>

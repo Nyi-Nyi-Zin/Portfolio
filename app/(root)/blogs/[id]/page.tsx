@@ -18,13 +18,11 @@ function calculateReadingTime(content: string) {
   return `${minutes} min read`;
 }
 
-// --- FIX 1: Update Type Definition to use Promise ---
 type PageProps = {
   params: Promise<{ id: string }>;
 };
 
 export async function generateMetadata({ params }: PageProps) {
-  // --- FIX 2: Await params in metadata ---
   const { id } = await params;
 
   const post = await prisma.blog.findUnique({ where: { id } });
