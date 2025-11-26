@@ -3,6 +3,8 @@ import { getBlogPosts } from "@/lib/blogs";
 import type { SerializedBlogPost } from "@/lib/blogs";
 import BlogPostList from "@/components/blog/BlogPostList";
 
+export const revalidate = 60;
+
 export default async function BlogPage() {
   // Server side မှာ ဖိုင်တွေဖတ်မယ်
   const { blogs } = await getBlogPosts();
