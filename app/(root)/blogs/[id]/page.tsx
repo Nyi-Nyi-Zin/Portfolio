@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+export const revalidate = 60;
+
 // Simple reading time
 function calculateReadingTime(content: string) {
   const plainText = content.replace(/<[^>]*>/g, "").trim();
