@@ -1,37 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { CreateBlogSchema, TranslationsSchema } from "@/schemas/blogs";
+import { BlogPost } from "@/types/blogs";
+import { z } from "zod";
 
-export async function GET(request: NextRequest) {
+export const revalidate = 60;
+export const dynamic = "force-static";
+
+export async function GET() {
   try {
-    const searchParams = request.nextUrl.searchParams;
-    const category = searchParams.get("category");
-    const page = searchParams.get("page") || "1";
-    const limit = searchParams.get("limit") || "10";
-
-    const skip = (parseInt(page) - 1) * parseInt(limit);
-
-    const where = category ? { category } : {};
-
-    const [blogs, total] = await Promise.all([
-      prisma.blog.findMany({
-        where,
-        skip,
-        take: parseInt(limit),
-        orderBy: { date: "desc" },
-      }),
-      prisma.blog.count({ where }),
-    ]);
-
-    return NextResponse.json({
-      blogs,
-      pagination: {
-        total,
-        page: parseInt(page),
-        limit: parseInt(limit),
-        pages: Math.ceil(total / parseInt(limit)),
-      },
+    const blogs = await prisma.blog.findMany({
+      orderBy: { createdAt: "desc" },
     });
+
+    const serialized = blogs.map((b) => ({
+      ...b,
+      createdAt: b.createdAt.toISOString(),
+      updatedAt: b.updatedAt.toISOString(),
+    }));
+
+    return NextResponse.json(serialized);
   } catch (error) {
+    console.error("Failed to fetch blogs:", error);
     return NextResponse.json(
       { error: "Failed to fetch blogs" },
       { status: 500 }
@@ -42,39 +32,33 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-
-    // Destructure payload
-    const { title, description, image, category, detail } = body;
-
-    // Basic validation
-    if (!title || !description || !image || !category || !detail) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
-      );
-    }
+    const validatedData = CreateBlogSchema.parse(body);
 
     const blog = await prisma.blog.create({
       data: {
-        title,
-        description,
-        image,
-        category,
-        detail,
-        date: new Date(), // Add date field
+        translations: validatedData.translations,
+        image: validatedData.image,
       },
     });
 
-    return NextResponse.json(blog, { status: 201 });
-  } catch (error) {
-    // Narrow unknown error safely
-    const err = error as Error | undefined;
-    console.error("Blog create error:", err?.message ?? String(error));
     return NextResponse.json(
       {
-        error: "Failed to create blog",
-        details: err?.message ?? String(error),
+        ...blog,
+        translations: TranslationsSchema.parse(blog.translations),
+        createdAt: blog.createdAt.toISOString(),
+        updatedAt: blog.updatedAt.toISOString(),
       },
+      { status: 201 }
+    );
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: "Validation failed", details: error.issues },
+        { status: 400 }
+      );
+    }
+    return NextResponse.json(
+      { error: "Failed to create blog" },
       { status: 500 }
     );
   }

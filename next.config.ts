@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
       { hostname: "iili.io", protocol: "https", pathname: "/**" },
     ],
   },
+  // i18n: {
+  //   locales: ["en", "mm"],
+  //   defaultLocale: "en",
+  // },
 };
 
 export default nextConfig;

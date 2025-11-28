@@ -11,9 +11,31 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export function ThemeToggle() {
+  const [mounted, setMounted] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark" | "system">("system");
 
-  // Apply the selected theme
+  useEffect(() => {
+    setMounted(true); // now we are on client
+    const savedTheme =
+      (localStorage.getItem("theme") as "light" | "dark" | "system" | null) ||
+      "system";
+    setTheme(savedTheme);
+    applyTheme(savedTheme);
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = () => {
+      const currentTheme = localStorage.getItem("theme") || "system";
+      if (currentTheme === "system") applyTheme("system");
+    };
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
+  useEffect(() => {
+    if (mounted) applyTheme(theme);
+  }, [theme, mounted]);
+
   const applyTheme = (selectedTheme: "light" | "dark" | "system") => {
     if (selectedTheme === "system") {
       const prefersDark = window.matchMedia(
@@ -28,37 +50,13 @@ export function ThemeToggle() {
     }
   };
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as
-      | "light"
-      | "dark"
-      | "system"
-      | null;
-    const initialTheme = savedTheme || "system";
-    setTheme(initialTheme);
-    applyTheme(initialTheme);
-
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleChange = () => {
-      const currentTheme = localStorage.getItem("theme") || "system";
-      if (currentTheme === "system") {
-        applyTheme("system");
-      }
-    };
-    mediaQuery.addEventListener("change", handleChange);
-
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, []);
-
-  useEffect(() => {
-    applyTheme(theme);
-  }, [theme]);
-
   const changeTheme = (newTheme: "light" | "dark" | "system") => {
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
     applyTheme(newTheme);
   };
+
+  if (!mounted) return null; // **do not render anything on server**
 
   return (
     <DropdownMenu>

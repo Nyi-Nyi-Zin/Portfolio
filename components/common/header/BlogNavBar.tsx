@@ -1,18 +1,24 @@
 "use client";
 
+import { TagTabs } from "@/components/tag-tabs";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
+import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useSearch } from "@/store/useSearch";
 import { Menu, Search, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLanguage } from "@/store/useLanguage";
 
 function BlogNavBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { lang, setLang } = useLanguage();
 
   const searchKey = useSearch((state) => state.searchKey);
   const setSearchKey = useSearch((state) => state.setSearchKey);
+
+  const toggleLang = () => setLang(lang === "en" ? "mm" : "en");
 
   return (
     <nav
@@ -23,24 +29,17 @@ function BlogNavBar() {
         {/* Logo Section */}
         <Link
           href={"/"}
-          // Fixed: 'bg-linear-to-r' isn't standard Tailwind, changed to 'bg-gradient-to-r'
           className="flex gap-0 rounded-2xl hover:bg-linear-to-r hover:from-blue-100 hover:via-blue-50 hover:to-white dark:hover:from-blue-900/20 dark:hover:via-blue-800/20 dark:hover:to-transparent p-2"
         >
           <Image alt="logo" src={"/logo.png"} width={50} height={40} />
           <div className="hidden sm:block">
-            {" "}
-            {/* Optional: Hide text on super small phones if needed */}
             <p className="text-base font-bold px-2">NyiNyiZin</p>
-            <p className="text-sm  px-2">Portfolio</p>
+            <p className="text-sm px-2">Portfolio</p>
           </div>
         </Link>
 
-        {/* 
-           Search Bar Section 
-           1. Changed 'w-150' (invalid usually) to 'w-full max-w-md'.
-           2. Added 'hidden md:block' or logic to handle mobile sizing so it doesn't crush the logo.
-        */}
-        <div className="relative hidden sm:block w-full  mx-4 max-w-3xl">
+        {/* Search Bar */}
+        <div className="relative hidden sm:block w-full mx-4 max-w-3xl">
           <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
             type="search"
@@ -51,8 +50,18 @@ function BlogNavBar() {
           />
         </div>
 
+        {/* TagTabs + Language Toggle */}
+
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center gap-4">
+          <button
+            onClick={toggleLang}
+            suppressHydrationWarning
+            className="px-3 py-1 border rounded text-sm text-foreground hover:bg-gray-100 dark:hover:bg-gray-800"
+          >
+            {lang === "en" ? "မြန်မာ" : "English"}
+          </button>
+
           <ThemeToggle />
         </div>
 
@@ -78,7 +87,6 @@ function BlogNavBar() {
             onClick={() => setIsMobileMenuOpen(false)}
           />
           <div className="md:hidden absolute top-full left-0 right-0 border-t border-ring/40 shadow-xl bg-background z-50 p-4">
-            {/* Added Search to Mobile Menu so mobile users can search too */}
             <div className="relative w-full mb-4">
               <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
@@ -89,8 +97,14 @@ function BlogNavBar() {
                 onChange={(e) => setSearchKey(e.target.value)}
               />
             </div>
-            <div className="flex justify-end">
+            <div className="flex justify-between items-center">
               <ThemeToggle />
+              <button
+                onClick={toggleLang}
+                className="px-3 py-1 border rounded text-sm text-foreground hover:bg-gray-100 dark:hover:bg-gray-800"
+              >
+                {lang === "en" ? "မြန်မာ" : "English"}
+              </button>
             </div>
           </div>
         </>

@@ -1,24 +1,23 @@
-import { getBlogPosts } from "@/lib/blogs";
-import type { SerializedBlogPost } from "@/lib/blogs";
-import BlogPostList from "@/components/blog/BlogPostList";
-
 export const revalidate = 60;
 
-export default async function BlogPage() {
-  const { blogs } = await getBlogPosts();
+import BlogPostList from "@/components/blog/BlogPostList";
 
-  const serializedBlogs: SerializedBlogPost[] = blogs.map((blog) => ({
+export default async function BlogPage() {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL ||
+    process.env.VERCEL_URL ||
+    "http://localhost:3000";
+
+  const res = await fetch(`${baseUrl}/api/blogs`, {
+    next: { revalidate: 60 },
+  });
+
+  const blogs = await res.json();
+
+  const serializedBlogs = blogs.map((blog: any) => ({
     ...blog,
-    date:
-      blog.date instanceof Date ? blog.date.toISOString() : String(blog.date),
-    createdAt:
-      blog.createdAt instanceof Date
-        ? blog.createdAt.toISOString()
-        : String(blog.createdAt),
-    updatedAt:
-      blog.updatedAt instanceof Date
-        ? blog.updatedAt.toISOString()
-        : String(blog.updatedAt),
+    createdAt: String(blog.createdAt),
+    updatedAt: String(blog.updatedAt),
   }));
 
   return <BlogPostList initialPosts={serializedBlogs} />;
