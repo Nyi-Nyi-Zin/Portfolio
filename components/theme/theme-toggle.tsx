@@ -1,7 +1,7 @@
 "use client";
 
 import { Moon, Sun, Monitor } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -11,48 +11,50 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export function ThemeToggle() {
+  // ❗ React 19 safe: mounted = true only when window exists
+  const [mounted, setMounted] = useState(() => typeof window !== "undefined");
+
   const [theme, setTheme] = useState<"light" | "dark" | "system">("system");
 
-  // Apply the selected theme
-  const applyTheme = (selectedTheme: "light" | "dark" | "system") => {
-    if (selectedTheme === "system") {
+  const applyTheme = useCallback((t: "light" | "dark" | "system") => {
+    if (t === "system") {
       const prefersDark = window.matchMedia(
         "(prefers-color-scheme: dark)"
       ).matches;
       document.documentElement.classList.toggle("dark", prefersDark);
     } else {
-      document.documentElement.classList.toggle(
-        "dark",
-        selectedTheme === "dark"
-      );
+      document.documentElement.classList.toggle("dark", t === "dark");
     }
-  };
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as
-      | "light"
-      | "dark"
-      | "system"
-      | null;
-    const initialTheme = savedTheme || "system";
-    setTheme(initialTheme);
-    applyTheme(initialTheme);
-
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleChange = () => {
-      const currentTheme = localStorage.getItem("theme") || "system";
-      if (currentTheme === "system") {
-        applyTheme("system");
-      }
-    };
-    mediaQuery.addEventListener("change", handleChange);
-
-    return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
+  // Load saved theme (allowed: because we're not calling setState synchronously)
   useEffect(() => {
-    applyTheme(theme);
-  }, [theme]);
+    if (!mounted) return;
+
+    const saved =
+      (localStorage.getItem("theme") as "light" | "dark" | "system" | null) ||
+      "system";
+
+    // ✔ this is OK because effect callback (media query) calls setState, not the effect itself
+    queueMicrotask(() => {
+      setTheme(saved);
+      applyTheme(saved);
+    });
+
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const handleChange = () => {
+      const current = localStorage.getItem("theme") || "system";
+      if (current === "system") applyTheme("system");
+    };
+
+    media.addEventListener("change", handleChange);
+    return () => media.removeEventListener("change", handleChange);
+  }, [mounted, applyTheme]);
+
+  useEffect(() => {
+    if (mounted) applyTheme(theme);
+  }, [theme, mounted, applyTheme]);
 
   const changeTheme = (newTheme: "light" | "dark" | "system") => {
     setTheme(newTheme);
@@ -60,20 +62,18 @@ export function ThemeToggle() {
     applyTheme(newTheme);
   };
 
+  if (!mounted) return null;
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          className="rounded-full"
-          variant="outline"
-          size="icon"
-          aria-label="Toggle theme"
-        >
+        <Button variant="outline" size="icon" className="rounded-full">
           {theme === "light" && <Sun className="h-5 w-5" />}
           {theme === "dark" && <Moon className="h-5 w-5" />}
           {theme === "system" && <Monitor className="h-5 w-5" />}
         </Button>
       </DropdownMenuTrigger>
+
       <DropdownMenuContent align="end">
         <DropdownMenuItem onClick={() => changeTheme("light")}>
           <Sun className="mr-2 h-4 w-4" /> Light

@@ -1,4 +1,5 @@
 import { BlogPost } from "@/types/blogs";
+import { z } from "zod";
 
 export const navLinks = [
   { id: "home", label: "Home" },
@@ -47,6 +48,18 @@ export const skills = [
   "Jenkin",
   "Progressive Web Apps",
 ];
+
+export const CategoryEnum = z.enum([
+  "frontend",
+  "backend",
+  "devops",
+  "ai",
+  "mobile",
+  "database",
+  "system design",
+  "security",
+  "testing",
+] as const);
 
 export type IconName = "briefcase" | "code" | "zap" | "shield";
 

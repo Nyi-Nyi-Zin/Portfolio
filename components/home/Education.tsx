@@ -9,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import image from "next/image";
 
 function Education() {
   return (
@@ -27,7 +26,7 @@ function Education() {
         <CardContent>
           <CardDescription>University of Sittwe</CardDescription>
           <CardDescription>July 2025 - July 2026</CardDescription>
-          <span>Bachelor's Degree</span>
+          <span>Bachelor&apos;s Degree</span>
         </CardContent>
         <CardFooter>
           Advanced computer science studies focusing on software engineering,

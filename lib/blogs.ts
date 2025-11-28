@@ -1,23 +1,24 @@
-// lib/blogs.ts
 import { prisma } from "./prisma";
+
+export interface BlogTranslations {
+  title: string;
+  description: string;
+  category: string;
+  detail: string;
+}
 
 export interface BlogPost {
   id: string;
-  title: string;
-  description: string;
-  date: Date;
+  translations: {
+    en: BlogTranslations;
+    mm: BlogTranslations;
+  };
   image: string;
-  category: string;
-  detail: unknown;
   createdAt: Date;
   updatedAt: Date;
 }
 
-export type SerializedBlogPost = Omit<
-  BlogPost,
-  "date" | "createdAt" | "updatedAt"
-> & {
-  date: string;
+export type SerializedBlogPost = Omit<BlogPost, "createdAt" | "updatedAt"> & {
   createdAt: string;
   updatedAt: string;
 };
@@ -37,20 +38,38 @@ export async function getBlogPosts({
   pagination: { total: number; page: number; limit: number; pages: number };
 }> {
   const skip = (page - 1) * limit;
-  const where = category ? { category } : {};
+
+  const where = category
+    ? {
+        translations: {
+          path: ["en", "category"],
+          equals: category,
+        },
+      }
+    : undefined;
 
   const [blogs, total] = await Promise.all([
     prisma.blog.findMany({
       where,
       skip,
       take: limit,
-      orderBy: { date: "desc" },
+      orderBy: { createdAt: "desc" },
     }),
     prisma.blog.count({ where }),
   ]);
 
+  const formattedBlogs: BlogPost[] = blogs.map((blog) => ({
+    ...blog,
+    translations: blog.translations
+      ? (blog.translations as unknown as {
+          en: BlogTranslations;
+          mm: BlogTranslations;
+        })
+      : { en: {} as BlogTranslations, mm: {} as BlogTranslations },
+  }));
+
   return {
-    blogs,
+    blogs: formattedBlogs,
     pagination: {
       total,
       page,
@@ -61,16 +80,25 @@ export async function getBlogPosts({
 }
 
 export async function getPostById(id: string): Promise<BlogPost | null> {
-  return prisma.blog.findUnique({
-    where: { id },
-  });
+  const blog = await prisma.blog.findUnique({ where: { id } });
+  if (!blog) return null;
+
+  return {
+    ...blog,
+    translations: blog.translations
+      ? (blog.translations as unknown as {
+          en: BlogTranslations;
+          mm: BlogTranslations;
+        })
+      : { en: {} as BlogTranslations, mm: {} as BlogTranslations },
+  };
 }
 
 export function calculateReadingTime(
   text: string,
   wordsPerMinute = 200
 ): string {
-  if (!text) return "1 min read"; // fallback
+  if (!text) return "1 min read";
 
   const words = text.trim().split(/\s+/).length;
   const minutes = Math.ceil(words / wordsPerMinute);
