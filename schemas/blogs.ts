@@ -27,13 +27,9 @@ export const ParamsSchema = z.object({
 });
 
 export const CreateBlogSchema = z.object({
-  translations: z.object({
-    en: BlogTranslationsSchema,
-    mm: BlogTranslationsSchema,
-  }),
+  translations: TranslationsSchema,
   image: z.url("Image must be a valid URL"),
 });
 
 export type CreateBlogInput = z.infer<typeof CreateBlogSchema>;
-
 export type UpdateBlogInput = z.infer<typeof UpdateBlogSchema>;

@@ -1,35 +1,23 @@
-// app/admin/blogs/new/page.tsx
 import TranslationForm from "@/components/TranslationForm";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import type { CreateBlogInput } from "@/schemas/blogs";
 
 export default function NewBlogPage() {
-  // define server action in this server component
   async function saveBlog(data: CreateBlogInput) {
     "use server";
 
-    const { id, translations, image } = data;
+    await prisma.blog.create({
+      data: {
+        image: data.image,
+        translations: data.translations,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    });
 
-    if (id) {
-      await prisma.blog.update({
-        where: { id },
-        data: { image, translations },
-      });
-    } else {
-      await prisma.blog.create({
-        data: {
-          image,
-          translations,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-      });
-    }
-
-    revalidatePath("/"); // revalidate cache
+    revalidatePath("/");
   }
 
-  // pass server action to client component
   return <TranslationForm onSubmit={saveBlog} />;
 }
