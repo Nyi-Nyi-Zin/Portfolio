@@ -8,7 +8,6 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/store/useLanguage";
 
-// Definition matches what we pass from the server
 export type BlogPost = {
   id: string;
   translations: {
@@ -26,33 +25,28 @@ export type BlogPost = {
     };
   };
   image: string;
-  createdAt: string; // Passed as string from server
+  createdAt: string;
 };
 
 function calculateReadingTime(content: string) {
   if (!content) return "0 min read";
   const plainText = content.replace(/<[^>]*>/g, "").trim();
-  const wordsPerMinute = 200;
   const words = plainText.split(/\s+/).length;
-  const minutes = Math.ceil(words / wordsPerMinute);
+  const minutes = Math.ceil(words / 200);
   return `${minutes} min read`;
 }
 
 export default function BlogDetail({ post }: { post: BlogPost }) {
   const { lang } = useLanguage();
 
-  // SAFETY 1: Check if post exists (It should, thanks to the Server Page check)
   if (!post) {
     return <div className="p-10 text-center">Loading Content...</div>;
   }
 
-  // SAFETY 2: Derived State for Language
-  // If "mm" is missing, fallback to "en". Use ?. to prevent crashing.
   const currentLang = lang === "mm" ? "mm" : "en";
   const translation =
     post.translations?.[currentLang] || post.translations?.["en"];
 
-  // SAFETY 3: If data is corrupted/missing translation completely
   if (!translation) {
     return <div className="p-10 text-center">Translation unavailable</div>;
   }
@@ -61,52 +55,49 @@ export default function BlogDetail({ post }: { post: BlogPost }) {
   const readTime = calculateReadingTime(detailContent);
 
   return (
-    <div className="w-full flex flex-col items-center py-10 animate-in fade-in duration-500">
+    <div className="w-full flex flex-col items-center py-10">
       <div className="w-full max-w-4xl px-5 flex flex-col gap-8">
-        {/* Navigation */}
+        {/* Back Button */}
         <div className="flex items-center justify-between">
           <Link href="/blogs">
             <Button
               variant="outline"
-              className="group pl-0 hover:pl-2 transition-all hover:text-foreground"
+              className="group pl-0 hover:pl-2 transition-all"
             >
-              <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
+              <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1" />
               Back to Blogs
             </Button>
           </Link>
         </div>
 
-        {/* Header Section */}
+        {/* Title & Category */}
         <div className="space-y-6">
-          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-foreground leading-[1.15] text-center">
+          <h1 className="text-3xl md:text-5xl font-extrabold text-center">
             {translation.title}
           </h1>
-          <div className="mt-6 prose prose-lg dark:prose-invert max-w-none text-muted-foreground text-center">
+
+          <div className="prose prose-lg dark:prose-invert text-center">
             {translation.description}
           </div>
 
-          <Card className="flex flex-col sm:flex-row sm:items-center justify-between text-muted-foreground text-sm font-medium gap-4 mt-4 px-3 py-3">
+          <Card className="flex flex-col sm:flex-row justify-between text-sm px-3 py-3">
             <div className="flex items-center">
               <Calendar className="w-4 h-4 mr-2" />
-              {/* Handle string dates */}
               {new Date(post.createdAt).toLocaleDateString()}
             </div>
 
             <div className="flex items-center gap-3">
-              <Badge
-                variant="secondary"
-                className="uppercase bg-blue-700 text-white  text-sm"
-              >
+              <Badge className="uppercase bg-blue-700 text-white">
                 {translation.category}
               </Badge>
               <span className="flex items-center gap-1 border-l pl-3 ml-1">
-                <Clock className="w-3.5 h-3.5" /> {readTime}
+                <Clock className="w-4 h-4" /> {readTime}
               </span>
             </div>
           </Card>
         </div>
 
-        {/* Image Section */}
+        {/* Image */}
         {post.image && (
           <div className="relative w-full aspect-video rounded-lg overflow-hidden border bg-muted">
             <Image
@@ -119,13 +110,11 @@ export default function BlogDetail({ post }: { post: BlogPost }) {
           </div>
         )}
 
-        {/* Article Body */}
-        <div className="w-full">
-          <article
-            className="prose prose-lg dark:prose-invert max-w-none mx-auto prose-headings:font-bold prose-a:text-primary"
-            dangerouslySetInnerHTML={{ __html: detailContent }}
-          />
-        </div>
+        {/* Body */}
+        <article
+          className="prose prose-lg dark:prose-invert max-w-none"
+          dangerouslySetInnerHTML={{ __html: detailContent }}
+        />
       </div>
     </div>
   );
