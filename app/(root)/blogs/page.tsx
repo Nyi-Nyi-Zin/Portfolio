@@ -1,24 +1,34 @@
+import { prisma } from "@/lib/prisma";
+import BlogPostListClient from "./BlogPostListClient";
+import type { SerializedBlogPost, BlogTranslations } from "@/types/blogs";
+
 export const revalidate = 60;
 
-import BlogPostList from "@/components/blog/BlogPostList";
-
 export default async function BlogPage() {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL ||
-    process.env.VERCEL_URL ||
-    "http://localhost:3000";
-
-  const res = await fetch(`${baseUrl}/api/blogs`, {
-    next: { revalidate: 60 },
+  const blogs = await prisma.blog.findMany({
+    orderBy: { createdAt: "desc" },
   });
 
-  const blogs = await res.json();
+  // Serialize dates & parse translations safely
+  const serializedBlogs: SerializedBlogPost[] = blogs.map((b) => {
+    const translations = b.translations as unknown as {
+      en: BlogTranslations;
+      mm: BlogTranslations;
+    };
 
-  const serializedBlogs = blogs.map((blog: any) => ({
-    ...blog,
-    createdAt: String(blog.createdAt),
-    updatedAt: String(blog.updatedAt),
-  }));
+    // Optional runtime check to avoid runtime errors
+    if (!translations?.en || !translations?.mm) {
+      throw new Error(`Blog ${b.id} has invalid translations`);
+    }
 
-  return <BlogPostList initialPosts={serializedBlogs} />;
+    return {
+      id: b.id,
+      image: b.image,
+      createdAt: b.createdAt.toISOString(),
+      updatedAt: b.updatedAt.toISOString(),
+      translations,
+    };
+  });
+
+  return <BlogPostListClient initialPosts={serializedBlogs} />;
 }

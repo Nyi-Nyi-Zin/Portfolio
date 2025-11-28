@@ -5,11 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Card } from "@/components/ui/card";
-import { TagTabs } from "@/components/tag-tabs";
 import { useSearch } from "@/store/useSearch";
-import { TagValue } from "@/lib/constants";
-import type { SerializedBlogPost } from "@/types/blogs";
 import { useLanguage } from "@/store/useLanguage";
+import { TagValue } from "@/lib/constants";
+import { TagTabs } from "@/components/tag-tabs";
+import type { SerializedBlogPost } from "@/types/blogs";
 
 interface BlogPageProps {
   initialPosts: SerializedBlogPost[];
@@ -17,24 +17,21 @@ interface BlogPageProps {
 
 export default function BlogPostList({ initialPosts }: BlogPageProps) {
   const [selectedTab, setSelectedTab] = useState<TagValue>("all");
-  const searchKey = useSearch((state) => state.searchKey);
+  const searchKey = useSearch((s) => s.searchKey);
   const { lang } = useLanguage();
 
   const filteredBlogs = useMemo(() => {
     return initialPosts.filter((post) => {
-      // Use the selected language, fallback to 'en' if missing
       const t = post.translations?.[lang] || post.translations?.en;
-      if (!t) return false; // skip if no translation available
+      if (!t) return false;
 
       const searchLower = searchKey.toLowerCase();
-
       const matchesSearch =
         !searchKey ||
         t.title.toLowerCase().includes(searchLower) ||
         t.description.toLowerCase().includes(searchLower);
 
       const matchesTab = selectedTab === "all" || t.category === selectedTab;
-
       return matchesSearch && matchesTab;
     });
   }, [searchKey, selectedTab, initialPosts, lang]);
@@ -42,11 +39,13 @@ export default function BlogPostList({ initialPosts }: BlogPageProps) {
   return (
     <div className="w-full flex flex-col items-center dark:bg-[#0F172A]">
       <div className="w-full max-w-5xl px-5 flex flex-col gap-6 my-5">
+        <TagTabs value={selectedTab} onValueChange={setSelectedTab} />
+
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 w-full">
           {filteredBlogs.length > 0 ? (
             filteredBlogs.map((blog) => {
               const t = blog.translations?.[lang] || blog.translations?.en;
-              if (!t) return null; // safety check
+              if (!t) return null;
 
               return (
                 <Card
@@ -77,7 +76,11 @@ export default function BlogPostList({ initialPosts }: BlogPageProps) {
                     </div>
 
                     <div className="mt-auto px-5 text-muted-foreground text-xs font-medium pb-4">
-                      {new Date(blog.createdAt).toLocaleDateString()}
+                      {new Date(blog.createdAt).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
                     </div>
                   </Link>
                 </Card>

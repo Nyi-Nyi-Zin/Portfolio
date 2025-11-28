@@ -23,3 +23,16 @@ export interface SerializedBlogPost
   createdAt: string;
   updatedAt: string;
 }
+
+export interface TranslationContent {
+  title: string;
+  description: string;
+  category: string;
+  detail: string;
+}
+
+export interface TranslationData {
+  id: string;
+  translations: Record<string, TranslationContent>;
+  image: string;
+}
