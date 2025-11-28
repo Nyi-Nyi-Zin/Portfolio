@@ -421,10 +421,9 @@ export function RichTextEditor({
     onTransaction: () => setUpdateCounter((n) => n + 1),
   });
 
-  // Sync external value changes
   useEffect(() => {
     if (editor && value !== editor.getHTML()) {
-      editor.commands.setContent(value, false);
+      editor.commands.setContent(value, { emitUpdate: false });
     }
   }, [value, editor]);
 

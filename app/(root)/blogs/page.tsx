@@ -9,14 +9,12 @@ export default async function BlogPage() {
     orderBy: { createdAt: "desc" },
   });
 
-  // Serialize dates & parse translations safely
   const serializedBlogs: SerializedBlogPost[] = blogs.map((b) => {
     const translations = b.translations as unknown as {
       en: BlogTranslations;
       mm: BlogTranslations;
     };
 
-    // Optional runtime check to avoid runtime errors
     if (!translations?.en || !translations?.mm) {
       throw new Error(`Blog ${b.id} has invalid translations`);
     }

@@ -10,6 +10,5 @@ interface BlogPostListClientProps {
 export default function BlogPostListClient({
   initialPosts,
 }: BlogPostListClientProps) {
-  // Fully client-side
   return <BlogPostList initialPosts={initialPosts} />;
 }

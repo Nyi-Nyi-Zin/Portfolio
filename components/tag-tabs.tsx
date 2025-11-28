@@ -14,9 +14,9 @@ export function TagTabs({ value, onValueChange }: TagTabsProps) {
   };
 
   return (
-    <div className="w-full bg-background overflow-y-auto px-2">
+    <div className="w-full bg-background overflow-y-auto px-2 rounded-sm border-4 dark:border-white border-gray ">
       <Tabs value={value} onValueChange={handleValueChange}>
-        <TabsList className="inline-flex h-auto min-h-10 items-center justify-start border-b-0 bg-transparent p-0 gap-2">
+        <TabsList className="inline-flex h-auto min-h-10 items-center justify-start border-b-0 bg-transparent p-0 gap-2 ">
           {tags.map((tag) => (
             <TabsTrigger
               key={tag.value}

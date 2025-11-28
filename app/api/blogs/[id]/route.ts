@@ -7,6 +7,7 @@ import {
 } from "@/schemas/blogs";
 import { z } from "zod";
 import { BlogPost } from "@/types/blogs";
+import type { Prisma } from "@prisma/client";
 
 // 1. Update the type definition for params to be a Promise
 type RouteContext = {
@@ -76,8 +77,8 @@ export async function PUT(request: NextRequest, context: RouteContext) {
       where: { id: validatedParams.id },
       data: {
         ...(validatedData.translations && {
-          // Explicitly cast to 'any' or Prisma.InputJsonValue if Typescript complains
-          translations: validatedData.translations as any,
+          translations: validatedData
+            .translations as Prisma.JsonValue,
         }),
         ...(validatedData.image && { image: validatedData.image }),
       },

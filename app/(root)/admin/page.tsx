@@ -2,10 +2,11 @@
 import TranslationForm from "@/components/TranslationForm";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
+import type { CreateBlogInput } from "@/schemas/blogs";
 
 export default function NewBlogPage() {
   // define server action in this server component
-  async function saveBlog(data: any) {
+  async function saveBlog(data: CreateBlogInput) {
     "use server";
 
     const { id, translations, image } = data;

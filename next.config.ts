@@ -4,12 +4,12 @@ const nextConfig: NextConfig = {
   experimental: {
     turbopackFileSystemCacheForDev: true,
   },
-  reactCompiler: true,
   images: {
     remotePatterns: [
       { hostname: "iili.io", protocol: "https", pathname: "/**" },
     ],
   },
+  reactCompiler: true,
   // i18n: {
   //   locales: ["en", "mm"],
   //   defaultLocale: "en",
