@@ -28,7 +28,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ item }) => {
             {item.title}
           </SubTitle>
           <span className="bg-green-200 rounded-full px-3 text-green-700">
-            FullTime
+            Full-Time
           </span>
         </div>
         <h3 className="text-2xl font-bold text-blue-600">{item.company}</h3>

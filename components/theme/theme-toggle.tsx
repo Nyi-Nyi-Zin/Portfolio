@@ -12,8 +12,11 @@ import {
 
 export function ThemeToggle() {
   // ❗ React 19 safe: mounted = true only when window exists
-  const [mounted, setMounted] = useState(() => typeof window !== "undefined");
+const [mounted, setMounted] = useState(false);
 
+useEffect(() => {
+  setMounted(true);
+}, []);
   const [theme, setTheme] = useState<"light" | "dark" | "system">("system");
 
   const applyTheme = useCallback((t: "light" | "dark" | "system") => {

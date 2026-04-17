@@ -111,10 +111,12 @@ export default function BlogDetail({ post }: { post: BlogPost }) {
         )}
 
         {/* Body */}
-        <article
-          className="prose prose-lg dark:prose-invert max-w-none"
-          dangerouslySetInnerHTML={{ __html: detailContent }}
-        />
+       {detailContent && (
+  <article
+    className="prose prose-lg dark:prose-invert max-w-none"
+    dangerouslySetInnerHTML={{ __html: detailContent }}
+  />
+)}
       </div>
     </div>
   );

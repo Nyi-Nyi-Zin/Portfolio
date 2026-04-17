@@ -1,5 +1,7 @@
+"use client";
+
 import { BriefcaseBusiness, Code, ShieldCheck, Zap } from "lucide-react";
-import { Card, CardContent, CardDescription, CardTitle } from "../ui/card";
+import React from "react";
 
 const iconMap = {
   briefcase: BriefcaseBusiness,
@@ -8,11 +10,18 @@ const iconMap = {
   shield: ShieldCheck,
 };
 
-const colorMap: Record<string, string> = {
-  red: "text-red-500",
-  blue: "text-blue-500",
-  green: "text-green-500",
-  purple: "text-purple-500",
+const gradientMap: Record<string, string> = {
+  red: "from-rose-500 to-red-400",
+  blue: "from-blue-600 to-cyan-500",
+  green: "from-emerald-500 to-teal-400",
+  purple: "from-violet-500 to-purple-400",
+};
+
+const textGlowMap: Record<string, string> = {
+  red: "group-hover:text-red-500",
+  blue: "group-hover:text-blue-500",
+  green: "group-hover:text-emerald-500",
+  purple: "group-hover:text-violet-500",
 };
 
 type AboutCardProps = {
@@ -26,24 +35,44 @@ export default function AboutCard({
   title,
   value,
   icon,
-  color,
+  color = "blue",
 }: AboutCardProps) {
   const IconComponent = iconMap[icon];
-  const iconColor = colorMap[color ?? ""] ?? "text-slate-500";
+  const gradient = gradientMap[color] || gradientMap.blue;
+  const hoverTextColor = textGlowMap[color] || textGlowMap.blue;
 
   return (
-    <Card>
-      <CardContent className="flex flex-col items-center gap-2">
-        <IconComponent size={48} className={iconColor} />
+    <div className="group relative h-full">
+      <div className="relative h-full overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-6 transition-all duration-500 hover:shadow-2xl hover:border-transparent hover:-translate-y-1 flex flex-col items-center justify-center gap-4">
+        {/* Background gradient on hover */}
+        <div
+          className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-[0.05] transition-opacity duration-500`}
+        />
 
-        <CardTitle className="text-2xl font-bold text-slate-900 dark:text-white">
+        {/* Top accent line */}
+        <div
+          className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
+        />
+
+        {/* Icon Container */}
+        <div
+          className={`relative flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br ${gradient} shadow-lg`}
+        >
+          <IconComponent className="w-7 h-7 text-white" />
+        </div>
+
+        {/* Value */}
+        <h3
+          className={`text-3xl font-black text-zinc-900 dark:text-white transition-colors duration-300 ${hoverTextColor}`}
+        >
           {value}
-        </CardTitle>
+        </h3>
 
-        <CardDescription className="text-center text-slate-600 dark:text-slate-400">
+        {/* Title */}
+        <p className="text-sm font-medium text-center text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
           {title}
-        </CardDescription>
-      </CardContent>
-    </Card>
+        </p>
+      </div>
+    </div>
   );
 }

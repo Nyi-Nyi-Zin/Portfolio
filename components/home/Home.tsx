@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { Title } from "../common/Title";
 import { Text } from "../common/Text";
 import AnimatedTextButton from "../common/AnimatedButton";
@@ -10,9 +13,14 @@ function Home() {
   return (
     <section
       id="home"
-      className="min-h-screen flex lg:flex-row flex-col   border-b border-zinc-300 w-full  mx-auto justify-between gap-12 items-center my-5 lg:my-0"
+      className="min-h-screen flex lg:flex-row flex-col border-b border-zinc-300 w-full mx-auto justify-between gap-12 items-center my-5 lg:my-0"
     >
-      <div className="flex-1 space-y-6 ">
+      <motion.div
+        initial={{ opacity: 0, x: -60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+        className="flex-1 space-y-6"
+      >
         <Title className="lg:text-start text-center">Nyi Nyi Zin</Title>
 
         <Text className="text-center w-full lg:text-start ">
@@ -23,7 +31,12 @@ function Home() {
           <AnimatedTextButton texts={skills} interval={2000} />
         </div>
 
-        <div className="flex gap-3 flex-col lg:flex-row">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="flex gap-3 flex-col lg:flex-row"
+        >
           <Button
             className="px-8 py-6 text-base font-bold flex items-center gap-4 text-white"
             style={{ fontFamily: "var(--font-inter)" }}
@@ -33,15 +46,21 @@ function Home() {
           </Button>
 
           <Button
-            className="px-8 py-6 text-base font-bold   flex items-center gap-4 text-white bg-[#0d4768] hover:bg-[#052f47]"
+            className="px-8 py-6 text-base font-bold flex items-center gap-4 text-white bg-[#0d4768] hover:bg-[#052f47]"
             style={{ fontFamily: "var(--font-inter)" }}
           >
             <Eye className="w-10 h-10" />
             View CV
           </Button>
-        </div>
-      </div>
-      <div className="flex-1">
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, x: 60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+        className="flex-1"
+      >
         <div className="w-[250px] h-[250px] sm:w-[300px] sm:h-[300px] md:w-[400px] md:h-[400px] overflow-hidden rounded-full transition-transform duration-500 ease-in-out hover:scale-102">
           <Image
             src="/Miracle.jpg"
@@ -51,7 +70,7 @@ function Home() {
             className="w-full h-full object-cover transition-transform duration-500 ease-in-out hover:scale-108"
           />
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

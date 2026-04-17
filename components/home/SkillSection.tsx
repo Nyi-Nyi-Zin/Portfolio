@@ -209,6 +209,78 @@ const DockerIcon = () => (
   </svg>
 );
 
+const AlibabaCloudIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-[#FF6A00]">
+    <path
+      d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <path
+      d="M7 12H17M12 7V17"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+    <path
+      d="M8.5 8.5L15.5 15.5M15.5 8.5L8.5 15.5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+const GitHubActionsIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-[#2088FF]">
+    <path
+      d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <path d="M9 16V8L15 12L9 16Z" fill="currentColor" />
+    <path
+      d="M17 8V16"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+const ReactNativeIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" className="w-8 h-8 text-[#61DAFB]">
+    <ellipse
+      cx="12"
+      cy="12"
+      rx="3"
+      ry="8"
+      transform="rotate(30 12 12)"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <ellipse
+      cx="12"
+      cy="12"
+      rx="3"
+      ry="8"
+      transform="rotate(90 12 12)"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <ellipse
+      cx="12"
+      cy="12"
+      rx="3"
+      ry="8"
+      transform="rotate(150 12 12)"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <circle cx="12" cy="12" r="1" fill="currentColor" />
+  </svg>
+);
+
 // --- TYPES ---
 
 type SkillCategory =
@@ -259,16 +331,27 @@ const skills: Skill[] = [
     projects: 15,
   },
   {
-    id: "vue",
-    name: "Vue.js",
+    id: "react-native",
+    name: "React Native",
     category: "Frontend",
-    icon: <VueIcon />,
+    icon: <ReactNativeIcon />,
     level: "Advanced",
-    description: "Progressive JavaScript Framework",
-    proficiency: 85,
-    years: 2,
-    projects: 10,
+    description: "Cross-platform mobile apps with React",
+    proficiency: 90,
+    years: 3,
+    projects: 12,
   },
+  // {
+  //   id: "vue",
+  //   name: "Vue.js",
+  //   category: "Frontend",
+  //   icon: <VueIcon />,
+  //   level: "Advanced",
+  //   description: "Progressive JavaScript Framework",
+  //   proficiency: 85,
+  //   years: 2,
+  //   projects: 10,
+  // },
   {
     id: "flutter",
     name: "Flutter",
@@ -507,16 +590,38 @@ const skills: Skill[] = [
     projects: 20,
   },
   {
-    id: "aws",
-    name: "AWS",
+    id: "alibaba-cloud",
+    name: "Alibaba Cloud",
     category: "DevOps",
-    icon: <Cloud className="w-8 h-8 text-orange-400" />,
+    icon: <AlibabaCloudIcon />,
     level: "Intermediate",
-    description: "Cloud Infrastructure",
+    description: "Cloud computing & infrastructure",
     proficiency: 75,
     years: 1,
-    projects: 5,
+    projects: 4,
   },
+  {
+    id: "github-actions",
+    name: "GitHub Actions",
+    category: "DevOps",
+    icon: <GitHubActionsIcon />,
+    level: "Advanced",
+    description: "CI/CD & Workflow automation",
+    proficiency: 88,
+    years: 2,
+    projects: 15,
+  },
+  // {
+  //   id: "aws",
+  //   name: "AWS",
+  //   category: "DevOps",
+  //   icon: <Cloud className="w-8 h-8 text-orange-400" />,
+  //   level: "Intermediate",
+  //   description: "Cloud Infrastructure",
+  //   proficiency: 75,
+  //   years: 1,
+  //   projects: 5,
+  // },
 
   // --- TOOLS ---
   {
@@ -603,7 +708,7 @@ export function SkillsSection() {
   const [activeCategory, setActiveCategory] = useState<SkillCategory>("All");
 
   const filteredSkills = skills.filter(
-    (skill) => activeCategory === "All" || skill.category === activeCategory
+    (skill) => activeCategory === "All" || skill.category === activeCategory,
   );
 
   return (
@@ -618,7 +723,7 @@ export function SkillsSection() {
               "flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-200",
               activeCategory === category.name
                 ? "bg-blue-600 text-white shadow-lg shadow-blue-600/25 scale-105"
-                : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-100 shadow-sm hover:shadow-md"
+                : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-100 shadow-sm hover:shadow-md",
             )}
           >
             {category.icon}
@@ -653,8 +758,8 @@ export function SkillsSection() {
                     skill.level === "Expert"
                       ? "bg-emerald-100 text-emerald-600"
                       : skill.level === "Advanced"
-                      ? "bg-blue-100 text-blue-600"
-                      : "bg-orange-100 text-orange-600"
+                        ? "bg-blue-100 text-blue-600"
+                        : "bg-orange-100 text-orange-600",
                   )}
                 >
                   {skill.level}
@@ -686,8 +791,8 @@ export function SkillsSection() {
                       skill.level === "Expert"
                         ? "bg-emerald-500"
                         : skill.level === "Advanced"
-                        ? "bg-blue-500"
-                        : "bg-orange-500"
+                          ? "bg-blue-500"
+                          : "bg-orange-500",
                     )}
                   />
                 </div>
