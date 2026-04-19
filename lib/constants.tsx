@@ -168,7 +168,7 @@ export type TagValue = (typeof tags)[number]["value"];
 //     description:
 //       "A deep dive into the small, fast, and scalable state management library for React.",
 //     date: "19.11.2025",
-//     image: "/blog/Zustand.webp",
+//    image:"/projectImages/blog/Zustand.webp",
 //     category: "frontend",
 //     content: `
 //       <h2>What is Zustand?</h2>
@@ -241,7 +241,7 @@ export type TagValue = (typeof tags)[number]["value"];
 //     description:
 //       "A guide to structuring Go apps for high performance and concurrency.",
 //     date: "15.08.2023",
-//     image: "/Miracle.jpg",
+//    image:"/projectImages/Miracle.jpg",
 //     category: "backend",
 //     content: `
 //       <p>Go was designed with concurrency in mind, making it an excellent choice for building microservices.</p>
@@ -256,7 +256,7 @@ export type TagValue = (typeof tags)[number]["value"];
 //     title: "Understanding Docker Containers",
 //     description: "Why containerization changes deployment forever.",
 //     date: "01.09.2023",
-//     image: "/Miracle.jpg",
+//    image:"/projectImages/Miracle.jpg",
 //     category: "devops",
 //     content: `
 //       <p>Docker solves the "it works on my machine" problem. By bundling the OS, libraries, and code into a single image, we ensure consistency across environments.</p>
@@ -269,7 +269,7 @@ export type TagValue = (typeof tags)[number]["value"];
 //     title: "Advanced Typescript Patterns",
 //     description: "Leveraging Generics and Utility types for safer codebases.",
 //     date: "22.10.2023",
-//     image: "/Miracle.jpg",
+//    image:"/projectImages/Miracle.jpg",
 //     category: "frontend",
 //     content: `
 //       <p>TypeScript is more than just adding types to variables. Generics allow you to write reusable code that maintains type safety.</p>
@@ -364,6 +364,7 @@ export const services: ServiceItem[] = [
 
 // ── Projects Data ──
 export type ProjectItem = {
+  slug: string;
   title: string;
   description: string;
   image: string;
@@ -375,63 +376,179 @@ export type ProjectItem = {
 
 export const projects: ProjectItem[] = [
   {
+    slug: "price-changer",
+    title: "Price Changer",
+    description: `The Price Changer is a full-stack application designed to manage product price changes systematically. It consists of a backend API built with NestJS and a frontend web app using React, with PostgreSQL as the database and Prisma as the ORM.
+
+Key Features
+User Management: JWT-based authentication, role-based access control, user CRUD operations, and account status management.
+Price Change Workflow: Bulk price change requests with approval process (request → approve/reject), audit logs, and tracking.
+Item Management: Item import/export, stock synchronization, image uploads, and barcode scanner integration.
+Additional Features: Excel import/export, responsive UI (Mantine + Tailwind CSS), API documentation (Swagger), Docker support, and CI/CD (Jenkins).`,
+    image: "/projectImages/price-changer.png",
+    techStack: [
+      "Nest.js",
+      "TypeScript",
+      "Prisma ORM",
+      "JWT",
+      "Jest ",
+      "React",
+      "Vite",
+      "Mantine",
+      "Tailwind CSS",
+      "Swagger",
+      "Docker",
+      "Jenkins",
+      "PostgreSQL",
+      "TanStack React Query",
+      " React Hook Form",
+      "Zod",
+      "React Router Dom",
+    ],
+    liveUrl: "#",
+    githubUrl: "#",
+    featured: true,
+  },
+  {
+    slug: "educational-information-system",
+    title: "Educational Information System",
+    description: `A full-stack educational management platform built with three integrated parts:
+Backend (Go API): Handles business logic, authentication, and data management for users, courses, content, and more using PostgreSQL, with support for background jobs and email notifications.
+Admin Dashboard (React + TypeScript): A Vite-based interface for administrators to manage all platform data and operations via the API.
+User Website (Next.js): A modern, responsive frontend for students and visitors to explore courses, instructors, and educational content.`,
+    image: "/projectImages/educational-information.png",
+    techStack: ["React.js", "React-Router-Dom", "Tailwind-css", "SMTP", "Vite"],
+    liveUrl: "https://www.jca.com.mm/",
+    githubUrl: "#",
+    featured: true,
+  },
+  {
+    slug: "company-website",
+    title: "Company Website",
+    description:
+      "This project is a modern, single-page wedding invitation website built with React and Vite. It provides an interactive and visually appealing platform for sharing wedding details, showcasing the couple, displaying a photo gallery, and collecting guest RSVPs.",
+    image: "/projectImages/company-website.png",
+    techStack: ["React.js", "React-Router-Dom", "Tailwind-css", "SMTP", "Vite"],
+    liveUrl: "https://www.triosys.info/",
+    githubUrl: "#",
+    featured: true,
+  },
+  {
+    slug: "e-commerce-platform",
     title: "E-Commerce Platform",
     description:
       "E-Commerce Web App is a full-stack, modern online shopping platform. It features a fast, interactive React frontend powered by Vite and a secure, scalable backend REST API built with Node.js, Express, and MongoDB. The application supports product and user management, shopping cart, secure authentication, media uploads, and order processing—making it a strong foundation for small businesses or teams launching an online store.",
-    image: "/Miracle.jpg",
-    techStack: ["React.js", "Vite ", "Redux Toolkit", "React Router DOM", "Tailwind CSS","Ant Design","Axios","Express.js","MongoDB","Mongoose","bcrypt","jsonwebtoken","express-validator","Cloudinary","Multer"],
+    image: "/projectImages/ecommerce.png",
+    techStack: [
+      "React.js",
+      "Vite ",
+      "Redux Toolkit",
+      "React Router DOM",
+      "Tailwind CSS",
+      "Ant Design",
+      "Axios",
+      "Express.js",
+      "MongoDB",
+      "Mongoose",
+      "bcrypt",
+      "jsonwebtoken",
+      "express-validator",
+      "Cloudinary",
+      "Multer",
+    ],
     liveUrl: "#",
     githubUrl: "https://github.com/Nyi-Nyi-Zin/e-commerce-web-app",
-    featured: true,
   },
   {
+    slug: "real-time-chat-app",
     title: "Real Time Chat App",
     description:
       "real-time-chat-app is a full-stack real-time messaging application built with a modern JavaScript stack. The application enables users to communicate instantly through various chat rooms or channels, supporting seamless live messaging, user authentication, and a user-friendly interface. The frontend is developed using React with Vite for fast builds and a modern development experience, enhanced by Tailwind CSS for rapid UI styling. The backend is powered by Express.js and Socket.IO for scalable, event-driven real-time communication, with MongoDB (via Mongoose) as the database layer.",
-    image: "/Miracle.jpg",
-    techStack: ["React.js", "React-router-dom", "Tailwindcss", "Socket.io", "Vite","Express.js","Mongoose","Mongodb"],
+    image: "/projectImages/real-time-chat-app.png",
+    techStack: [
+      "React.js",
+      "React-router-dom",
+      "Tailwindcss",
+      "Socket.io",
+      "Vite",
+      "Express.js",
+      "Mongoose",
+      "Mongodb",
+    ],
     liveUrl: "#",
     githubUrl: "https://github.com/Nyi-Nyi-Zin/real-time-chat-app",
-    featured: true,
   },
   {
+    slug: "face-mask-detection",
     title: "Face Mask Detection",
     description:
       "A Python-based Face Mask Detection system that leverages deep learning and computer vision techniques to automatically identify whether individuals in an image or video stream are wearing face masks. The model used for detection is custom-trained specifically for this project, ensuring robust and reliable performance in real-world scenarios such as CCTV monitoring, public safety systems, and workplace compliance.",
-    image: "/Miracle.jpg",
-    techStack: ["TensorFlow", "PyTorch", "Keras", "OpenCV","NumPy"],
+    image: "/projectImages/face-mask-detection.png",
+    techStack: ["TensorFlow", "PyTorch", "Keras", "OpenCV", "NumPy"],
     liveUrl: "#",
     githubUrl: "https://github.com/Nyi-Nyi-Zin/face-mask-detection",
-    featured: true,
   },
   {
+    slug: "task-management-web-app",
     title: "Task Management Web App",
     description:
       "This project is a full-stack Task Management Application consisting of two main parts: a TypeScript-based frontend (using Vite and React) and a TypeScript Node.js backend (using Express and Sequelize).",
-    image: "/Miracle.jpg",
-    techStack: ["React.js", "React-Redux", "Tanstack/react-query", "Zod","Axios","React-router-dom","React-hook-form","sonner","vite","Type-script","Express.js","Jsonwebtoken","bcrypt","Sequelize","Mysql"],
+    image: "/projectImages/task-mangement-app.png",
+    techStack: [
+      "React.js",
+      "React-Redux",
+      "Tanstack/react-query",
+      "Zod",
+      "Axios",
+      "React-router-dom",
+      "React-hook-form",
+      "sonner",
+      "vite",
+      "Type-script",
+      "Express.js",
+      "Jsonwebtoken",
+      "bcrypt",
+      "Sequelize",
+      "Mysql",
+    ],
     liveUrl: "#",
     githubUrl: "https://github.com/Nyi-Nyi-Zin/task-management-app-frontend",
   },
   {
+    slug: "face-recognition-system",
     title: "Face Recognition System",
     description:
       "The Face Recognition System is an advanced Python-based application designed to detect and recognize human faces in images or video streams. Leveraging state-of-the-art computer vision and machine learning techniques, it can be integrated into security, authentication, and attendance monitoring solutions. The system emphasizes accuracy, scalability, and ease of use, making it suitable for both academic and commercial applications. It provides APIs and a user-friendly interface for managing user data, enrolling new faces, and performing real-time recognition, while prioritizing performance and data security.",
-    image: "/Miracle.jpg",
+    image: "/projectImages/face-recognization.png",
     techStack: ["Python", "CV2", "face_recognition", "numpy"],
     liveUrl: "#",
     githubUrl: "https://github.com/Nyi-Nyi-Zin/face-recognization-system",
   },
   {
+    slug: "eye-tracking-project",
     title: "Eye Tracking Project",
     description:
       "a Python-based solution focused on real-time eye tracking and gaze estimation. The project leverages computer vision and machine learning techniques to detect and monitor eye movement using a standard webcam or video input. It can be used in applications such as human-computer interaction, accessibility tools, behavioral research, medical analysis, or gaming, providing robust and efficient eye tracking with modular components for detection, calibration, visualization, and analytics.",
-    image: "/Miracle.jpg",
-    techStack: ["Python", "Cv2", "mediapipe", "winsound","time"],
+    image: "/projectImages/eye-tracking.png",
+    techStack: ["Python", "Cv2", "mediapipe", "winsound", "time"],
     liveUrl: "#",
     githubUrl: "https://github.com/Nyi-Nyi-Zin/eye-tracking-project",
   },
+  {
+    slug: "wedding-invitation-website",
+    title: "Wedding Invitation Website",
+    description:
+      "This project is a modern, single-page wedding invitation website built with React and Vite. It provides an interactive and visually appealing platform for sharing wedding details, showcasing the couple, displaying a photo gallery, and collecting guest RSVPs.",
+    image: "/projectImages/wedding-invitation.png",
+    techStack: ["React.js", "React-Router-Dom", "Tailwind-css", "SMTP", "Vite"],
+    liveUrl: "#",
+    githubUrl: "#",
+  },
 ];
+
+export function getProjectBySlug(slug: string): ProjectItem | undefined {
+  return projects.find((p) => p.slug === slug);
+}
 
 // ── Social & Contact Data ──
 export type SocialLink = {

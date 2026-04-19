@@ -8,6 +8,7 @@ import AnimatedTextButton from "../common/AnimatedButton";
 import { skills } from "@/lib/constants";
 import { Button } from "../ui/button";
 import { ArrowRight, Eye } from "lucide-react";
+import { scrollToSection } from "@/utils/scroll";
 
 function Home() {
   return (
@@ -38,8 +39,13 @@ function Home() {
           className="flex gap-3 flex-col lg:flex-row"
         >
           <Button
+            type="button"
             className="px-8 py-6 text-base font-bold flex items-center gap-4 text-white"
             style={{ fontFamily: "var(--font-inter)" }}
+            onClick={() => {
+              window.history.replaceState(null, "", "#contact");
+              scrollToSection("contact");
+            }}
           >
             Hire Me
             <ArrowRight className="w-9 h-9" />
