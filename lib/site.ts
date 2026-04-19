@@ -38,6 +38,11 @@ export const defaultOpenGraphImages = ["/projectImages/price-changer.png"];
 
 export const rootMetadata: Metadata = {
   metadataBase: getMetadataBase(),
+  icons: {
+    icon: [{ url: "/logo.png", type: "image/png" }],
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
   title: {
     default: `${siteName} — Full-Stack Developer | Portfolio`,
     template: `%s | ${siteName}`,

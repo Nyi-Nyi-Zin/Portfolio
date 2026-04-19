@@ -38,7 +38,8 @@ function About() {
           </Text>
           <br />
           <Text className="leading-relaxed">
-            <strong>During my fourth year,</strong> I paused my university
+            <strong>During my fourth year,</strong>{" "}
+            I paused my university
             studies due to the country&apos;s political situation and fully
             committed to advancing my career. I am currently resuming my
             university studies while continuing to work remotely, effectively

@@ -746,41 +746,43 @@ export function SkillsSection() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.2 }}
-              className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group"
+              className="bg-white dark:bg-[#1B2335] rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-white/10 hover:shadow-md dark:hover:shadow-black/20 transition-shadow group"
             >
               <div className="flex justify-between items-start mb-4">
-                <div className="p-3 bg-gray-50 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                <div className="p-3 bg-gray-50 dark:bg-white/10 rounded-xl group-hover:scale-110 transition-transform duration-300 [&_svg]:dark:text-slate-200">
                   {skill.icon}
                 </div>
                 <span
                   className={cn(
                     "px-3 py-1 rounded-full text-xs font-semibold",
                     skill.level === "Expert"
-                      ? "bg-emerald-100 text-emerald-600"
+                      ? "bg-emerald-100 text-emerald-600 dark:bg-emerald-950/80 dark:text-emerald-400"
                       : skill.level === "Advanced"
-                        ? "bg-blue-100 text-blue-600"
-                        : "bg-orange-100 text-orange-600",
+                        ? "bg-blue-100 text-blue-600 dark:bg-blue-950/80 dark:text-blue-400"
+                        : "bg-orange-100 text-orange-600 dark:bg-orange-950/80 dark:text-orange-400",
                   )}
                 >
                   {skill.level}
                 </span>
               </div>
 
-              <h3 className="text-xl font-bold text-gray-900 mb-1">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-1">
                 {skill.name}
               </h3>
-              <p className="text-gray-500 text-sm mb-6 h-10 line-clamp-2">
+              <p className="text-gray-500 dark:text-slate-400 text-sm mb-6 h-10 line-clamp-2">
                 {skill.description}
               </p>
 
               <div className="space-y-2 mb-6">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600 font-medium">Proficiency</span>
-                  <span className="text-gray-900 font-bold">
+                  <span className="text-gray-600 dark:text-slate-400 font-medium">
+                    Proficiency
+                  </span>
+                  <span className="text-gray-900 dark:text-slate-100 font-bold">
                     {skill.proficiency}%
                   </span>
                 </div>
-                <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                <div className="h-2 bg-gray-100 dark:bg-slate-700/80 rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: `${skill.proficiency}%` }}
@@ -798,7 +800,7 @@ export function SkillsSection() {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between pt-4 border-t border-gray-100 text-sm text-gray-500">
+              <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-white/10 text-sm text-gray-500 dark:text-slate-400">
                 <div className="flex items-center gap-1.5">
                   <Briefcase className="w-4 h-4" />
                   <span>{skill.years}+ years</span>

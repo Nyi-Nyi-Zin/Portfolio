@@ -73,6 +73,8 @@ function Home() {
             alt="Nyi Nyi Zin - Full-Stack Developer portrait"
             width={400}
             height={400}
+            priority
+            loading="eager"
             className="w-full h-full object-cover transition-transform duration-500 ease-in-out hover:scale-108"
           />
         </div>

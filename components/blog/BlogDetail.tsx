@@ -104,6 +104,7 @@ export default function BlogDetail({ post }: { post: BlogPost }) {
               src={post.image}
               alt={translation.title}
               fill
+              sizes="(max-width: 1024px) 100vw, 1024px"
               className="object-cover"
               priority
             />

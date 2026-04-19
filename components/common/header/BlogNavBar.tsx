@@ -29,12 +29,19 @@ function BlogNavBar() {
         {/* Logo Section */}
         <Link
           href={"/"}
-          className="flex gap-0 rounded-2xl hover:bg-linear-to-r hover:from-blue-100 hover:via-blue-50 hover:to-white dark:hover:from-blue-900/20 dark:hover:via-blue-800/20 dark:hover:to-transparent p-2"
+          className="flex items-center gap-2 rounded-2xl hover:bg-linear-to-r hover:from-blue-100 hover:via-blue-50 hover:to-white dark:hover:from-blue-900/20 dark:hover:via-blue-800/20 dark:hover:to-transparent p-2"
         >
-          <Image alt="logo" src={"/logo.png"} width={50} height={40} />
-          <div className="hidden sm:block">
-            <p className="text-base font-bold px-2">NyiNyiZin</p>
-            <p className="text-sm px-2">Portfolio</p>
+          <Image
+            alt="Nyi Nyi Zin portfolio logo"
+            src="/logo.png"
+            width={40}
+            height={40}
+            className="shrink-0 rounded-lg object-contain"
+            priority
+          />
+          <div className="hidden sm:block leading-tight">
+            <p className="text-base font-bold px-0.5">NyiNyiZin</p>
+            <p className="text-sm text-muted-foreground px-0.5">Portfolio</p>
           </div>
         </Link>
 
