@@ -52,11 +52,14 @@ function Home() {
           </Button>
 
           <Button
+            asChild
             className="px-8 py-6 text-base font-bold flex items-center gap-4 text-white bg-[#0d4768] hover:bg-[#052f47]"
             style={{ fontFamily: "var(--font-inter)" }}
           >
-            <Eye className="w-10 h-10" />
-            View CV
+            <a href="/Resume-N.pdf" download="Resume-N.pdf" target="_blank" rel="noopener noreferrer">
+              <Eye className="w-10 h-10" />
+              View CV
+            </a>
           </Button>
         </motion.div>
       </motion.div>
