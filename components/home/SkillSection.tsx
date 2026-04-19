@@ -300,8 +300,8 @@ interface Skill {
   level: "Expert" | "Advanced" | "Intermediate";
   description: string;
   proficiency: number;
-  years: number;
-  projects: number;
+  years?: number;
+  projects?: number;
 }
 
 // --- DATA ---
@@ -316,7 +316,7 @@ const skills: Skill[] = [
     level: "Expert",
     description: "Component-based UI library",
     proficiency: 95,
-    years: 4,
+    years: 3,
     projects: 25,
   },
   {
@@ -326,7 +326,7 @@ const skills: Skill[] = [
     icon: <NextJsIcon />,
     level: "Expert",
     description: "App Router & Server Components",
-    proficiency: 92,
+    proficiency: 95,
     years: 3,
     projects: 15,
   },
@@ -337,9 +337,9 @@ const skills: Skill[] = [
     icon: <ReactNativeIcon />,
     level: "Advanced",
     description: "Cross-platform mobile apps with React",
-    proficiency: 90,
-    years: 3,
-    projects: 12,
+    proficiency: 85,
+    years: 1,
+    projects: 3,
   },
   // {
   //   id: "vue",
@@ -359,9 +359,9 @@ const skills: Skill[] = [
     icon: <FlutterIcon />,
     level: "Advanced",
     description: "Cross-platform mobile apps",
-    proficiency: 88,
+    proficiency: 75,
     years: 2,
-    projects: 8,
+    projects: 5,
   },
   {
     id: "dart",
@@ -372,7 +372,7 @@ const skills: Skill[] = [
     description: "Optimized for UI",
     proficiency: 85,
     years: 2,
-    projects: 8,
+    projects: 5,
   },
   {
     id: "html5",
@@ -382,8 +382,8 @@ const skills: Skill[] = [
     level: "Expert",
     description: "Semantic markup structure",
     proficiency: 100,
-    years: 5,
-    projects: 50,
+    years: 4,
+    projects: 60,
   },
   {
     id: "css3",
@@ -393,8 +393,8 @@ const skills: Skill[] = [
     level: "Expert",
     description: "Modern layout & animations",
     proficiency: 98,
-    years: 5,
-    projects: 50,
+    years: 4,
+    projects: 60,
   },
   {
     id: "js",
@@ -404,8 +404,8 @@ const skills: Skill[] = [
     level: "Expert",
     description: "ES6+ Asynchronous programming",
     proficiency: 95,
-    years: 5,
-    projects: 40,
+    years: 4,
+    projects: 60,
   },
   {
     id: "tailwind",
@@ -414,8 +414,8 @@ const skills: Skill[] = [
     icon: <TailwindIcon />,
     level: "Expert",
     description: "Utility-first CSS framework",
-    proficiency: 98,
-    years: 3,
+    proficiency: 94,
+    years: 2,
     projects: 30,
   },
   {
@@ -426,7 +426,7 @@ const skills: Skill[] = [
     level: "Expert",
     description: "Responsive grid system",
     proficiency: 95,
-    years: 4,
+    years: 2,
     projects: 20,
   },
 
@@ -439,7 +439,7 @@ const skills: Skill[] = [
     level: "Expert",
     description: "JavaScript runtime",
     proficiency: 92,
-    years: 4,
+    years: 3,
     projects: 30,
   },
   {
@@ -461,7 +461,7 @@ const skills: Skill[] = [
     level: "Expert",
     description: "Minimalist web framework",
     proficiency: 95,
-    years: 4,
+    years: 3,
     projects: 25,
   },
   {
@@ -473,7 +473,7 @@ const skills: Skill[] = [
     description: "Enterprise-grade Node framework",
     proficiency: 88,
     years: 2,
-    projects: 12,
+    projects: 7,
   },
 
   // --- DATABASE ---
@@ -496,7 +496,7 @@ const skills: Skill[] = [
     level: "Expert",
     description: "NoSQL Document Store",
     proficiency: 92,
-    years: 4,
+    years: 3,
     projects: 20,
   },
   {
@@ -529,8 +529,8 @@ const skills: Skill[] = [
     level: "Advanced",
     description: "Open Source SQL",
     proficiency: 85,
-    years: 3,
-    projects: 10,
+    years: 1,
+    projects: 5,
   },
   {
     id: "firebase",
@@ -540,8 +540,8 @@ const skills: Skill[] = [
     level: "Expert",
     description: "Backend-as-a-Service",
     proficiency: 90,
-    years: 3,
-    projects: 20,
+    years: 2,
+    projects: 5,
   },
   {
     id: "firestore",
@@ -551,8 +551,8 @@ const skills: Skill[] = [
     level: "Expert",
     description: "Real-time NoSQL",
     proficiency: 92,
-    years: 3,
-    projects: 15,
+    years: 2,
+    projects: 5,
   },
 
   // --- DEVOPS ---
@@ -565,7 +565,7 @@ const skills: Skill[] = [
     description: "Containerization",
     proficiency: 85,
     years: 2,
-    projects: 10,
+    projects: 20,
   },
   {
     id: "jenkins",
@@ -575,8 +575,8 @@ const skills: Skill[] = [
     level: "Intermediate",
     description: "CI/CD Automation",
     proficiency: 70,
-    years: 1,
-    projects: 5,
+    years: 2,
+    projects: 7,
   },
   {
     id: "linux",
@@ -586,8 +586,8 @@ const skills: Skill[] = [
     level: "Advanced",
     description: "Server Management & Shell",
     proficiency: 82,
-    years: 3,
-    projects: 20,
+    years: 2,
+    // projects: 20,
   },
   {
     id: "alibaba-cloud",
@@ -596,9 +596,9 @@ const skills: Skill[] = [
     icon: <AlibabaCloudIcon />,
     level: "Intermediate",
     description: "Cloud computing & infrastructure",
-    proficiency: 75,
+    proficiency: 80,
     years: 1,
-    projects: 4,
+    projects: 6,
   },
   {
     id: "github-actions",
@@ -631,9 +631,9 @@ const skills: Skill[] = [
     icon: <TypeScriptIcon />,
     level: "Advanced",
     description: "Type-safety & tooling",
-    proficiency: 88,
-    years: 3,
-    projects: 15,
+    proficiency: 85,
+    years: 2,
+    projects: 30,
   },
   {
     id: "git",
@@ -644,7 +644,7 @@ const skills: Skill[] = [
     description: "Version Control",
     proficiency: 95,
     years: 5,
-    projects: 50,
+    projects: 60,
   },
   {
     id: "postman",
@@ -655,7 +655,7 @@ const skills: Skill[] = [
     description: "API Testing & Doc",
     proficiency: 90,
     years: 4,
-    projects: 30,
+    projects: 60,
   },
 
   // --- SOFT SKILLS ---
@@ -667,8 +667,8 @@ const skills: Skill[] = [
     level: "Expert",
     description: "Cross-functional teamwork",
     proficiency: 98,
-    years: 5,
-    projects: 20,
+    // years: 5,
+    // projects: 20,
   },
   {
     id: "mentoring",
@@ -679,7 +679,7 @@ const skills: Skill[] = [
     description: "Code reviews & guidance",
     proficiency: 85,
     years: 2,
-    projects: 10,
+    projects: 20,
   },
   {
     id: "problem-solving",
@@ -690,7 +690,7 @@ const skills: Skill[] = [
     description: "Analytical thinking",
     proficiency: 95,
     years: 5,
-    projects: 50,
+    // projects: 50,
   },
 ];
 
@@ -801,14 +801,18 @@ export function SkillsSection() {
               </div>
 
               <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-white/10 text-sm text-gray-500 dark:text-slate-400">
-                <div className="flex items-center gap-1.5">
+               {skill.years && (
+                 <div className="flex items-center gap-1.5">
                   <Briefcase className="w-4 h-4" />
                   <span>{skill.years}+ years</span>
                 </div>
+               )}
+              {skill.projects && (
                 <div className="flex items-center gap-1.5">
                   <Layers className="w-4 h-4" />
                   <span>{skill.projects}+ projects</span>
                 </div>
+              ) }
               </div>
             </motion.div>
           ))}
