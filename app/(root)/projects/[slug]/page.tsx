@@ -20,10 +20,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Project not found" };
   }
   const summary = project.description.split("\n").find(Boolean)?.trim() ?? "";
+  const description =
+    summary.length > 160 ? `${summary.slice(0, 157)}…` : summary;
   return {
-    title: `${project.title} | Projects`,
-    description:
-      summary.length > 160 ? `${summary.slice(0, 157)}…` : summary,
+    title: project.title,
+    description,
+    alternates: {
+      canonical: `/projects/${slug}`,
+    },
+    openGraph: {
+      title: project.title,
+      description,
+      type: "article",
+      url: `/projects/${slug}`,
+      images: [{ url: project.image, alt: project.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: project.title,
+      description,
+      images: [project.image],
+    },
   };
 }
 
