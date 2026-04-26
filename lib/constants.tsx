@@ -142,6 +142,7 @@ export const experience = [
       "Transitioned into software development, starting with Flutter for cross-platform mobile applications.",
       "Developed web applications using Node.js and React, delivering client-focused software solutions.",
       "Collaborated on end-to-end projects, from frontend to backend, ensuring high-quality, scalable, and functional applications.",
+      "Continuously improved technical skills by learning modern development tools, frameworks, and best practices, adapting quickly to new technologies.",
     ],
   },
 ];
@@ -160,7 +161,6 @@ export const tags = [
 ] as const;
 
 export type TagValue = (typeof tags)[number]["value"];
-
 
 export type ServiceItem = {
   title: string;
