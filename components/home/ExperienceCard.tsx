@@ -8,7 +8,7 @@ export type ExperienceItem = {
   companyUrl?: string;
   period: string;
   location: string;
-  employmentType: string;
+
   keyAchievements: string[];
 };
 
