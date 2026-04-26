@@ -10,6 +10,7 @@ import Service from "@/components/home/Service";
 import Skill from "@/components/home/Skill";
 import { buildPersonJsonLd } from "@/lib/site";
 import type { Metadata } from "next";
+import AiAssistant from "@/components/AiAssistant";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -27,6 +28,9 @@ export default function Index() {
       <Navbar />
       <main className="flex flex-col bg-zinc-50 dark:bg-[#0F172A] font-sans w-full lg:px-8 px-3">
         <Home />
+
+        <AiAssistant />
+
         <About />
         <Education />
         <Experience />
