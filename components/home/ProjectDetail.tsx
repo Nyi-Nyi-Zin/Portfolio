@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink, Github, Star } from "lucide-react";
 import type { ProjectItem } from "@/lib/constants";
@@ -15,8 +18,20 @@ export default function ProjectDetail({ project }: { project: ProjectItem }) {
 
   return (
     <div className="w-full flex flex-col items-center py-10 pb-20">
-      <div className="w-full max-w-4xl px-5 flex flex-col gap-8">
-        <div className="flex items-center justify-between">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: {},
+          visible: { transition: { staggerChildren: 0.12 } },
+        }}
+        className="w-full max-w-4xl px-5 flex flex-col gap-8"
+      >
+        <motion.div
+          variants={{ hidden: { opacity: 0, y: -12 }, visible: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.35 }}
+          className="flex items-center justify-between"
+        >
           <Link href="/#projects">
             <Button
               variant="outline"
@@ -26,9 +41,13 @@ export default function ProjectDetail({ project }: { project: ProjectItem }) {
               Back to Projects
             </Button>
           </Link>
-        </div>
+        </motion.div>
 
-        <div className="relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/10 aspect-video w-full max-h-[420px]">
+        <motion.div
+          variants={{ hidden: { opacity: 0, scale: 0.98 }, visible: { opacity: 1, scale: 1 } }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/10 aspect-video w-full max-h-[420px]"
+        >
           <Image
             src={project.image}
             alt={project.title}
@@ -43,9 +62,13 @@ export default function ProjectDetail({ project }: { project: ProjectItem }) {
               Featured
             </div>
           )}
-        </div>
+        </motion.div>
 
-        <div className="space-y-6">
+        <motion.div
+          variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.45 }}
+          className="space-y-6"
+        >
           <div className="flex flex-wrap items-start justify-between gap-4">
             <h1 className="text-3xl md:text-5xl font-extrabold text-zinc-900 dark:text-white">
               {project.title}
@@ -89,7 +112,13 @@ export default function ProjectDetail({ project }: { project: ProjectItem }) {
               Tech stack
             </h2>
             <div className="flex flex-wrap gap-2">
-              {project.techStack.map((tech) => (
+              {project.techStack.map((tech, index) => (
+                <motion.div
+                  key={tech}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.25, delay: index * 0.04 }}
+                >
                 <Badge
                   key={tech}
                   variant="secondary"
@@ -97,11 +126,12 @@ export default function ProjectDetail({ project }: { project: ProjectItem }) {
                 >
                   {tech.trim()}
                 </Badge>
+                </motion.div>
               ))}
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }

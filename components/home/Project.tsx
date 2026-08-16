@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { projects } from "@/lib/constants";
 import ProjectCard from "./ProjectCard";
 import SectionHeader from "../common/SectionHeader";
@@ -41,14 +42,29 @@ function Project() {
         subtitle="A showcase of projects I've built — from full-stack platforms to mobile apps, each solving real-world problems"
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-        {currentProjects.map((project, index) => (
-          <ProjectCard key={project.slug} item={project} index={index} />
-        ))}
-      </div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentPage}
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -18 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full"
+        >
+          {currentProjects.map((project, index) => (
+            <ProjectCard key={project.slug} item={project} index={index} />
+          ))}
+        </motion.div>
+      </AnimatePresence>
 
       {totalPages > 1 && (
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.45, delay: 0.15 }}
+          className="mt-10 flex flex-wrap items-center justify-center gap-2"
+        >
           <Button
             type="button"
             variant="outline"
@@ -80,7 +96,7 @@ function Project() {
           >
             Next
           </Button>
-        </div>
+        </motion.div>
       )}
     </section>
   );

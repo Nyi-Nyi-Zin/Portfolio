@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { BriefcaseBusiness, Code, ShieldCheck, Zap } from "lucide-react";
 import React from "react";
 
@@ -55,18 +56,24 @@ export default function AboutCard({
         />
 
         {/* Icon Container */}
-        <div
+        <motion.div
+          whileHover={{ rotate: 6, scale: 1.08 }}
+          transition={{ type: "spring", stiffness: 300, damping: 15 }}
           className={`relative flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br ${gradient} shadow-lg`}
         >
           <IconComponent className="w-7 h-7 text-white" />
-        </div>
+        </motion.div>
 
         {/* Value */}
-        <h3
+        <motion.h3
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.15 }}
           className={`text-3xl font-black text-zinc-900 dark:text-white transition-colors duration-300 ${hoverTextColor}`}
         >
           {value}
-        </h3>
+        </motion.h3>
 
         {/* Title */}
         <p className="text-sm font-medium text-center text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">

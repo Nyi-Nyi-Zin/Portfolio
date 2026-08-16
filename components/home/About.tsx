@@ -38,12 +38,11 @@ function About() {
           </Text>
           <br />
           <Text className="leading-relaxed">
-            <strong>During my fourth year,</strong>{" "}
-            I paused my university
-            studies due to the country&apos;s political situation and fully
-            committed to advancing my career. I am currently resuming my
-            university studies while continuing to work remotely, effectively
-            balancing both academic and professional responsibilities.
+            I graduated from
+            <strong> Polytechnic University Maubin in 2026</strong> with a
+            foundation in computer science. Alongside my professional work, I
+            continue to sharpen my technical skills through hands-on projects,
+            continuous learning, and collaboration with development teams.
           </Text>
           <br />
           <Text className="leading-relaxed">

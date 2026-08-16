@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Card } from "../ui/card";
 import { Calendar, MapPin } from "lucide-react";
 
@@ -16,7 +17,12 @@ type ExperienceCardProps = { item: ExperienceItem };
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({ item }) => {
   return (
-    <Card className="relative w-full my-4 px-8 py-6 overflow-hidden">
+    <motion.div
+      whileHover={{ y: -4 }}
+      transition={{ type: "spring", stiffness: 260, damping: 20 }}
+      className="w-full"
+    >
+      <Card className="relative w-full my-4 px-8 py-6 overflow-hidden">
       {/* Left accent strip */}
       <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-violet-500 rounded-l-lg" />
 
@@ -74,16 +80,24 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ item }) => {
 
         <ul className="space-y-2.5">
           {item.keyAchievements.map((achieve, index) => (
-            <li key={index} className="flex items-start gap-2.5">
+            <motion.li
+              key={index}
+              initial={{ opacity: 0, x: -8 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: index * 0.06 }}
+              className="flex items-start gap-2.5"
+            >
               <span className="mt-2 shrink-0 w-1.5 h-1.5 rounded-full bg-violet-400" />
               <span className="text-base text-muted-foreground leading-relaxed">
                 {achieve}
               </span>
-            </li>
+            </motion.li>
           ))}
         </ul>
       </div>
-    </Card>
+      </Card>
+    </motion.div>
   );
 };
 

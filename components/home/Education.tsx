@@ -22,11 +22,11 @@ const educationData: EducationEntry[] = [
   {
     degree: "Bachelor of Science",
     field: "Computer Science",
-    institution: "University of Sittwe",
-    location: "Sittwe, Myanmar",
-    period: "July 2026 — Present",
+    institution: "Polytechnic University Maubin",
+    location: "Maubin, Myanmar",
+    period: "Graduated 2026",
     description:
-      "Advanced computer science studies focusing on software engineering, algorithms, data structures, and system design.",
+      "Completed computer science studies with a focus on software engineering, algorithms, data structures, and system design.",
     achievements: [
       "Specialization in Software Engineering",
       "Advanced Algorithms & Data Structures",

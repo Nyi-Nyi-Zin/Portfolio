@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { services } from "@/lib/constants";
 import ServiceCard from "./ServiceCard";
 import SectionHeader from "../common/SectionHeader";
@@ -17,11 +18,31 @@ function Service() {
         subtitle="Comprehensive development services tailored to bring your ideas to life with modern technologies and best practices"
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-60px" }}
+        variants={{
+          hidden: {},
+          visible: {
+            transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+          },
+        }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full"
+      >
         {services.map((service, index) => (
-          <ServiceCard key={service.title} item={service} index={index} />
+          <motion.div
+            key={service.title}
+            variants={{
+              hidden: { opacity: 0, y: 24 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
+          >
+            <ServiceCard item={service} index={index} />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }

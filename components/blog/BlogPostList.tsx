@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -41,15 +42,33 @@ export default function BlogPostList({ initialPosts }: BlogPageProps) {
       <div className="w-full max-w-5xl px-5 flex flex-col gap-6 my-5">
         <TagTabs value={selectedTab} onValueChange={setSelectedTab} />
 
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 w-full">
-          {filteredBlogs.length > 0 ? (
-            filteredBlogs.map((blog) => {
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+            },
+          }}
+          className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 w-full"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredBlogs.length > 0 ? (
+              filteredBlogs.map((blog) => {
               const t = blog.translations?.[lang] || blog.translations?.en;
               if (!t) return null;
 
-              return (
-                <Card
-                  key={blog.id}
+                return (
+                  <motion.div
+                    key={blog.id}
+                    layout
+                    initial={{ opacity: 0, y: 18, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -12, scale: 0.98 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  >
+                    <Card
                   className="h-full w-full overflow-hidden hover:shadow-lg transition-all duration-300 group border-muted"
                 >
                   <Link
@@ -83,11 +102,12 @@ export default function BlogPostList({ initialPosts }: BlogPageProps) {
                         day: "numeric",
                       })}
                     </div>
-                  </Link>
-                </Card>
-              );
-            })
-          ) : (
+                    </Link>
+                    </Card>
+                  </motion.div>
+                );
+              })
+            ) : (
             <div className="col-span-full py-16 text-center bg-muted/30 rounded-lg border border-dashed border-muted-foreground/30">
               <p className="text-muted-foreground font-medium text-lg">
                 {lang === "mm" ? "ဘလော့ဂ်များ မတွေ့ပါ" : "No blogs found"}
@@ -97,9 +117,10 @@ export default function BlogPostList({ initialPosts }: BlogPageProps) {
                   ? "ရှာဖွေမှု အခြေအနေကို ပြောင်းကြည့်ပါ"
                   : "Try changing your search criteria."}
               </p>
-            </div>
-          )}
-        </div>
+              </div>
+            )}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </div>
   );
