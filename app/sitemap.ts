@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { projects } from "@/lib/constants";
 import { prisma } from "@/lib/prisma";
+import { defaultBlogPosts } from "@/lib/defaultBlogs";
 import { getSiteUrl } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -19,8 +20,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.65,
     }));
   } catch {
-    // Database may be unavailable at build time; omit blog URLs.
+    // Curated posts below keep the sitemap useful when the database is unavailable.
   }
+
+  const databaseIds = new Set(blogEntries.map((entry) => entry.url.split("/").pop()));
+  const curatedBlogEntries = defaultBlogPosts
+    .filter((post) => !databaseIds.has(post.id))
+    .map((post) => ({
+      url: `${base}/blogs/${post.id}`,
+      lastModified: new Date(post.updatedAt),
+      changeFrequency: "weekly" as const,
+      priority: 0.65,
+    }));
+
+  blogEntries = [...blogEntries, ...curatedBlogEntries];
 
   return [
     {
