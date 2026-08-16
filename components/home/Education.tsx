@@ -200,13 +200,13 @@ function Education() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, margin: "-50px" }}
-                  className={`w-full pl-16 md:pl-0 ${
+                  className={`w-full ${
                     isLeft
                       ? "md:w-[calc(50%-2.5rem)] md:pr-0"
-                      : "md:w-[calc(50%-2.5rem)] md:ml-auto md:pl-0"
+                      : "md:w-[calc(50%-2.5rem)] md:ml-auto"
                   }`}
                 >
-                  <div className="group relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-6 md:p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/5 dark:hover:shadow-blue-500/5 hover:border-transparent hover:-translate-y-1">
+                  <div className="group relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-6 pl-14 md:p-8 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/5 dark:hover:shadow-blue-500/5 hover:border-transparent hover:-translate-y-1">
                     {/* Top gradient accent bar */}
                     <div
                       className={`absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r ${entry.gradient} opacity-70 group-hover:opacity-100 transition-opacity duration-500`}
