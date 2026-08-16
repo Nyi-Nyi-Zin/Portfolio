@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { inter } from "@/app/fonts";
 import { rootMetadata } from "@/lib/site";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -33,7 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         suppressHydrationWarning={true}
-        className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased bg-background`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background`}
       >
         {children}
         <Analytics />

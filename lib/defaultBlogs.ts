@@ -7,7 +7,7 @@ import type { SerializedBlogPost } from "@/types/blogs";
 export const defaultBlogPosts = [
   {
     id: "software-development-maintainable-nextjs",
-    image: "/blog/cover-maintainable-nextjs.png",
+    image: "/blog/cover-maintainable-nextjs.webp",
     createdAt: "2026-07-28T09:00:00.000Z",
     updatedAt: "2026-07-28T09:00:00.000Z",
     translations: {
@@ -29,7 +29,7 @@ export const defaultBlogPosts = [
   },
   {
     id: "typescript-api-validation-zod",
-    image: "/blog/cover-api-validation.png",
+    image: "/blog/cover-api-validation.webp",
     createdAt: "2026-07-22T09:00:00.000Z",
     updatedAt: "2026-07-22T09:00:00.000Z",
     translations: {
@@ -56,7 +56,7 @@ const input = CreateUser.parse(requestBody);</code></pre><h2>Validate more than 
   },
   {
     id: "postgresql-indexes-practical-guide",
-    image: "/blog/cover-postgresql-indexes.png",
+    image: "/blog/cover-postgresql-indexes.webp",
     createdAt: "2026-07-16T09:00:00.000Z",
     updatedAt: "2026-07-16T09:00:00.000Z",
     translations: {
@@ -78,7 +78,7 @@ const input = CreateUser.parse(requestBody);</code></pre><h2>Validate more than 
   },
   {
     id: "react-frontend-performance-checklist",
-    image: "/blog/cover-react-performance.png",
+    image: "/blog/cover-react-performance.webp",
     createdAt: "2026-07-10T09:00:00.000Z",
     updatedAt: "2026-07-10T09:00:00.000Z",
     translations: {
@@ -100,7 +100,7 @@ const input = CreateUser.parse(requestBody);</code></pre><h2>Validate more than 
   },
   {
     id: "accessible-react-component-design",
-    image: "/blog/cover-accessible-react.png",
+    image: "/blog/cover-accessible-react.webp",
     createdAt: "2026-07-04T09:00:00.000Z",
     updatedAt: "2026-07-04T09:00:00.000Z",
     translations: {
@@ -122,7 +122,7 @@ const input = CreateUser.parse(requestBody);</code></pre><h2>Validate more than 
   },
   {
     id: "docker-node-production-workflow",
-    image: "/blog/cover-docker-production.png",
+    image: "/blog/cover-docker-production.webp",
     createdAt: "2026-06-28T09:00:00.000Z",
     updatedAt: "2026-06-28T09:00:00.000Z",
     translations: {
@@ -144,7 +144,7 @@ const input = CreateUser.parse(requestBody);</code></pre><h2>Validate more than 
   },
   {
     id: "github-actions-ci-cd-basics",
-    image: "/blog/cover-github-actions.png",
+    image: "/blog/cover-github-actions.webp",
     createdAt: "2026-06-21T09:00:00.000Z",
     updatedAt: "2026-06-21T09:00:00.000Z",
     translations: {
@@ -166,7 +166,7 @@ const input = CreateUser.parse(requestBody);</code></pre><h2>Validate more than 
   },
   {
     id: "secure-jwt-authentication-principles",
-    image: "/blog/cover-jwt-security.png",
+    image: "/blog/cover-jwt-security.webp",
     createdAt: "2026-06-14T09:00:00.000Z",
     updatedAt: "2026-06-14T09:00:00.000Z",
     translations: {
@@ -188,7 +188,7 @@ const input = CreateUser.parse(requestBody);</code></pre><h2>Validate more than 
   },
   {
     id: "testing-pyramid-modern-javascript",
-    image: "/blog/cover-testing-pyramid.png",
+    image: "/blog/cover-testing-pyramid.webp",
     createdAt: "2026-06-07T09:00:00.000Z",
     updatedAt: "2026-06-07T09:00:00.000Z",
     translations: {
@@ -210,7 +210,7 @@ const input = CreateUser.parse(requestBody);</code></pre><h2>Validate more than 
   },
   {
     id: "building-ai-assistant-responsibly",
-    image: "/blog/cover-ai-assistant.png",
+    image: "/blog/cover-ai-assistant.webp",
     createdAt: "2026-05-31T09:00:00.000Z",
     updatedAt: "2026-05-31T09:00:00.000Z",
     translations: {
@@ -232,7 +232,7 @@ const input = CreateUser.parse(requestBody);</code></pre><h2>Validate more than 
   },
   {
     id: "flutter-react-native-mobile-architecture",
-    image: "/blog/cover-mobile-architecture.png",
+    image: "/blog/cover-mobile-architecture.webp",
     createdAt: "2026-05-24T09:00:00.000Z",
     updatedAt: "2026-05-24T09:00:00.000Z",
     translations: {
@@ -254,7 +254,7 @@ const input = CreateUser.parse(requestBody);</code></pre><h2>Validate more than 
   },
   {
     id: "event-driven-system-design-basics",
-    image: "/blog/cover-event-driven.png",
+    image: "/blog/cover-event-driven.webp",
     createdAt: "2026-05-17T09:00:00.000Z",
     updatedAt: "2026-05-17T09:00:00.000Z",
     translations: {
@@ -276,7 +276,7 @@ const input = CreateUser.parse(requestBody);</code></pre><h2>Validate more than 
   },
   {
     id: "clean-code-code-review-practices",
-    image: "/blog/cover-clean-code-review.png",
+    image: "/blog/cover-clean-code-review.webp",
     createdAt: "2026-05-10T09:00:00.000Z",
     updatedAt: "2026-05-10T09:00:00.000Z",
     translations: {
@@ -298,7 +298,7 @@ const input = CreateUser.parse(requestBody);</code></pre><h2>Validate more than 
   },
   {
     id: "rest-api-pagination-filtering-design",
-    image: "/blog/cover-rest-api-pagination.png",
+    image: "/blog/cover-rest-api-pagination.webp",
     createdAt: "2026-05-03T09:00:00.000Z",
     updatedAt: "2026-05-03T09:00:00.000Z",
     translations: {
@@ -320,7 +320,7 @@ const input = CreateUser.parse(requestBody);</code></pre><h2>Validate more than 
   },
   {
     id: "observability-for-fullstack-apps",
-    image: "/blog/cover-observability.png",
+    image: "/blog/cover-observability.webp",
     createdAt: "2026-04-26T09:00:00.000Z",
     updatedAt: "2026-04-26T09:00:00.000Z",
     translations: {

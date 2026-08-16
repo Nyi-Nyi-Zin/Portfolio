@@ -9,7 +9,7 @@ export function getSiteUrl(): string {
   if (fromEnv) return fromEnv;
   if (process.env.VERCEL_URL)
     return `https://${process.env.VERCEL_URL.replace(/\/$/, "")}`;
-  return "http://localhost:3000";
+  return "https://nyinyizin-portfolio.vercel.app";
 }
 
 export function getMetadataBase(): URL {
@@ -34,7 +34,7 @@ const keywords = [
 ];
 
 /** Shared Open Graph / Twitter fields for root and fallbacks. */
-export const defaultOpenGraphImages = ["/projectImages/price-changer.png"];
+export const defaultOpenGraphImages = ["/projectImages/price-changer.webp"];
 
 export const rootMetadata: Metadata = {
   metadataBase: getMetadataBase(),
@@ -52,6 +52,8 @@ export const rootMetadata: Metadata = {
   authors: [{ name: siteName, url: getSiteUrl() }],
   creator: siteName,
   publisher: siteName,
+  applicationName: `${siteName} Portfolio`,
+  referrer: "origin-when-cross-origin",
   formatDetection: {
     email: false,
     address: false,
@@ -97,11 +99,56 @@ export function buildPersonJsonLd(): Record<string, unknown> {
     url,
     email: contactInfo.email,
     telephone: contactInfo.phone,
+    image: `${url}/logo.png`,
     sameAs: socialLinks.map((l) => l.url),
+    knowsAbout: [
+      "Full-stack web development",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Golang",
+      "Node.js",
+      "Cloud and DevOps",
+    ],
     address: {
       "@type": "PostalAddress",
       addressLocality: contactInfo.location,
       addressCountry: "MM",
+    },
+  };
+}
+
+export function buildWebSiteJsonLd(): Record<string, unknown> {
+  const url = getSiteUrl();
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: `${siteName} Portfolio`,
+    url,
+    description:
+      "Portfolio, experience, projects, and software-development articles by Nyi Nyi Zin.",
+    inLanguage: ["en", "my"],
+    publisher: {
+      "@type": "Person",
+      name: siteName,
+      url,
+    },
+  };
+}
+
+export function buildProfilePageJsonLd(): Record<string, unknown> {
+  const url = getSiteUrl();
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    name: `${siteName} — Full-Stack Developer`,
+    url,
+    mainEntity: {
+      "@type": "Person",
+      name: siteName,
+      url,
+      jobTitle: "Full-Stack Developer",
+      image: `${url}/logo.png`,
     },
   };
 }

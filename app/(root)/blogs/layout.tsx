@@ -3,17 +3,34 @@ import Footer from "@/components/common/footer/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Software Development Blog",
   description:
-    "Articles on full-stack development: frontend, backend, DevOps, and engineering notes by Nyi Nyi Zin.",
+    "Practical software-development articles on frontend, backend, DevOps, AI, databases, security, testing, and system design by Nyi Nyi Zin.",
+  keywords: [
+    "software development blog",
+    "full-stack development",
+    "Next.js tutorials",
+    "React performance",
+    "TypeScript",
+    "DevOps",
+    "system design",
+  ],
   alternates: {
     canonical: "/blogs",
   },
   openGraph: {
-    title: "Blog | Nyi Nyi Zin",
+    title: "Software Development Blog | Nyi Nyi Zin",
     description:
-      "Articles on full-stack development: frontend, backend, DevOps, and engineering notes.",
+      "Practical engineering notes on frontend, backend, DevOps, AI, databases, security, testing, and system design.",
     url: "/blogs",
+    images: [
+      {
+        url: "/blog/cover-maintainable-nextjs.webp",
+        width: 2560,
+        height: 1440,
+        alt: "Software development architecture illustration",
+      },
+    ],
   },
 };
 

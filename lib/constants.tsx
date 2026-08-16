@@ -237,7 +237,7 @@ User Management: JWT-based authentication, role-based access control, user CRUD 
 Price Change Workflow: Bulk price change requests with approval process (request → approve/reject), audit logs, and tracking.
 Item Management: Item import/export, stock synchronization, image uploads, and barcode scanner integration.
 Additional Features: Excel import/export, responsive UI (Mantine + Tailwind CSS), API documentation (Swagger), Docker support, and CI/CD (Jenkins).`,
-    image: "/projectImages/price-changer.png",
+    image: "/projectImages/price-changer.webp",
     techStack: [
       "Nest.js",
       "TypeScript",
@@ -268,7 +268,7 @@ Additional Features: Excel import/export, responsive UI (Mantine + Tailwind CSS)
 Backend (Go API): Handles business logic, authentication, and data management for users, courses, content, and more using PostgreSQL, with support for background jobs and email notifications.
 Admin Dashboard (React + TypeScript): A Vite-based interface for administrators to manage all platform data and operations via the API.
 User Website (Next.js): A modern, responsive frontend for students and visitors to explore courses, instructors, and educational content.`,
-    image: "/projectImages/educational-information.png",
+    image: "/projectImages/educational-information.webp",
     techStack: ["React.js", "React-Router-Dom", "Tailwind-css", "SMTP", "Vite"],
     liveUrl: "https://www.jca.com.mm/",
     githubUrl: "#",
@@ -279,7 +279,7 @@ User Website (Next.js): A modern, responsive frontend for students and visitors 
     title: "Company Website",
     description:
       "This project is a modern, single-page wedding invitation website built with React and Vite. It provides an interactive and visually appealing platform for sharing wedding details, showcasing the couple, displaying a photo gallery, and collecting guest RSVPs.",
-    image: "/projectImages/company-website.png",
+    image: "/projectImages/company-website.webp",
     techStack: ["React.js", "React-Router-Dom", "Tailwind-css", "SMTP", "Vite"],
     liveUrl: "https://www.triosys.info/",
     githubUrl: "#",
@@ -290,7 +290,7 @@ User Website (Next.js): A modern, responsive frontend for students and visitors 
     title: "E-Commerce Platform",
     description:
       "E-Commerce Web App is a full-stack, modern online shopping platform. It features a fast, interactive React frontend powered by Vite and a secure, scalable backend REST API built with Node.js, Express, and MongoDB. The application supports product and user management, shopping cart, secure authentication, media uploads, and order processing—making it a strong foundation for small businesses or teams launching an online store.",
-    image: "/projectImages/ecommerce.png",
+    image: "/projectImages/ecommerce.webp",
     techStack: [
       "React.js",
       "Vite ",
@@ -316,7 +316,7 @@ User Website (Next.js): A modern, responsive frontend for students and visitors 
     title: "Real Time Chat App",
     description:
       "real-time-chat-app is a full-stack real-time messaging application built with a modern JavaScript stack. The application enables users to communicate instantly through various chat rooms or channels, supporting seamless live messaging, user authentication, and a user-friendly interface. The frontend is developed using React with Vite for fast builds and a modern development experience, enhanced by Tailwind CSS for rapid UI styling. The backend is powered by Express.js and Socket.IO for scalable, event-driven real-time communication, with MongoDB (via Mongoose) as the database layer.",
-    image: "/projectImages/real-time-chat-app.png",
+    image: "/projectImages/real-time-chat-app.webp",
     techStack: [
       "React.js",
       "React-router-dom",
@@ -335,7 +335,7 @@ User Website (Next.js): A modern, responsive frontend for students and visitors 
     title: "Face Mask Detection",
     description:
       "A Python-based Face Mask Detection system that leverages deep learning and computer vision techniques to automatically identify whether individuals in an image or video stream are wearing face masks. The model used for detection is custom-trained specifically for this project, ensuring robust and reliable performance in real-world scenarios such as CCTV monitoring, public safety systems, and workplace compliance.",
-    image: "/projectImages/face-mask-detection.png",
+    image: "/projectImages/face-mask-detection.webp",
     techStack: ["TensorFlow", "PyTorch", "Keras", "OpenCV", "NumPy"],
     liveUrl: "#",
     githubUrl: "https://github.com/Nyi-Nyi-Zin/face-mask-detection",
@@ -345,7 +345,7 @@ User Website (Next.js): A modern, responsive frontend for students and visitors 
     title: "Task Management Web App",
     description:
       "This project is a full-stack Task Management Application consisting of two main parts: a TypeScript-based frontend (using Vite and React) and a TypeScript Node.js backend (using Express and Sequelize).",
-    image: "/projectImages/task-mangement-app.png",
+    image: "/projectImages/task-mangement-app.webp",
     techStack: [
       "React.js",
       "React-Redux",
@@ -371,7 +371,7 @@ User Website (Next.js): A modern, responsive frontend for students and visitors 
     title: "Face Recognition System",
     description:
       "The Face Recognition System is an advanced Python-based application designed to detect and recognize human faces in images or video streams. Leveraging state-of-the-art computer vision and machine learning techniques, it can be integrated into security, authentication, and attendance monitoring solutions. The system emphasizes accuracy, scalability, and ease of use, making it suitable for both academic and commercial applications. It provides APIs and a user-friendly interface for managing user data, enrolling new faces, and performing real-time recognition, while prioritizing performance and data security.",
-    image: "/projectImages/face-recognization.png",
+    image: "/projectImages/face-recognization.webp",
     techStack: ["Python", "CV2", "face_recognition", "numpy"],
     liveUrl: "#",
     githubUrl: "https://github.com/Nyi-Nyi-Zin/face-recognization-system",
@@ -381,7 +381,7 @@ User Website (Next.js): A modern, responsive frontend for students and visitors 
     title: "Eye Tracking Project",
     description:
       "a Python-based solution focused on real-time eye tracking and gaze estimation. The project leverages computer vision and machine learning techniques to detect and monitor eye movement using a standard webcam or video input. It can be used in applications such as human-computer interaction, accessibility tools, behavioral research, medical analysis, or gaming, providing robust and efficient eye tracking with modular components for detection, calibration, visualization, and analytics.",
-    image: "/projectImages/eye-tracking.png",
+    image: "/projectImages/eye-tracking.webp",
     techStack: ["Python", "Cv2", "mediapipe", "winsound", "time"],
     liveUrl: "#",
     githubUrl: "https://github.com/Nyi-Nyi-Zin/eye-tracking-project",
@@ -391,7 +391,7 @@ User Website (Next.js): A modern, responsive frontend for students and visitors 
     title: "Wedding Invitation Website",
     description:
       "This project is a modern, single-page wedding invitation website built with React and Vite. It provides an interactive and visually appealing platform for sharing wedding details, showcasing the couple, displaying a photo gallery, and collecting guest RSVPs.",
-    image: "/projectImages/wedding-invitation.png",
+    image: "/projectImages/wedding-invitation.webp",
     techStack: ["React.js", "React-Router-Dom", "Tailwind-css", "SMTP", "Vite"],
     liveUrl: "#",
     githubUrl: "#",

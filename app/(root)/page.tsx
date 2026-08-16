@@ -8,7 +8,11 @@ import Home from "@/components/home/Home";
 import Project from "@/components/home/Project";
 import Service from "@/components/home/Service";
 import Skill from "@/components/home/Skill";
-import { buildPersonJsonLd } from "@/lib/site";
+import {
+  buildPersonJsonLd,
+  buildProfilePageJsonLd,
+  buildWebSiteJsonLd,
+} from "@/lib/site";
 import type { Metadata } from "next";
 import AiAssistant from "@/components/AiAssistant";
 
@@ -19,12 +23,17 @@ export const metadata: Metadata = {
 export default function Index() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(buildPersonJsonLd()).replace(/</g, "\\u003c"),
-        }}
-      />
+      {[buildPersonJsonLd(), buildWebSiteJsonLd(), buildProfilePageJsonLd()].map(
+        (schema, index) => (
+          <script
+            key={index}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(schema).replace(/</g, "\\u003c"),
+            }}
+          />
+        ),
+      )}
       <Navbar />
       <main className="flex flex-col bg-zinc-50 dark:bg-[#0F172A] font-sans w-full lg:px-8 px-3">
         <Home />

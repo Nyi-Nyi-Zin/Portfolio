@@ -81,6 +81,7 @@ export default function BlogPostList({ initialPosts }: BlogPageProps) {
                           src={blog.image}
                           fill
                           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          loading="lazy"
                           alt={t.title}
                           className="object-cover rounded-xl group-hover:scale-105 transition-transform duration-500"
                         />
