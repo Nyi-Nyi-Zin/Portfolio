@@ -57,9 +57,8 @@ function Home() {
             style={{ fontFamily: "var(--font-inter)" }}
           >
             <a
-              href={process.env.NEXT_PUBLIC_RESUME_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/Nyi_Nyi_Zin_Resume-1.pdf"
+              download="Nyi_Nyi_Zin_Resume.pdf"
             >
               <Eye className="w-10 h-10" />
               View CV
