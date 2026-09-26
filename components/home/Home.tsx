@@ -25,7 +25,7 @@ function Home() {
         <Title className="lg:text-start text-center">Nyi Nyi Zin</Title>
 
         <Text className="text-center w-full lg:text-start ">
-          Full-Stack Developer | Next.js, Golang, React.js, Express.js Expert
+          Full-Stack Software Developer | Team Lead
         </Text>
 
         <div className="flex space-y-8 items-center justify-center lg:justify-start py-8 ">

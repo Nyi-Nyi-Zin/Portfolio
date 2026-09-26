@@ -20,55 +20,17 @@ type EducationEntry = {
 
 const educationData: EducationEntry[] = [
   {
-    degree: "Bachelor of Science",
+    degree: "Bachelor's Degree",
     field: "Computer Science",
     institution: "Polytechnic University Maubin",
     location: "Maubin, Myanmar",
-    period: "Graduated 2026",
-    description:
-      "Completed computer science studies with a focus on software engineering, algorithms, data structures, and system design.",
-    achievements: [
-      "Specialization in Software Engineering",
-      "Advanced Algorithms & Data Structures",
-      "Database Systems & System Design",
-      "Operating Systems & Networking",
-    ],
+    period: "Graduated 2025",
+    description: "Completed a Bachelor of Computer Science degree.",
+    achievements: [],
     gradient: "from-blue-500 to-cyan-400",
     iconGradient: "from-blue-600 to-cyan-500",
   },
-  // {
-  //   degree: "Self-Taught",
-  //   field: "Full Stack Development",
-  //   institution: "Online Learning Platforms",
-  //   location: "Remote",
-  //   period: "Jan 2023 — Present",
-  //   description:
-  //     "Intensive self-directed learning across modern web technologies, backend architectures, and cloud deployment.",
-  //   achievements: [
-  //     "React, Next.js & TypeScript mastery",
-  //     "Golang & Node.js backend development",
-  //     "Docker, CI/CD & Cloud deployments",
-  //     "System design & microservices architecture",
-  //   ],
-  //   gradient: "from-violet-500 to-purple-400",
-  //   iconGradient: "from-violet-600 to-purple-500",
-  // },
-  {
-    degree: "High School Diploma",
-    field: "",
-    institution: "Basic Education High School",
-    location: "Thandwe, Myanmar",
-    period: "2015 — 2017",
-    grade: "", // Removed Distinction
-    description:
-      "Completed secondary education, gaining a solid foundation in core subjects such as Mathematics and English. Developed strong analytical and problem-solving skills, as well as discipline and dedication, which laid the groundwork for future academic and professional growth.",
-    achievements: [
-      "Strong foundation in Mathematics and English",
-      "Developed analytical and problem-solving skills",
-    ],
-    gradient: "from-emerald-500 to-teal-400",
-    iconGradient: "from-emerald-600 to-teal-500",
-  },
+
 ];
 
 // Animation variants
@@ -261,24 +223,26 @@ function Education() {
                     </p>
 
                     {/* Achievements */}
-                    <div className="relative space-y-2">
-                      <h4 className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
-                        Key Highlights
-                      </h4>
-                      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        {entry.achievements.map((achievement) => (
-                          <li
-                            key={achievement}
-                            className="flex items-start gap-2 text-sm text-zinc-600 dark:text-zinc-300"
-                          >
-                            <span
-                              className={`mt-1.5 w-1.5 h-1.5 rounded-full bg-gradient-to-br ${entry.gradient} flex-shrink-0`}
-                            />
-                            {achievement}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    {entry.achievements.length > 0 && (
+                      <div className="relative space-y-2">
+                        <h4 className="text-xs font-semibold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
+                          Key Highlights
+                        </h4>
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                          {entry.achievements.map((achievement) => (
+                            <li
+                              key={achievement}
+                              className="flex items-start gap-2 text-sm text-zinc-600 dark:text-zinc-300"
+                            >
+                              <span
+                                className={`mt-1.5 w-1.5 h-1.5 rounded-full bg-gradient-to-br ${entry.gradient} flex-shrink-0`}
+                              />
+                              {achievement}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
 
                     {/* Connector arrow (desktop only) */}
                     <div

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useChat } from "@ai-sdk/react";
+import { AnimatePresence, motion } from "framer-motion";
 
 const STORAGE_KEY = "portfolio-chat-messages";
 
@@ -146,8 +147,15 @@ export default function AiAssistant() {
       </button>
 
       {/* ── CHAT BOX ── */}
+      <AnimatePresence>
       {open && (
-        <div className="fixed bottom-20 right-4 w-96 bg-white border border-gray-200 rounded-2xl shadow-2xl p-4 z-50 text-slate-900">
+        <motion.div
+          initial={{ opacity: 0, y: 18, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: 12, scale: 0.96 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+          className="fixed bottom-20 right-4 w-[calc(100vw-2rem)] sm:w-96 bg-white border border-gray-200 rounded-2xl shadow-2xl p-4 z-50 text-slate-900 origin-bottom-right"
+        >
           {/* HEADER */}
           <div className="flex items-center justify-between mb-2 border-b pb-2">
             <div>
@@ -186,8 +194,11 @@ export default function AiAssistant() {
             </div>
 
             {displayMessages.map((m: any) => (
-              <div
+              <motion.div
                 key={m.id}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.18 }}
                 className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
@@ -203,7 +214,7 @@ export default function AiAssistant() {
                     ) : null,
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -223,8 +234,9 @@ export default function AiAssistant() {
               Send
             </button>
           </form>
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </>
   );
 }

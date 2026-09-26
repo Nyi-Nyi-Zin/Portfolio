@@ -28,21 +28,12 @@ function About() {
           className="lg:w-1/2"
         >
           <Text className="leading-relaxed">
-            I am a passionate Full-Stack Software Developer, specialized in web
-            and mobile development, with experience in multiple programming
-            languages. Experienced in algorithms, data structures, and software
-            architecture, with a focus on building scalable and maintainable
-            applications across frontend and backend. Committed to continuous
-            learning, solving complex problems, and delivering high-quality
-            software.
+            I am a Full-Stack Software Developer and team lead with 7+ years of experience in the IT field since 2018. I build and ship web, mobile, and backend systems, with experience in system architecture, secure APIs, database design, and DevOps.
           </Text>
           <br />
           <Text className="leading-relaxed">
-            I graduated from
-            <strong> Polytechnic University Maubin in 2026</strong> with a
-            foundation in computer science. Alongside my professional work, I
-            continue to sharpen my technical skills through hands-on projects,
-            continuous learning, and collaboration with development teams.
+            I graduated with a Bachelor of Computer Science from
+            <strong> Polytechnic University Maubin in 2025</strong>. Alongside my professional work, I continue to strengthen my skills through hands-on projects and collaboration with development teams.
           </Text>
           <br />
           <Text className="leading-relaxed">

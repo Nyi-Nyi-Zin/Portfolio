@@ -75,7 +75,7 @@ export type IconName = "briefcase" | "code" | "zap" | "shield";
 export const aboutCardData = [
   {
     title: "Years Experience",
-    value: "3+",
+    value: "7+",
     icon: "briefcase" as IconName,
     color: "red",
   },
@@ -101,50 +101,57 @@ export const aboutCardData = [
 
 export const experience = [
   {
-    title: "Software Development Team Leader",
-    company: "Wann Saung",
-    companyUrl:
-      "https://www.linkedin.com/company/myanmar-information-technology-pte-ltd",
-    period: "Nov 2025 - Present",
-    location: "Yangon Region, Myanmar • Remote",
-    keyAchievements: [
-      "Led software development team, conducted code reviews, ensured code quality and documentation across frontend and backend, and promoted knowledge sharing and best practices.",
-      "Defined project architecture and workflow, created flow diagrams, documented project processes, and implemented project-wide technical guidelines and standards.",
-      "Assigned tasks, tracked project progress, and coordinated across frontend, backend, and UI/UX teams to ensure timely and high-quality deliverables.",
-      "Led UI/UX team, provided guidance and feedback, ensuring design consistency and user-friendly interfaces.",
-    ],
+    "title": "Founder",
+    "company": "Cloud Nine Software Company",
+    "period": "2026 - Present",
+    "location": "Yangon, Myanmar",
+    "keyAchievements": [
+      "Founded Cloud Nine Software Company with a team of experienced developers to build tailored software for clients.",
+      "Lead client delivery from requirements and custom UI through production deployment.",
+      "Provide programming instruction to students, helping them build practical software development skills."
+    ]
   },
   {
-    title: "Software Developer",
-    company: "Triosys",
-    companyUrl:
-      "https://www.linkedin.com/company/myanmar-information-technology-pte-ltd",
-    period: "April 2025 - Nov 2025",
-    location: "Yangon Region, Myanmar • Hybrid",
-    keyAchievements: [
-      "Led full-cycle software development projects, including frontend architecture, backend systems, and system design.",
-      "Built high-performance Next.js frontend with server components, dynamic imports, image optimization, PWA support, and secure authentication (JWT, RBAC, Zod validation).",
-      "Implemented backend optimization across Golang, Express, NestJS, and Next.js: efficient database queries, caching strategies (Redis, HTTP caching), pagination, bulk operations.",
-      "Improved reliability and observability with Sentry monitoring, error boundaries, retry logic, performance tracking, automated testing (Jest, Vitest), and CI/CD pipelines with Docker and Jenkins.",
-      "Ensured security and performance best practices: rate limiting, input validation, CSRF/CSP protection, secure headers, and optimized data serialization.",
-    ],
+    "title": "Software Development Team Lead",
+    "company": "WaanSaung",
+    "companyUrl": "https://waansaung.com",
+    "period": "Nov 2025 - Present",
+    "location": "Yangon, Myanmar",
+    "keyAchievements": [
+      "Lead technical direction, architecture, delivery coordination, code quality, and engineering standards across web, mobile, and admin applications.",
+      "Create architecture documents, workflow diagrams, and technical standards to support consistent delivery as the platform grows.",
+      "Coordinate cross-functional delivery and track progress against schedule and quality goals.",
+      "Manage Alibaba Cloud infrastructure for a live production marketplace, including server configuration, monitoring, and operational support.",
+      "Mentor junior developers, assign tasks, and review code."
+    ]
   },
   {
-    title: "IT & Software Solutions Engineer",
-    company: "Domi Tech",
-    companyUrl:
-      "https://www.linkedin.com/company/myanmar-information-technology-pte-ltd",
-    period: "Jan 2023 - Feb 2025",
-    location: "Thandwe , Myanmar • Onsite",
-    keyAchievements: [
-      "Provided hands-on IT support, repairing and maintaining computers, desktops, and mobile devices, and delivering software troubleshooting services.",
-      "Installed and configured Wi-Fi networks and CCTV systems for homes and businesses.",
-      "Transitioned into software development, starting with Flutter for cross-platform mobile applications.",
-      "Developed web applications using Node.js and React, delivering client-focused software solutions.",
-      "Collaborated on end-to-end projects, from frontend to backend, ensuring high-quality, scalable, and functional applications.",
-      "Continuously improved technical skills by learning modern development tools, frameworks, and best practices, adapting quickly to new technologies.",
-    ],
+    "title": "Full-Stack Software Developer",
+    "company": "TRIOSYS IT Solutions and Services",
+    "companyUrl": "https://triosys.info",
+    "period": "Apr 2025 - Nov 2025",
+    "location": "Yangon, Myanmar",
+    "keyAchievements": [
+      "Delivered client projects across frontend architecture, backend services, database design, security, testing, deployment, and technical documentation.",
+      "Led projects and mentored junior developers from kickoff through production release.",
+      "Implemented JWT authentication, refresh tokens, role-based access control, Zod validation, CSP/CSRF protections, and secure HTTP headers.",
+      "Improved data-heavy interfaces with virtualization, infinite scrolling, debounced search, pagination, and bulk operations.",
+      "Designed and tuned Go, Express, NestJS, and Next.js services using query and index tuning, connection pooling, Redis and HTTP caching, and horizontal scaling."
+    ]
   },
+  {
+    "title": "Associate Developer",
+    "company": "DomiTech",
+    "period": "Jan 2018 - Feb 2025",
+    "location": "Thantwe, Myanmar",
+    "keyAchievements": [
+      "Installed and configured Wi-Fi networks and CCTV systems across Rakhine State, repaired computers, and resolved technical and connectivity issues.",
+      "Developed software projects following technical guidelines, with a focus on maintainable code and performance.",
+      "Applied senior developers' code review feedback and learned the team's technology stack.",
+      "Maintained and refactored code, wrote basic unit and integration tests, and maintained API documentation and setup guides.",
+      "Joined daily standups to share progress, plan work, and discuss blockers."
+    ]
+  }
 ];
 
 export const tags = [
@@ -228,174 +235,309 @@ export type ProjectItem = {
 
 export const projects: ProjectItem[] = [
   {
-    slug: "price-changer",
-    title: "Price Changer",
-    description: `The Price Changer is a full-stack application designed to manage product price changes systematically. It consists of a backend API built with NestJS and a frontend web app using React, with PostgreSQL as the database and Prisma as the ORM.
-
-Key Features
-User Management: JWT-based authentication, role-based access control, user CRUD operations, and account status management.
-Price Change Workflow: Bulk price change requests with approval process (request → approve/reject), audit logs, and tracking.
-Item Management: Item import/export, stock synchronization, image uploads, and barcode scanner integration.
-Additional Features: Excel import/export, responsive UI (Mantine + Tailwind CSS), API documentation (Swagger), Docker support, and CI/CD (Jenkins).`,
-    image: "/projectImages/price-changer.webp",
-    techStack: [
-      "Nest.js",
+    "slug": "kpi-task-manager",
+    "title": "KPI Task Manager",
+    "description": "Project/team roles, task workflows, priorities, search, filters, activity logs, project KPIs, real-time chat, file sharing, reactions, replies, call activity, notifications, dashboards, calendar, and timeline views.",
+    "image": "/projectImages/task-mangement-app.webp",
+    "techStack": [
+      "NestJS",
       "TypeScript",
-      "Prisma ORM",
+      "GraphQL",
+      "REST",
+      "Prisma",
+      "PostgreSQL",
+      "Redis",
       "JWT",
-      "Jest ",
+      "Passport",
+      "Socket.io",
       "React",
       "Vite",
+      "Tailwind CSS",
+      "TanStack Query",
+      "React Router",
+      "React Hook Form",
+      "Axios",
+      "Docker",
+      "Jest"
+    ],
+    "featured": true
+  },
+  {
+    "slug": "restaurant-pos-saas",
+    "title": "Restaurant POS SaaS",
+    "description": "A SaaS restaurant point-of-sale platform with separate customer, restaurant-owner, and centralized admin interfaces.",
+    "image": "/projectImages/ecommerce.webp",
+    "techStack": [],
+    "featured": true
+  },
+  {
+    "slug": "waansaung-delivery-system",
+    "title": "Waansaung Delivery System",
+    "description": "A live web, mobile, and admin marketplace for jobs, local services, property, and second-hand listings, with chat, push notifications, role-based access, multilingual support, and secure sign-in.",
+    "image": "/projectImages/ecommerce.webp",
+    "techStack": [
+      "Next.js",
+      "React Native",
+      "Expo",
+      "NestJS",
+      "PostgreSQL",
+      "Prisma",
+      "Redis",
+      "Alibaba Cloud",
+      "Docker"
+    ],
+    "liveUrl": "https://waansaung.com",
+    "featured": true
+  },
+  {
+    "slug": "deltawatch-geoai",
+    "title": "DeltaWatch — GeoAI Flood Intelligence & Early-Warning Platform",
+    "description": "Analyzes satellite imagery, rainfall, and elevation to score flood risk across a 500-meter grid of 5,549 cells in Maubin Township.",
+    "image": "/projectImages/price-changer.webp",
+    "techStack": [
+      "Next.js",
+      "TypeScript",
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "PostGIS",
+      "Google Earth Engine",
+      "CesiumJS"
+    ],
+    "liveUrl": "https://deltawatch-jayyutyh.manus.space",
+    "featured": true
+  },
+  {
+    "slug": "price-changer",
+    "title": "Price Changer System",
+    "description": "Centralized exchange-rate and multi-currency management with configurable pricing models, a secure decryption module to verify update payloads before broadcast, synchronized web/mobile prices, and historical trend and system analytics charts.",
+    "image": "/projectImages/price-changer.webp",
+    "techStack": [
+      "Next.js",
+      "React",
+      "TypeScript",
       "Mantine",
       "Tailwind CSS",
-      "Swagger",
-      "Docker",
-      "Jenkins",
-      "PostgreSQL",
-      "TanStack React Query",
-      " React Hook Form",
-      "Zod",
-      "React Router Dom",
-    ],
-    liveUrl: "#",
-    githubUrl: "#",
-    featured: true,
-  },
-  {
-    slug: "educational-information-system",
-    title: "Educational Information System",
-    description: `A full-stack educational management platform built with three integrated parts:
-Backend (Go API): Handles business logic, authentication, and data management for users, courses, content, and more using PostgreSQL, with support for background jobs and email notifications.
-Admin Dashboard (React + TypeScript): A Vite-based interface for administrators to manage all platform data and operations via the API.
-User Website (Next.js): A modern, responsive frontend for students and visitors to explore courses, instructors, and educational content.`,
-    image: "/projectImages/educational-information.webp",
-    techStack: ["React.js", "React-Router-Dom", "Tailwind-css", "SMTP", "Vite"],
-    liveUrl: "https://www.jca.com.mm/",
-    githubUrl: "#",
-    featured: true,
-  },
-  {
-    slug: "company-website",
-    title: "Company Website",
-    description:
-      "This project is a modern, single-page wedding invitation website built with React and Vite. It provides an interactive and visually appealing platform for sharing wedding details, showcasing the couple, displaying a photo gallery, and collecting guest RSVPs.",
-    image: "/projectImages/company-website.webp",
-    techStack: ["React.js", "React-Router-Dom", "Tailwind-css", "SMTP", "Vite"],
-    liveUrl: "https://www.triosys.info/",
-    githubUrl: "#",
-    featured: true,
-  },
-  {
-    slug: "e-commerce-platform",
-    title: "E-Commerce Platform",
-    description:
-      "E-Commerce Web App is a full-stack, modern online shopping platform. It features a fast, interactive React frontend powered by Vite and a secure, scalable backend REST API built with Node.js, Express, and MongoDB. The application supports product and user management, shopping cart, secure authentication, media uploads, and order processing—making it a strong foundation for small businesses or teams launching an online store.",
-    image: "/projectImages/ecommerce.webp",
-    techStack: [
-      "React.js",
-      "Vite ",
+      "TanStack Query",
+      "Zustand",
       "Redux Toolkit",
-      "React Router DOM",
+      "NestJS",
+      "REST",
+      "WebSockets",
+      "PostgreSQL",
+      "MySQL",
+      "Prisma",
+      "Docker",
+      "Nginx"
+    ],
+    "featured": true
+  },
+  {
+    "slug": "customer-relationship-management-system",
+    "title": "Customer Relationship Management (CRM) System",
+    "description": "Lead tracking, follow-up scheduling, conversion-based opportunity routing, sales-performance dashboards, and marketing-channel attribution analytics.",
+    "image": "/projectImages/task-mangement-app.webp",
+    "techStack": [
+      "Next.js",
+      "NestJS",
+      "PostgreSQL",
+      "Prisma",
+      "Redis",
+      "WebSocket",
+      "Docker",
+      "GitHub Actions"
+    ],
+    "featured": true
+  },
+  {
+    "slug": "digital-payment-verification-platform",
+    "title": "Digital Payment Verification Platform",
+    "description": "OCR-based verification of KBZPay, AyaPay, and WavePay payment screenshots against transaction exports, with duplicate detection and optional push alerts.",
+    "image": "/projectImages/ecommerce.webp",
+    "techStack": [
+      "Flutter",
+      "Riverpod",
+      "Dio",
+      "NestJS",
+      "Google Cloud Vision OCR",
+      "Telegram Bot API",
+      "PostgreSQL",
+      "Cloudflare R2",
+      "Docker",
+      "Nginx",
+      "Sentry",
+      "Swagger"
+    ],
+    "featured": true
+  },
+  {
+    "slug": "digital-product-marketplace",
+    "title": "Digital Product Marketplace Website",
+    "description": "Searchable digital product listings, category filters, product detail pages and purchasing, access to purchased products, and admin tools for listings and orders.",
+    "image": "/projectImages/ecommerce.webp",
+    "techStack": [
+      "Next.js",
+      "NestJS",
+      "PostgreSQL"
+    ],
+    "featured": true
+  },
+  {
+    "slug": "book-store-mobile-app",
+    "title": "Book Store Mobile App",
+    "description": "A Flutter app for browsing books, viewing details, purchasing books, and buying Premium access.",
+    "image": "/projectImages/wedding-invitation.webp",
+    "techStack": [
+      "Flutter"
+    ],
+    "featured": true
+  },
+  {
+    "slug": "expense-request-management-system",
+    "title": "Expense Request Management System",
+    "description": "Role- and attribute-based approvals for employees, managers, and finance, with claim-limit, department, and category policy checks; notifications and violation flags; multi-tier approvals; status and payout tracking; dashboards; and CSV/PDF audit reports.",
+    "image": "/projectImages/task-mangement-app.webp",
+    "techStack": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "shadcn/ui",
       "Tailwind CSS",
-      "Ant Design",
-      "Axios",
-      "Express.js",
-      "MongoDB",
-      "Mongoose",
-      "bcrypt",
-      "jsonwebtoken",
-      "express-validator",
-      "Cloudinary",
-      "Multer",
+      "TanStack Query",
+      "Zustand",
+      "Redux Toolkit",
+      "Go",
+      "REST",
+      "WebSockets",
+      "PostgreSQL",
+      "MySQL",
+      "Docker",
+      "Nginx"
     ],
-    liveUrl: "#",
-    githubUrl: "https://github.com/Nyi-Nyi-Zin/e-commerce-web-app",
+    "featured": true
   },
   {
-    slug: "real-time-chat-app",
-    title: "Real Time Chat App",
-    description:
-      "real-time-chat-app is a full-stack real-time messaging application built with a modern JavaScript stack. The application enables users to communicate instantly through various chat rooms or channels, supporting seamless live messaging, user authentication, and a user-friendly interface. The frontend is developed using React with Vite for fast builds and a modern development experience, enhanced by Tailwind CSS for rapid UI styling. The backend is powered by Express.js and Socket.IO for scalable, event-driven real-time communication, with MongoDB (via Mongoose) as the database layer.",
-    image: "/projectImages/real-time-chat-app.webp",
-    techStack: [
-      "React.js",
-      "React-router-dom",
-      "Tailwindcss",
-      "Socket.io",
-      "Vite",
-      "Express.js",
-      "Mongoose",
-      "Mongodb",
+    "slug": "educational-information-system",
+    "title": "Educational Information System",
+    "description": "REST API, admin dashboard, and public website with JWT-based permissions, background workers, SEO-friendly dynamic rendering, and content management.",
+    "image": "/projectImages/educational-information.webp",
+    "techStack": [
+      "Go",
+      "GORM",
+      "PostgreSQL",
+      "Next.js",
+      "React Query",
+      "Zustand"
     ],
-    liveUrl: "#",
-    githubUrl: "https://github.com/Nyi-Nyi-Zin/real-time-chat-app",
+    "liveUrl": "https://jca.com.mm",
+    "featured": true
   },
   {
-    slug: "face-mask-detection",
-    title: "Face Mask Detection",
-    description:
-      "A Python-based Face Mask Detection system that leverages deep learning and computer vision techniques to automatically identify whether individuals in an image or video stream are wearing face masks. The model used for detection is custom-trained specifically for this project, ensuring robust and reliable performance in real-world scenarios such as CCTV monitoring, public safety systems, and workplace compliance.",
-    image: "/projectImages/face-mask-detection.webp",
-    techStack: ["TensorFlow", "PyTorch", "Keras", "OpenCV", "NumPy"],
-    liveUrl: "#",
-    githubUrl: "https://github.com/Nyi-Nyi-Zin/face-mask-detection",
-  },
-  {
-    slug: "task-management-web-app",
-    title: "Task Management Web App",
-    description:
-      "This project is a full-stack Task Management Application consisting of two main parts: a TypeScript-based frontend (using Vite and React) and a TypeScript Node.js backend (using Express and Sequelize).",
-    image: "/projectImages/task-mangement-app.webp",
-    techStack: [
-      "React.js",
-      "React-Redux",
-      "Tanstack/react-query",
-      "Zod",
-      "Axios",
-      "React-router-dom",
-      "React-hook-form",
-      "sonner",
-      "vite",
-      "Type-script",
-      "Express.js",
-      "Jsonwebtoken",
-      "bcrypt",
-      "Sequelize",
-      "Mysql",
+    "slug": "school-management-system",
+    "title": "School Management System",
+    "description": "Admin dashboard and student portal for courses, enrollments, lessons, assignments, quizzes, announcements, exams, progress tracking, submission review, and certificates after passing final exams.",
+    "image": "/projectImages/educational-information.webp",
+    "techStack": [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Firebase Auth",
+      "Firestore",
+      "Vercel",
+      "Tailwind CSS",
+      "React Query"
     ],
-    liveUrl: "#",
-    githubUrl: "https://github.com/Nyi-Nyi-Zin/task-management-app-frontend",
+    "liveUrl": "https://student.tezatechlab.online",
+    "featured": true
   },
   {
-    slug: "face-recognition-system",
-    title: "Face Recognition System",
-    description:
-      "The Face Recognition System is an advanced Python-based application designed to detect and recognize human faces in images or video streams. Leveraging state-of-the-art computer vision and machine learning techniques, it can be integrated into security, authentication, and attendance monitoring solutions. The system emphasizes accuracy, scalability, and ease of use, making it suitable for both academic and commercial applications. It provides APIs and a user-friendly interface for managing user data, enrolling new faces, and performing real-time recognition, while prioritizing performance and data security.",
-    image: "/projectImages/face-recognization.webp",
-    techStack: ["Python", "CV2", "face_recognition", "numpy"],
-    liveUrl: "#",
-    githubUrl: "https://github.com/Nyi-Nyi-Zin/face-recognization-system",
+    "slug": "wedding-invitation-website",
+    "title": "Wedding Invitation Website",
+    "description": "Shareable invitation with a welcome message, pre-wedding photos, ceremony date, time and venue, and a guest-wishes section.",
+    "image": "/projectImages/wedding-invitation.webp",
+    "techStack": [
+      "Next.js",
+      "PostgreSQL",
+      "NestJS",
+      "shadcn/ui",
+      "React Query",
+      "Docker"
+    ],
+    "featured": true
   },
   {
-    slug: "eye-tracking-project",
-    title: "Eye Tracking Project",
-    description:
-      "a Python-based solution focused on real-time eye tracking and gaze estimation. The project leverages computer vision and machine learning techniques to detect and monitor eye movement using a standard webcam or video input. It can be used in applications such as human-computer interaction, accessibility tools, behavioral research, medical analysis, or gaming, providing robust and efficient eye tracking with modular components for detection, calibration, visualization, and analytics.",
-    image: "/projectImages/eye-tracking.webp",
-    techStack: ["Python", "Cv2", "mediapipe", "winsound", "time"],
-    liveUrl: "#",
-    githubUrl: "https://github.com/Nyi-Nyi-Zin/eye-tracking-project",
+    "slug": "hotel-management-system",
+    "title": "Hotel Management System",
+    "description": "Room, reservation, and guest management; check-in/check-out; billing and invoices; occupancy and revenue reports; and administrator/reception access.",
+    "image": "/projectImages/company-website.webp",
+    "techStack": [
+      "React Native",
+      "Expo",
+      "NestJS",
+      "PostgreSQL",
+      "Docker"
+    ],
+    "featured": true
   },
   {
-    slug: "wedding-invitation-website",
-    title: "Wedding Invitation Website",
-    description:
-      "This project is a modern, single-page wedding invitation website built with React and Vite. It provides an interactive and visually appealing platform for sharing wedding details, showcasing the couple, displaying a photo gallery, and collecting guest RSVPs.",
-    image: "/projectImages/wedding-invitation.webp",
-    techStack: ["React.js", "React-Router-Dom", "Tailwind-css", "SMTP", "Vite"],
-    liveUrl: "#",
-    githubUrl: "#",
+    "slug": "delivery-crm-system",
+    "title": "Delivery CRM System",
+    "description": "Delivery operations and customer management for customer/order tracking, pricing, status workflows, and role-based dashboards.",
+    "image": "/projectImages/task-mangement-app.webp",
+    "techStack": [
+      "Next.js",
+      "NestJS",
+      "PostgreSQL",
+      "Prisma",
+      "Redis",
+      "Docker",
+      "GitHub Actions"
+    ],
+    "featured": true
   },
+  {
+    "slug": "ai-eye-tracking-focus-monitoring-system",
+    "title": "AI Eye-Tracking Focus Monitoring System",
+    "description": "Webcam-based detection of drowsiness and loss of focus in drivers and students, with alerts.",
+    "image": "/projectImages/eye-tracking.webp",
+    "techStack": [
+      "Python",
+      "OpenCV",
+      "MediaPipe"
+    ],
+    "featured": true
+  },
+  {
+    "slug": "face-mask-detection-system",
+    "title": "Face Mask Detection System",
+    "description": "Computer-vision system to detect whether a person is wearing a face mask.",
+    "image": "/projectImages/face-mask-detection.webp",
+    "techStack": [
+      "Python"
+    ],
+    "featured": true
+  },
+  {
+    "slug": "face-recognition-system",
+    "title": "Face Recognition System",
+    "description": "Separate computer-vision system to detect and recognize faces.",
+    "image": "/projectImages/face-recognization.webp",
+    "techStack": [
+      "Python"
+    ],
+    "featured": true
+  },
+  {
+    "slug": "triosys-company-profile-website",
+    "title": "TRIOSYS Company Profile Website",
+    "description": "Company website presenting TRIOSYS's IT services.",
+    "image": "/projectImages/company-website.webp",
+    "techStack": [
+      "Next.js"
+    ],
+    "liveUrl": "https://triosys.info",
+    "featured": true
+  }
 ];
 
 export function getProjectBySlug(slug: string): ProjectItem | undefined {
