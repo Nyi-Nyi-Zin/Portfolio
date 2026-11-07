@@ -35,7 +35,7 @@ export default function Index() {
         ),
       )}
       <Navbar />
-      <main className="flex flex-col bg-zinc-50 dark:bg-[#0F172A] font-sans w-full lg:px-8 px-3">
+      <main className="portfolio-main flex w-full flex-col bg-zinc-50 px-4 font-sans sm:px-6 lg:px-8 dark:bg-[#0F172A]">
         <Home />
 
         <AiAssistant />

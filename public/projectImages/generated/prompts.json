@@ -1,0 +1,83 @@
+{
+  "generator": "Built-in image_gen",
+  "format": "1280x720 WebP, quality 86",
+  "usage": "Conceptual portfolio artwork, not screenshots of shipped interfaces",
+  "images": [
+    {
+      "image": "kpi-task-manager.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project titled KPI Task Manager. Concept: an elegant floating desktop kanban board with task cards, a small progress dashboard and team collaboration avatars; calendar tile and rising performance chart. Premium modern 3D editorial product illustration, frosted white panels, cobalt blue and violet accents, soft pale blue background, gentle studio shadows. Compose everything centrally with generous outer margin, readable as a 400px wide thumbnail, no human faces, no logos, NO letters or words, no watermarks. This is conceptual project artwork, not a real screenshot."
+    },
+    {
+      "image": "restaurant-pos-saas.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project: Restaurant POS SaaS. Subject: a restaurant counter tablet showing a grid of colorful food dishes, receipt printer, table seating floor plan and small plate; warm coral and navy accents. Premium modern 3D editorial product illustration, frosted white interface panels, soft pale background, gentle studio shadows, sophisticated uncluttered composition, consistent visual family with a modern blue portfolio. Compose centrally with generous outer margin, readable at a 400px thumbnail. Use abstract UI blocks instead of text. No letters or words, no brand logos, no watermarks. Conceptual project artwork, not an actual screenshot."
+    },
+    {
+      "image": "waansaung-delivery-system.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project: Waansaung Delivery System. Subject: a local services marketplace on a smartphone with house listing, job briefcase and service tools cards, connected chat bubbles and a location pin; teal and cobalt accents. Premium modern 3D editorial product illustration, frosted white interface panels, soft pale background, gentle studio shadows, sophisticated uncluttered composition, consistent visual family with a modern blue portfolio. Compose centrally with generous outer margin, readable at a 400px thumbnail. Use abstract UI blocks instead of text. No letters or words, no brand logos, no watermarks. Conceptual project artwork, not an actual screenshot."
+    },
+    {
+      "image": "deltawatch-geoai.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project: DeltaWatch GeoAI flood intelligence. Subject: an isometric green river delta terrain with a blue flood risk grid, satellite overhead, rainfall droplets and a clean alert dashboard; deep teal and sky blue accents. Premium modern 3D editorial product illustration, frosted white interface panels, soft pale background, gentle studio shadows, sophisticated uncluttered composition, consistent visual family with a modern blue portfolio. Compose centrally with generous outer margin, readable at a 400px thumbnail. Use abstract UI blocks instead of text. No letters or words, no brand logos, no watermarks. Conceptual project artwork, not an actual screenshot."
+    },
+    {
+      "image": "price-changer.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project: Price Changer System. Subject: floating currency exchange dashboard, paired exchange arrows, abstract currency coins and synchronized desktop and phone pricing charts; indigo and emerald accents. Premium modern 3D editorial product illustration, frosted white interface panels, soft pale background, gentle studio shadows, sophisticated uncluttered composition, consistent visual family with a modern blue portfolio. Compose centrally with generous outer margin, readable at a 400px thumbnail. Use abstract UI blocks instead of text. No letters or words, no brand logos, no watermarks. Conceptual project artwork, not an actual screenshot."
+    },
+    {
+      "image": "customer-relationship-management-system.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project: CRM System. Subject: a polished sales pipeline dashboard with connected lead profile cards, funnel chart and calendar reminders; cobalt and orange accents. Premium modern 3D editorial product illustration, frosted white interface panels, soft pale background, gentle studio shadows, sophisticated uncluttered composition, consistent visual family with a modern blue portfolio. Compose centrally with generous outer margin, readable at a 400px thumbnail. Use abstract UI blocks instead of text. No letters or words, no brand logos, no watermarks. Conceptual project artwork, not an actual screenshot."
+    },
+    {
+      "image": "digital-payment-verification-platform.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project: Digital Payment Verification. Subject: a smartphone payment receipt scanned with a luminous OCR frame, verified check shield and matching transaction rows on a desktop panel; emerald and navy accents. Premium modern 3D editorial product illustration, frosted white interface panels, soft pale background, gentle studio shadows, sophisticated uncluttered composition, consistent visual family with a modern blue portfolio. Compose centrally with generous outer margin, readable at a 400px thumbnail. Use abstract UI blocks instead of text. No letters or words, no brand logos, no watermarks. Conceptual project artwork, not an actual screenshot."
+    },
+    {
+      "image": "digital-product-marketplace.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project: Digital Product Marketplace. Subject: a refined digital storefront on a laptop, floating downloadable software package boxes and design template cards, download arrow and shopping bag; violet and cobalt accents. Premium modern 3D editorial product illustration, frosted white interface panels, soft pale background, gentle studio shadows, sophisticated uncluttered composition, consistent visual family with a modern blue portfolio. Compose centrally with generous outer margin, readable at a 400px thumbnail. Use abstract UI blocks instead of text. No letters or words, no brand logos, no watermarks. Conceptual project artwork, not an actual screenshot."
+    },
+    {
+      "image": "book-store-mobile-app.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project: Book Store Mobile App. Subject: an elegant smartphone book library with colorful book covers, stacked books, bookmark and premium star; warm amber and teal accents. Premium modern 3D editorial product illustration, frosted white interface panels, soft pale background, gentle studio shadows, sophisticated uncluttered composition, consistent visual family with a modern blue portfolio. Compose centrally with generous outer margin, readable at a 400px thumbnail. Use abstract UI blocks instead of text. No letters or words, no brand logos, no watermarks. Conceptual project artwork, not an actual screenshot."
+    },
+    {
+      "image": "expense-request-management-system.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project: Expense Request Management. Subject: a digital expense claim form, receipt, connected three stage approval checkmarks, wallet and compact budget chart; emerald and cobalt accents. Premium modern 3D editorial product illustration, frosted white interface panels, soft pale background, gentle studio shadows, sophisticated uncluttered composition, consistent visual family with a modern blue portfolio. Compose centrally with generous outer margin, readable at a 400px thumbnail. Use abstract UI blocks instead of text. No letters or words, no brand logos, no watermarks. Conceptual project artwork, not an actual screenshot."
+    },
+    {
+      "image": "educational-information-system.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project: Educational Information System. Subject: an educational public website on a laptop, graduation cap, open reference book, searchable information cards and content editor; sky blue and gold accents. Premium modern 3D editorial product illustration, frosted white interface panels, soft pale background, gentle studio shadows, sophisticated uncluttered composition, consistent visual family with a modern blue portfolio. Compose centrally with generous outer margin, readable at a 400px thumbnail. Use abstract UI blocks instead of text. No letters or words, no brand logos, no watermarks. Conceptual project artwork, not an actual screenshot."
+    },
+    {
+      "image": "school-management-system.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project: School Management System. Subject: student portal tablet with course cards, assignment checklist, quiz progress rings and graduation certificate; violet and mint accents. Premium modern 3D editorial product illustration, frosted white interface panels, soft pale background, gentle studio shadows, sophisticated uncluttered composition, consistent visual family with a modern blue portfolio. Compose centrally with generous outer margin, readable at a 400px thumbnail. Use abstract UI blocks instead of text. No letters or words, no brand logos, no watermarks. Conceptual project artwork, not an actual screenshot."
+    },
+    {
+      "image": "wedding-invitation-website.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project: Wedding Invitation Website. Subject: an elegant digital wedding invitation on a smartphone surrounded by ivory flowers, intertwined gold rings, soft ribbon and calendar tile; blush pink and warm champagne palette. Premium modern 3D editorial product illustration, frosted white interface panels, soft pale background, gentle studio shadows, sophisticated uncluttered composition, consistent visual family with a modern blue portfolio. Compose centrally with generous outer margin, readable at a 400px thumbnail. Use abstract UI blocks instead of text. No letters or words, no brand logos, no watermarks. Conceptual project artwork, not an actual screenshot."
+    },
+    {
+      "image": "hotel-management-system.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project: Hotel Management System. Subject: a refined small hotel building model, room reservation calendar dashboard, room key card and reception bell; navy and warm brass accents. Premium modern 3D editorial product illustration, frosted white interface panels, soft pale background, gentle studio shadows, sophisticated uncluttered composition, consistent visual family with a modern blue portfolio. Compose centrally with generous outer margin, readable at a 400px thumbnail. Use abstract UI blocks instead of text. No letters or words, no brand logos, no watermarks. Conceptual project artwork, not an actual screenshot."
+    },
+    {
+      "image": "delivery-crm-system.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project: Delivery CRM System. Subject: a last mile delivery dashboard with route map pins, delivery van, parcels and customer profile cards; orange and cobalt accents. Premium modern 3D editorial product illustration, frosted white interface panels, soft pale background, gentle studio shadows, sophisticated uncluttered composition, consistent visual family with a modern blue portfolio. Compose centrally with generous outer margin, readable at a 400px thumbnail. Use abstract UI blocks instead of text. No letters or words, no brand logos, no watermarks. Conceptual project artwork, not an actual screenshot."
+    },
+    {
+      "image": "ai-eye-tracking-focus-monitoring-system.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project: AI Eye Tracking Focus Monitoring. Subject: a stylized anonymous eye and webcam, precise luminous gaze tracking landmarks, focus meter and discreet alert symbol on a monitor; cyan and navy accents. Premium modern 3D editorial product illustration, frosted white interface panels, soft pale background, gentle studio shadows, sophisticated uncluttered composition, consistent visual family with a modern blue portfolio. Compose centrally with generous outer margin, readable at a 400px thumbnail. Use abstract UI blocks instead of text. No letters or words, no brand logos, no watermarks. Conceptual project artwork, not an actual screenshot."
+    },
+    {
+      "image": "face-mask-detection-system.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project: Face Mask Detection. Subject: a neutral stylized mannequin head wearing a teal surgical mask, computer vision bounding frame and verified detection symbol on a monitor; teal and blue accents. Premium modern 3D editorial product illustration, frosted white interface panels, soft pale background, gentle studio shadows, sophisticated uncluttered composition, consistent visual family with a modern blue portfolio. Compose centrally with generous outer margin, readable at a 400px thumbnail. Use abstract UI blocks instead of text. No letters or words, no brand logos, no watermarks. Conceptual project artwork, not an actual screenshot."
+    },
+    {
+      "image": "face-recognition-system.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project: Face Recognition. Subject: a neutral stylized mannequin head with luminous facial landmark mesh, recognition bounding frame and identity profile card; violet and blue accents. Premium modern 3D editorial product illustration, frosted white interface panels, soft pale background, gentle studio shadows, sophisticated uncluttered composition, consistent visual family with a modern blue portfolio. Compose centrally with generous outer margin, readable at a 400px thumbnail. Use abstract UI blocks instead of text. No letters or words, no brand logos, no watermarks. Conceptual project artwork, not an actual screenshot."
+    },
+    {
+      "image": "triosys-company-profile-website.webp",
+      "prompt": "Create ONE finished landscape 16:9 banner illustration for a software developer portfolio project: TRIOSYS Company Profile Website. Subject: an elegant responsive corporate IT services website on a desktop and phone, connected cloud server cubes and abstract technology service tiles; cobalt and slate accents. Premium modern 3D editorial product illustration, frosted white interface panels, soft pale background, gentle studio shadows, sophisticated uncluttered composition, consistent visual family with a modern blue portfolio. Compose centrally with generous outer margin, readable at a 400px thumbnail. Use abstract UI blocks instead of text. No letters or words, no brand logos, no watermarks. Conceptual project artwork, not an actual screenshot."
+    }
+  ]
+}

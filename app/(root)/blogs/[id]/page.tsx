@@ -12,6 +12,10 @@ type Props = {
 };
 
 async function findPost(id: string): Promise<SerializedBlogPost | null> {
+  if (!process.env.DATABASE_URL) {
+    return defaultBlogPosts.find((post) => post.id === id) ?? null;
+  }
+
   try {
     const post = await prisma.blog.findUnique({ where: { id } });
 

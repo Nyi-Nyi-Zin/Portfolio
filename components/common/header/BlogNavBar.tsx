@@ -1,123 +1,40 @@
-"use client";
+﻿"use client";
 
-import { TagTabs } from "@/components/tag-tabs";
-import { ThemeToggle } from "@/components/theme/theme-toggle";
-import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { useSearch } from "@/store/useSearch";
-import { Menu, Search, X } from "lucide-react";
-import Image from "next/image";
+import { useEffect } from "react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { ArrowUpRight, BookOpen } from "lucide-react";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
+import { Brand } from "@/components/common/header/Brand";
 import { useLanguage } from "@/store/useLanguage";
 
-function BlogNavBar() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+export default function BlogNavBar() {
   const { lang, setLang } = useLanguage();
-
-  const searchKey = useSearch((state) => state.searchKey);
-  const setSearchKey = useSearch((state) => state.setSearchKey);
-
-  const toggleLang = () => setLang(lang === "en" ? "mm" : "en");
-
-  return (
-    <nav
-      className="sticky top-0 z-50 bg-background text-foreground shadow-md"
-      aria-label="Main navigation"
-    >
-      <div className="mx-4 md:mx-10 flex items-center justify-between py-3">
-        {/* Logo Section */}
-        <Link
-          href={"/"}
-          className="flex items-center gap-2 rounded-2xl hover:bg-linear-to-r hover:from-blue-100 hover:via-blue-50 hover:to-white dark:hover:from-blue-900/20 dark:hover:via-blue-800/20 dark:hover:to-transparent p-2"
-        >
-          <Image
-            alt="Nyi Nyi Zin portfolio logo"
-            src="/logo.png"
-            width={40}
-            height={40}
-            className="shrink-0 rounded-lg object-contain"
-            priority
-          />
-          <div className="hidden sm:block leading-tight">
-            <p className="text-base font-bold px-0.5">NyiNyiZin</p>
-            <p className="text-sm text-muted-foreground px-0.5">Portfolio</p>
-          </div>
-        </Link>
-
-        {/* Search Bar */}
-        <div className="relative hidden sm:block w-full mx-4 max-w-3xl">
-          <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Search..."
-            className="pl-8"
-            value={searchKey}
-            onChange={(e) => setSearchKey(e.target.value)}
-          />
-        </div>
-
-        {/* TagTabs + Language Toggle */}
-
-        {/* Desktop Actions */}
-        <div className="hidden md:flex items-center gap-4">
-          <button
-            onClick={toggleLang}
-            suppressHydrationWarning
-            className="px-3 py-1 border rounded text-sm text-foreground hover:bg-gray-100 dark:hover:bg-gray-800"
-          >
-            {lang === "en" ? "မြန်မာ" : "English"}
-          </button>
-
-          <ThemeToggle />
-        </div>
-
-        {/* Mobile Menu Toggle */}
-        <button
-          className="md:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-        >
-          {isMobileMenuOpen ? (
-            <X className="w-6 h-6" />
-          ) : (
-            <Menu className="w-6 h-6" />
-          )}
-        </button>
+  useEffect(() => {
+    const queryLang = new URLSearchParams(window.location.search).get("lang");
+    const savedLang = localStorage.getItem("lang");
+    const preferred = queryLang === "en" || queryLang === "mm" ? queryLang : savedLang;
+    if (preferred === "en" || preferred === "mm") setLang(preferred);
+  }, [setLang]);
+  const changeLang = (next: "en" | "mm") => {
+    setLang(next);
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", next);
+    window.history.replaceState(null, "", url);
+  };
+  return <nav className="sticky top-0 z-50 border-b border-border/70 bg-background/95 text-foreground backdrop-blur-xl" aria-label="Journal navigation">
+    <div className="mx-auto flex min-h-20 max-w-[1280px] items-center justify-between gap-2 px-3 sm:gap-6 sm:px-8">
+      <Brand />
+      <div className="hidden items-center gap-7 lg:flex">
+        <Link href="/" className="inline-flex items-center gap-1.5 rounded-md py-2 text-sm text-muted-foreground hover:text-primary focus-visible:outline-2 focus-visible:outline-primary">{lang === "mm" ? "ပင်မစာမျက်နှာ" : "Portfolio"}<ArrowUpRight className="size-3.5" aria-hidden="true" /></Link>
+        <Link href={`/blogs?lang=${lang}`} className="inline-flex items-center gap-2 rounded-md py-2 text-sm font-semibold text-primary focus-visible:outline-2 focus-visible:outline-primary"><BookOpen className="size-4" aria-hidden="true" />{lang === "mm" ? "ဆောင်းပါးများ" : "Journal"}</Link>
       </div>
-
-      {/* Mobile Menu Overlay */}
-      {isMobileMenuOpen && (
-        <>
-          <div
-            className="md:hidden fixed inset-0 top-16 bg-black/20 backdrop-blur-sm z-40"
-            onClick={() => setIsMobileMenuOpen(false)}
-          />
-          <div className="md:hidden absolute top-full left-0 right-0 border-t border-ring/40 shadow-xl bg-background z-50 p-4">
-            <div className="relative w-full mb-4">
-              <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input
-                type="search"
-                placeholder="Search..."
-                className="pl-8"
-                value={searchKey}
-                onChange={(e) => setSearchKey(e.target.value)}
-              />
-            </div>
-            <div className="flex justify-between items-center">
-              <ThemeToggle />
-              <button
-                onClick={toggleLang}
-                className="px-3 py-1 border rounded text-sm text-foreground hover:bg-gray-100 dark:hover:bg-gray-800"
-              >
-                {lang === "en" ? "မြန်မာ" : "English"}
-              </button>
-            </div>
-          </div>
-        </>
-      )}
-    </nav>
-  );
+      <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
+        <div role="group" aria-label={lang === "en" ? "Language" : "ဘာသာစကား"} className="inline-flex items-center rounded-full border border-border bg-muted/50 p-1 shadow-xs">
+          <button type="button" onClick={() => changeLang("en")} lang="en" aria-label="English" aria-pressed={lang === "en"} className="min-h-9 min-w-8 cursor-pointer rounded-full px-2 text-xs font-semibold text-muted-foreground transition-colors hover:bg-background hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary aria-pressed:bg-primary aria-pressed:text-primary-foreground aria-pressed:shadow-sm motion-reduce:transition-none sm:min-w-10 sm:px-3">EN</button>
+          <button type="button" onClick={() => changeLang("mm")} lang="my" aria-label="မြန်မာ" aria-pressed={lang === "mm"} className="min-h-9 min-w-8 cursor-pointer rounded-full px-2 text-xs font-semibold text-muted-foreground transition-colors hover:bg-background hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary aria-pressed:bg-primary aria-pressed:text-primary-foreground aria-pressed:shadow-sm motion-reduce:transition-none sm:px-3"><span className="min-[360px]:hidden">MM</span><span className="hidden min-[360px]:inline">မြန်မာ</span></button>
+        </div>
+        <ThemeToggle className="border-0 bg-transparent shadow-none" />
+      </div>
+    </div>
+  </nav>;
 }
-
-export default BlogNavBar;

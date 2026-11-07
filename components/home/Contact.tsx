@@ -101,7 +101,7 @@ function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-screen flex flex-col items-center border-b border-zinc-300 dark:border-zinc-700/50 py-20"
+      className="flex flex-col items-center border-b border-zinc-300 py-16 sm:py-20 dark:border-zinc-700/50"
     >
       <SectionHeader
         label="Get In Touch"
@@ -116,7 +116,7 @@ function Contact() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="lg:col-span-2 space-y-8"
+          className="min-w-0 space-y-8 lg:col-span-2"
         >
           {/* Contact Info Cards */}
           <div className="space-y-4">
@@ -129,15 +129,15 @@ function Contact() {
                   className="group flex items-center gap-4 p-4 rounded-xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/5 hover:shadow-lg hover:shadow-blue-500/5 transition-all duration-300"
                 >
                   <div
-                    className={`flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${detail.gradient} shadow-md`}
+                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${detail.gradient} shadow-md`}
                   >
                     <Icon className="w-5 h-5 text-white" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="text-xs font-medium text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
                       {detail.label}
                     </p>
-                    <p className="text-sm font-semibold text-zinc-800 dark:text-zinc-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                    <p className="text-sm leading-relaxed font-semibold text-zinc-800 [overflow-wrap:anywhere] transition-colors duration-300 group-hover:text-blue-600 dark:text-zinc-200 dark:group-hover:text-blue-400">
                       {detail.value}
                     </p>
                   </div>
@@ -178,7 +178,7 @@ function Contact() {
             transition={{ delay: 0.4 }}
             className="flex items-center gap-3 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-100 dark:border-emerald-500/20"
           >
-            <span className="relative flex h-3 w-3">
+            <span className="relative flex h-3 w-3 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
             </span>
@@ -194,11 +194,11 @@ function Contact() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="lg:col-span-3"
+          className="min-w-0 lg:col-span-3"
         >
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="space-y-5 p-8 rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/5 shadow-sm"
+            className="space-y-5 rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm sm:p-8 dark:border-white/10 dark:bg-white/5"
           >
             {/* Status message */}
             {submitStatus && (

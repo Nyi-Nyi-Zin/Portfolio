@@ -10,12 +10,12 @@ function Service() {
   return (
     <section
       id="service"
-      className="min-h-screen flex flex-col items-center border-b border-zinc-300 dark:border-zinc-700/50 py-20"
+      className="flex flex-col items-center border-b border-zinc-300 py-16 sm:py-20 dark:border-zinc-700/50"
     >
       <SectionHeader
         label="What I Offer"
         title="Services"
-        subtitle="Comprehensive development services tailored to bring your ideas to life with modern technologies and best practices"
+        subtitle="Software development and practical programming training to bring your ideas to life and help you grow your skills"
       />
 
       <motion.div
@@ -28,11 +28,12 @@ function Service() {
             transition: { staggerChildren: 0.08, delayChildren: 0.1 },
           },
         }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full"
+        className="grid w-full grid-cols-1 gap-6 md:auto-rows-fr md:grid-cols-2 lg:grid-cols-3"
       >
         {services.map((service, index) => (
           <motion.div
             key={service.title}
+            className="min-w-0 h-full"
             variants={{
               hidden: { opacity: 0, y: 24 },
               visible: { opacity: 1, y: 0 },

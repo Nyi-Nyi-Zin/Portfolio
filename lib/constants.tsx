@@ -6,7 +6,7 @@ import {
   Smartphone,
   Database,
   Cloud,
-  Code2,
+  GraduationCap,
   type LucideIcon,
 } from "lucide-react";
 
@@ -142,7 +142,7 @@ export const experience = [
   {
     "title": "Associate Developer",
     "company": "DomiTech",
-    "period": "Jan 2018 - Feb 2025",
+    "period": "May 2018 - Feb 2025",
     "location": "Thantwe, Myanmar",
     "keyAchievements": [
       "Installed and configured Wi-Fi networks and CCTV systems across Rakhine State, repaired computers, and resolved technical and connectivity issues.",
@@ -213,10 +213,10 @@ export const services: ServiceItem[] = [
     gradient: "from-pink-500 to-rose-400",
   },
   {
-    title: "API Integration",
+    title: "Programming Training",
     description:
-      "Seamless third-party API integration, payment gateways, OAuth, and custom middleware development.",
-    icon: Code2,
+      "Practical programming classes and hands-on guidance in web, mobile, and backend development. Build real projects and grow your skills with personalized mentoring.",
+    icon: GraduationCap,
     gradient: "from-indigo-500 to-blue-400",
   },
 ];
@@ -238,7 +238,7 @@ export const projects: ProjectItem[] = [
     "slug": "kpi-task-manager",
     "title": "KPI Task Manager",
     "description": "Project/team roles, task workflows, priorities, search, filters, activity logs, project KPIs, real-time chat, file sharing, reactions, replies, call activity, notifications, dashboards, calendar, and timeline views.",
-    "image": "/projectImages/task-mangement-app.webp",
+    "image": "/projectImages/generated/kpi-task-manager.webp",
     "techStack": [
       "NestJS",
       "TypeScript",
@@ -266,7 +266,7 @@ export const projects: ProjectItem[] = [
     "slug": "restaurant-pos-saas",
     "title": "Restaurant POS SaaS",
     "description": "A SaaS restaurant point-of-sale platform with separate customer, restaurant-owner, and centralized admin interfaces.",
-    "image": "/projectImages/ecommerce.webp",
+    "image": "/projectImages/generated/restaurant-pos-saas.webp",
     "techStack": [],
     "featured": true
   },
@@ -274,7 +274,7 @@ export const projects: ProjectItem[] = [
     "slug": "waansaung-delivery-system",
     "title": "Waansaung Delivery System",
     "description": "A live web, mobile, and admin marketplace for jobs, local services, property, and second-hand listings, with chat, push notifications, role-based access, multilingual support, and secure sign-in.",
-    "image": "/projectImages/ecommerce.webp",
+    "image": "/projectImages/generated/waansaung-delivery-system.webp",
     "techStack": [
       "Next.js",
       "React Native",
@@ -293,7 +293,7 @@ export const projects: ProjectItem[] = [
     "slug": "deltawatch-geoai",
     "title": "DeltaWatch — GeoAI Flood Intelligence & Early-Warning Platform",
     "description": "Analyzes satellite imagery, rainfall, and elevation to score flood risk across a 500-meter grid of 5,549 cells in Maubin Township.",
-    "image": "/projectImages/price-changer.webp",
+    "image": "/projectImages/generated/deltawatch-geoai.webp",
     "techStack": [
       "Next.js",
       "TypeScript",
@@ -311,7 +311,7 @@ export const projects: ProjectItem[] = [
     "slug": "price-changer",
     "title": "Price Changer System",
     "description": "Centralized exchange-rate and multi-currency management with configurable pricing models, a secure decryption module to verify update payloads before broadcast, synchronized web/mobile prices, and historical trend and system analytics charts.",
-    "image": "/projectImages/price-changer.webp",
+    "image": "/projectImages/generated/price-changer.webp",
     "techStack": [
       "Next.js",
       "React",
@@ -336,7 +336,7 @@ export const projects: ProjectItem[] = [
     "slug": "customer-relationship-management-system",
     "title": "Customer Relationship Management (CRM) System",
     "description": "Lead tracking, follow-up scheduling, conversion-based opportunity routing, sales-performance dashboards, and marketing-channel attribution analytics.",
-    "image": "/projectImages/task-mangement-app.webp",
+    "image": "/projectImages/generated/customer-relationship-management-system.webp",
     "techStack": [
       "Next.js",
       "NestJS",
@@ -353,7 +353,7 @@ export const projects: ProjectItem[] = [
     "slug": "digital-payment-verification-platform",
     "title": "Digital Payment Verification Platform",
     "description": "OCR-based verification of KBZPay, AyaPay, and WavePay payment screenshots against transaction exports, with duplicate detection and optional push alerts.",
-    "image": "/projectImages/ecommerce.webp",
+    "image": "/projectImages/generated/digital-payment-verification-platform.webp",
     "techStack": [
       "Flutter",
       "Riverpod",
@@ -374,7 +374,7 @@ export const projects: ProjectItem[] = [
     "slug": "digital-product-marketplace",
     "title": "Digital Product Marketplace Website",
     "description": "Searchable digital product listings, category filters, product detail pages and purchasing, access to purchased products, and admin tools for listings and orders.",
-    "image": "/projectImages/ecommerce.webp",
+    "image": "/projectImages/generated/digital-product-marketplace.webp",
     "techStack": [
       "Next.js",
       "NestJS",
@@ -386,7 +386,7 @@ export const projects: ProjectItem[] = [
     "slug": "book-store-mobile-app",
     "title": "Book Store Mobile App",
     "description": "A Flutter app for browsing books, viewing details, purchasing books, and buying Premium access.",
-    "image": "/projectImages/wedding-invitation.webp",
+    "image": "/projectImages/generated/book-store-mobile-app.webp",
     "techStack": [
       "Flutter"
     ],
@@ -396,7 +396,7 @@ export const projects: ProjectItem[] = [
     "slug": "expense-request-management-system",
     "title": "Expense Request Management System",
     "description": "Role- and attribute-based approvals for employees, managers, and finance, with claim-limit, department, and category policy checks; notifications and violation flags; multi-tier approvals; status and payout tracking; dashboards; and CSV/PDF audit reports.",
-    "image": "/projectImages/task-mangement-app.webp",
+    "image": "/projectImages/generated/expense-request-management-system.webp",
     "techStack": [
       "Next.js",
       "React",
@@ -420,7 +420,7 @@ export const projects: ProjectItem[] = [
     "slug": "educational-information-system",
     "title": "Educational Information System",
     "description": "REST API, admin dashboard, and public website with JWT-based permissions, background workers, SEO-friendly dynamic rendering, and content management.",
-    "image": "/projectImages/educational-information.webp",
+    "image": "/projectImages/generated/educational-information-system.webp",
     "techStack": [
       "Go",
       "GORM",
@@ -436,7 +436,7 @@ export const projects: ProjectItem[] = [
     "slug": "school-management-system",
     "title": "School Management System",
     "description": "Admin dashboard and student portal for courses, enrollments, lessons, assignments, quizzes, announcements, exams, progress tracking, submission review, and certificates after passing final exams.",
-    "image": "/projectImages/educational-information.webp",
+    "image": "/projectImages/generated/school-management-system.webp",
     "techStack": [
       "Next.js",
       "React",
@@ -454,7 +454,7 @@ export const projects: ProjectItem[] = [
     "slug": "wedding-invitation-website",
     "title": "Wedding Invitation Website",
     "description": "Shareable invitation with a welcome message, pre-wedding photos, ceremony date, time and venue, and a guest-wishes section.",
-    "image": "/projectImages/wedding-invitation.webp",
+    "image": "/projectImages/generated/wedding-invitation-website.webp",
     "techStack": [
       "Next.js",
       "PostgreSQL",
@@ -469,7 +469,7 @@ export const projects: ProjectItem[] = [
     "slug": "hotel-management-system",
     "title": "Hotel Management System",
     "description": "Room, reservation, and guest management; check-in/check-out; billing and invoices; occupancy and revenue reports; and administrator/reception access.",
-    "image": "/projectImages/company-website.webp",
+    "image": "/projectImages/generated/hotel-management-system.webp",
     "techStack": [
       "React Native",
       "Expo",
@@ -483,7 +483,7 @@ export const projects: ProjectItem[] = [
     "slug": "delivery-crm-system",
     "title": "Delivery CRM System",
     "description": "Delivery operations and customer management for customer/order tracking, pricing, status workflows, and role-based dashboards.",
-    "image": "/projectImages/task-mangement-app.webp",
+    "image": "/projectImages/generated/delivery-crm-system.webp",
     "techStack": [
       "Next.js",
       "NestJS",
@@ -499,7 +499,7 @@ export const projects: ProjectItem[] = [
     "slug": "ai-eye-tracking-focus-monitoring-system",
     "title": "AI Eye-Tracking Focus Monitoring System",
     "description": "Webcam-based detection of drowsiness and loss of focus in drivers and students, with alerts.",
-    "image": "/projectImages/eye-tracking.webp",
+    "image": "/projectImages/generated/ai-eye-tracking-focus-monitoring-system.webp",
     "techStack": [
       "Python",
       "OpenCV",
@@ -511,7 +511,7 @@ export const projects: ProjectItem[] = [
     "slug": "face-mask-detection-system",
     "title": "Face Mask Detection System",
     "description": "Computer-vision system to detect whether a person is wearing a face mask.",
-    "image": "/projectImages/face-mask-detection.webp",
+    "image": "/projectImages/generated/face-mask-detection-system.webp",
     "techStack": [
       "Python"
     ],
@@ -521,7 +521,7 @@ export const projects: ProjectItem[] = [
     "slug": "face-recognition-system",
     "title": "Face Recognition System",
     "description": "Separate computer-vision system to detect and recognize faces.",
-    "image": "/projectImages/face-recognization.webp",
+    "image": "/projectImages/generated/face-recognition-system.webp",
     "techStack": [
       "Python"
     ],
@@ -531,7 +531,7 @@ export const projects: ProjectItem[] = [
     "slug": "triosys-company-profile-website",
     "title": "TRIOSYS Company Profile Website",
     "description": "Company website presenting TRIOSYS's IT services.",
-    "image": "/projectImages/company-website.webp",
+    "image": "/projectImages/generated/triosys-company-profile-website.webp",
     "techStack": [
       "Next.js"
     ],

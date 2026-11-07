@@ -1,16 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import * as Dialog from "@radix-ui/react-dialog";
 import { Button } from "../../ui/button";
 import { NavLinkId, navLinks } from "@/lib/constants";
-import { Menu, X, BookOpen } from "lucide-react";
+import { Menu, X, BookOpen, ArrowUpRight } from "lucide-react";
 import { ThemeToggle } from "../../theme/theme-toggle";
 import { NavButton } from "@/components/common/header/NavButton";
 import { useSectionObserver } from "@/hooks/useSectionObserver";
-import { useMobileMenuLock } from "@/hooks/useMobileMenuLock";
 import { scrollToSection } from "@/utils/scroll";
 import Link from "next/link";
-import Image from "next/image";
+import { Brand } from "@/components/common/header/Brand";
+
+const mobileLinks: { id: NavLinkId; label: string }[] = [
+  { id: "home", label: "Home" },
+  { id: "projects", label: "Projects" },
+  { id: "about", label: "About" },
+  { id: "experience", label: "Experience" },
+  { id: "skill", label: "Skills" },
+  { id: "service", label: "Services" },
+  { id: "education", label: "Education" },
+  { id: "contact", label: "Contact" },
+];
 
 function MainNavbar() {
   const [activeSection, setActiveSection] = useState<NavLinkId>("home");
@@ -18,120 +29,147 @@ function MainNavbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useSectionObserver(activeSection, setActiveSection, setPrevSection);
-  useMobileMenuLock(isMobileMenuOpen, () => setIsMobileMenuOpen(false));
 
-  const observedLinks = navLinks;
+  useEffect(() => {
+    const desktop = window.matchMedia("(min-width: 1280px)");
+    const closeOnDesktop = () => {
+      if (desktop.matches) setIsMobileMenuOpen(false);
+    };
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => desktop.removeEventListener("change", closeOnDesktop);
+  }, []);
 
   const handleScroll = (id: NavLinkId) => {
-    scrollToSection(id);
     setIsMobileMenuOpen(false);
+    requestAnimationFrame(() => {
+      scrollToSection(
+        id,
+        document.querySelector("#main-navbar")?.clientHeight ?? 80,
+      );
+    });
   };
 
   const getFillOrigin = (id: NavLinkId): "left" | "right" => {
     if (!prevSection) return "left";
-
-    const currentIndex = observedLinks.findIndex((l) => l.id === id);
-    const prevIndex = observedLinks.findIndex((l) => l.id === prevSection);
-
-    return currentIndex > prevIndex ? "left" : "right";
+    return navLinks.findIndex((link) => link.id === id) >
+      navLinks.findIndex((link) => link.id === prevSection)
+      ? "left"
+      : "right";
   };
 
   return (
-    <nav
-      className="sticky top-0 z-50 bg-[#FFFFFF] dark:bg-[#101522] text-foreground shadow-md"
-      aria-label="Main navigation"
-    >
-      <div className="mx-4 md:mx-10 flex items-center justify-between py-3">
-        <Link
-          href={"/"}
-          className="flex items-center gap-2 rounded-2xl hover:bg-linear-to-r hover:from-blue-100 hover:via-blue-50 hover:to-white dark:hover:from-blue-900/20 dark:hover:via-blue-800/20 dark:hover:to-transparent p-2"
-        >
-          <Image
-            alt="Nyi Nyi Zin portfolio logo"
-            src="/logo.png"
-            width={40}
-            height={40}
-            className="shrink-0 rounded-lg object-contain"
-            priority
-          />
-          <div className="hidden sm:block leading-tight">
-            <p className="text-base font-bold px-0.5">NyiNyiZin</p>
-            <p className="text-sm text-muted-foreground px-0.5">Portfolio</p>
+    <Dialog.Root open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+      <nav
+        id="main-navbar"
+        className="sticky top-0 z-50 bg-white text-foreground shadow-xs dark:bg-[#101522]"
+        aria-label="Main navigation"
+      >
+        <div className="mx-4 flex items-center justify-between gap-4 py-2.5 md:mx-8 2xl:mx-10">
+          <Brand />
+
+          <ul className="hidden items-center gap-1 rounded-xl border p-1.5 shadow-lg xl:flex xl:[&_button]:px-2 xl:[&_button]:text-sm 2xl:gap-2 2xl:p-2 2xl:[&_button]:px-3 dark:bg-[#1A222F]">
+            {navLinks.map((link) => (
+              <li key={link.id}>
+                <NavButton
+                  link={link}
+                  isActive={activeSection === link.id}
+                  fillOrigin={getFillOrigin(link.id)}
+                  onClick={handleScroll}
+                />
+              </li>
+            ))}
+          </ul>
+
+          <div className="hidden shrink-0 items-center gap-4 xl:flex 2xl:gap-6">
+            <Link
+              href="/blogs"
+              className="inline-flex items-center gap-2 rounded-lg py-2 text-sm text-muted-foreground transition-colors hover:text-blue-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary 2xl:text-base dark:hover:text-blue-400"
+            >
+              <BookOpen className="size-4" aria-hidden="true" />
+              Journal
+            </Link>
+            <ThemeToggle className="border-0 bg-transparent shadow-none hover:bg-muted" />
+            <Button
+              onClick={() => handleScroll("contact")}
+              className="h-10 gap-2 rounded-xl bg-[#2460f2] px-4 text-sm font-semibold text-white shadow-md shadow-blue-600/10 hover:bg-blue-700"
+            >
+              Let’s talk
+              <ArrowUpRight className="size-4" aria-hidden="true" />
+            </Button>
           </div>
-        </Link>
 
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex space-x-3 rounded-2xl p-3 dark:bg-[#1A222F] shadow-lg border overflow-visible ">
-          {observedLinks.map((link) => (
-            <li key={link.id}>
-              <NavButton
-                link={link}
-                isActive={activeSection === link.id}
-                fillOrigin={getFillOrigin(link.id)}
-                onClick={handleScroll}
-              />
-            </li>
-          ))}
-        </ul>
-        <Button variant="destructive" asChild>
-          <Link href="/blogs" className="flex items-center gap-2">
-            <BookOpen />
-            Blogs
-          </Link>
-        </Button>
-        {/* Desktop Actions */}
-        <div className="hidden md:flex items-center gap-4">
-          <ThemeToggle />
+          <div className="flex items-center gap-3 xl:hidden">
+            <ThemeToggle className="border-0 bg-transparent shadow-none hover:bg-muted" />
+            <Dialog.Trigger asChild>
+              <button
+                type="button"
+                className="flex size-11 items-center justify-center rounded-xl border transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                aria-label="Open menu"
+              >
+                <Menu className="size-5" aria-hidden="true" />
+              </button>
+            </Dialog.Trigger>
+          </div>
         </div>
+      </nav>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={isMobileMenuOpen}
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 z-[60] bg-slate-950/30 xl:hidden" />
+        <Dialog.Content
+          aria-describedby={undefined}
+          className="fixed inset-x-0 top-0 z-[70] max-h-dvh overflow-y-auto bg-white text-foreground shadow-xl focus:outline-none xl:hidden dark:bg-[#101522]"
         >
-          {isMobileMenuOpen ? (
-            <X className="w-6 h-6" />
-          ) : (
-            <Menu className="w-6 h-6" />
-          )}
-        </button>
-      </div>
+          <Dialog.Title className="sr-only">Navigation menu</Dialog.Title>
+          <div className="mx-4 flex items-center justify-between gap-3 py-2.5 md:mx-8">
+            <Brand />
+            <div className="flex items-center gap-3">
+              <ThemeToggle className="border-0 bg-transparent shadow-none hover:bg-muted" />
+              <Dialog.Close asChild>
+                <button
+                  type="button"
+                  aria-label="Close menu"
+                  className="flex size-11 items-center justify-center rounded-xl border transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                >
+                  <X className="size-6" aria-hidden="true" />
+                </button>
+              </Dialog.Close>
+            </div>
+          </div>
 
-      {/* Mobile Menu with Backdrop */}
-      {isMobileMenuOpen && (
-        <>
-          {/* Backdrop - Blurs the background content */}
-          <div
-            className="md:hidden fixed inset-0 top-23 bg-black/20 backdrop-blur-sm z-40"
-            onClick={() => setIsMobileMenuOpen(false)}
-            aria-hidden="true"
-          />
-
-          {/* Mobile Menu */}
-          <div className="md:hidden absolute top-full left-0 right-0 border-t border-ring/40 shadow-xl bg-background z-50 w-[50%] h-screen">
-            <ul className="flex flex-col p-4 space-y-2 ">
-              {observedLinks.map((link) => (
+          <nav
+            aria-label="Mobile navigation"
+            className="px-4 pt-6 pb-5 md:px-8"
+          >
+            <ul className="grid grid-cols-2 gap-x-2 gap-y-1">
+              {mobileLinks.map((link) => (
                 <li key={link.id}>
-                  <NavButton
-                    link={link}
-                    isActive={activeSection === link.id}
-                    fillOrigin={getFillOrigin(link.id)}
-                    onClick={handleScroll}
-                  />
+                  <button
+                    type="button"
+                    onClick={() => handleScroll(link.id)}
+                    aria-current={
+                      activeSection === link.id ? "page" : undefined
+                    }
+                    className={`w-full rounded-xl px-3.5 py-3 text-left text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:text-base ${activeSection === link.id ? "bg-blue-50 text-blue-600 dark:bg-blue-950/60 dark:text-blue-400" : "text-muted-foreground hover:bg-muted hover:text-foreground"}`}
+                  >
+                    {link.label}
+                  </button>
                 </li>
               ))}
             </ul>
 
-            {/* Mobile Actions */}
-            <div className="flex flex-col gap-2 p-4 border-t border-ring/50 items-end">
-              <ThemeToggle />
-            </div>
-          </div>
-        </>
-      )}
-    </nav>
+            <Link
+              href="/blogs"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="mt-4 flex items-center gap-2.5 border-t pt-5 text-sm text-muted-foreground transition-colors hover:text-blue-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:text-base dark:hover:text-blue-400"
+            >
+              <BookOpen className="size-4" aria-hidden="true" />
+              Read the journal
+              <ArrowUpRight className="ml-auto size-4" aria-hidden="true" />
+            </Link>
+          </nav>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 }
 

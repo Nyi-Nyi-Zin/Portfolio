@@ -712,7 +712,7 @@ export function SkillsSection() {
   );
 
   return (
-    <div className="w-full max-w-6xl mx-auto space-y-8 my-5 p-4">
+    <div className="mx-auto my-5 w-full max-w-6xl space-y-8 sm:px-4">
       {/* Filter Tabs */}
       <div className="flex flex-wrap justify-center gap-3">
         {categories.map((category) => (
@@ -723,7 +723,7 @@ export function SkillsSection() {
               "flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-200",
               activeCategory === category.name
                 ? "bg-blue-600 text-white shadow-lg shadow-blue-600/25 scale-105"
-                : "bg-white text-gray-600 hover:bg-gray-50 border border-gray-100 shadow-sm hover:shadow-md",
+                : "border border-gray-100 bg-white text-gray-600 shadow-sm hover:bg-gray-50 hover:shadow-md dark:border-white/10 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700",
             )}
           >
             {category.icon}
@@ -769,7 +769,7 @@ export function SkillsSection() {
               <h3 className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-1">
                 {skill.name}
               </h3>
-              <p className="text-gray-500 dark:text-slate-400 text-sm mb-6 h-10 line-clamp-2">
+              <p className="mb-6 min-h-12 text-sm leading-6 text-gray-500 dark:text-slate-400">
                 {skill.description}
               </p>
 

@@ -32,7 +32,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ item, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, delay: index * 0.12 }}
-      className="group relative"
+      className="group relative h-full min-w-0"
     >
       <div
         role="link"
