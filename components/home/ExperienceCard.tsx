@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Card } from "../ui/card";
-import { Calendar, MapPin } from "lucide-react";
+import { Calendar, ChevronDown, MapPin } from "lucide-react";
 
 export type ExperienceItem = {
   title: string;
@@ -16,6 +16,9 @@ export type ExperienceItem = {
 type ExperienceCardProps = { item: ExperienceItem };
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({ item }) => {
+  const previewAchievements = item.keyAchievements.slice(0, 2);
+  const moreAchievements = item.keyAchievements.slice(2);
+
   return (
     <motion.div
       whileHover={{ y: -4 }}
@@ -68,7 +71,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ item }) => {
       </div>
 
       {/* Achievements section */}
-      <div>
+      <div className="flex flex-1 flex-col">
         {/* Section label + divider */}
         <div className="flex items-center gap-2 mb-3">
           <span className="text-xs font-medium tracking-widest uppercase text-muted-foreground whitespace-nowrap">
@@ -78,7 +81,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ item }) => {
         </div>
 
         <ul className="space-y-2.5">
-          {item.keyAchievements.map((achieve, index) => (
+          {previewAchievements.map((achieve, index) => (
             <motion.li
               key={index}
               initial={{ opacity: 0, x: -8 }}
@@ -94,6 +97,27 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ item }) => {
             </motion.li>
           ))}
         </ul>
+
+        {moreAchievements.length > 0 && (
+          <details className="group mt-auto pt-5">
+            <summary className="flex w-fit cursor-pointer list-none items-center gap-2 rounded-lg text-sm font-medium text-violet-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-violet-500 dark:text-violet-300 [&::-webkit-details-marker]:hidden">
+              <span className="group-open:hidden">View more ({moreAchievements.length})</span>
+              <span className="hidden group-open:inline">View less</span>
+              <span className="sr-only">about {item.title} at {item.company}</span>
+              <ChevronDown className="size-4 transition-transform group-open:rotate-180 motion-reduce:transition-none" aria-hidden="true" />
+            </summary>
+            <ul className="mt-4 space-y-2.5">
+              {moreAchievements.map((achievement) => (
+                <li key={achievement} className="flex items-start gap-2.5">
+                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-violet-400" />
+                  <span className="min-w-0 text-sm leading-7 text-muted-foreground lg:text-base">
+                    {achievement}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </details>
+        )}
       </div>
       </Card>
     </motion.div>

@@ -24,13 +24,23 @@ const educationData: EducationEntry[] = [
     field: "Computer Science",
     institution: "Polytechnic University Maubin",
     location: "Maubin, Myanmar",
-    period: "Graduated 2025",
+    period: "Graduated 2026",
     description: "Completed a Bachelor of Computer Science degree.",
     achievements: [],
     gradient: "from-blue-500 to-cyan-400",
     iconGradient: "from-blue-600 to-cyan-500",
   },
-
+  {
+    degree: "High School",
+    field: "High School Education",
+    institution: "ထ.ခွဲ(မြို့မ)",
+    location: "Thantwe Township, Rakhine State, Myanmar",
+    period: "Completed 2017",
+    description: "Completed high school in 2017.",
+    achievements: [],
+    gradient: "from-violet-500 to-fuchsia-400",
+    iconGradient: "from-violet-600 to-fuchsia-500",
+  },
 ];
 
 // Animation variants

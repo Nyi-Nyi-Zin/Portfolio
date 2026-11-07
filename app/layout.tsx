@@ -19,10 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${bodyFont.variable} ${headingFont.variable} ${myanmarFont.variable} ${monoFont.variable}`}
+    >
       <body
         suppressHydrationWarning={true}
-        className={`${bodyFont.variable} ${headingFont.variable} ${myanmarFont.variable} ${monoFont.variable} font-sans antialiased bg-background`}
+        className="font-sans antialiased bg-background"
       >
         {children}
         <Analytics />

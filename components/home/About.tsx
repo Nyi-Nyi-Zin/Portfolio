@@ -1,12 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Text } from "../common/Text";
+import { motion, useReducedMotion } from "framer-motion";
 import { aboutCardData } from "@/lib/constants";
 import AboutCard from "./AboutCard";
 import SectionHeader from "../common/SectionHeader";
 
 function About() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section
       id="about"
@@ -15,44 +16,66 @@ function About() {
       <SectionHeader
         label="Who I Am"
         title="About Me"
-        subtitle="A passionate developer dedicated to crafting high-quality software solutions"
+        subtitle="Building useful software and helping teams do their best work."
       />
 
-      <div className="flex flex-col lg:flex-row w-full gap-10">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 lg:flex-row lg:items-stretch lg:gap-14">
         {/* Left side: Text */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
+          initial={{ opacity: 0, x: reduceMotion ? 0 : -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="min-w-0 flex-1 space-y-5"
+          transition={{ duration: reduceMotion ? 0 : 0.6 }}
+          className="min-w-0 flex-1"
         >
-          <Text className="leading-relaxed">
-            I am a Full-Stack Software Developer and team lead with 7+ years of experience in the IT field since 2018. I build and ship web, mobile, and backend systems, with experience in system architecture, secure APIs, database design, and DevOps.
-          </Text>
-          <Text className="leading-relaxed">
-            I graduated with a Bachelor of Computer Science from
-            <strong> Polytechnic University Maubin in 2025</strong>. Alongside my professional work, I continue to strengthen my skills through hands-on projects and collaboration with development teams.
-          </Text>
-          <Text className="leading-relaxed">
-            I am currently leading a software development team, where I am
-            responsible for defining system architecture, designing scalable and
-            efficient project workflows, and ensuring best practices across the
-            development lifecycle. I actively mentor junior developers, support
-            their technical growth, and foster a collaborative team environment
-            to deliver high-quality software solutions.
-          </Text>
+          <div className="border-l-[3px] border-blue-500 pl-5 sm:pl-6">
+            <p className="max-w-[38ch] text-xl leading-[1.65] font-medium tracking-[-0.025em] text-foreground sm:text-2xl">
+              I’m a <strong className="font-semibold text-blue-700 dark:text-blue-400">Full-Stack Software Developer</strong>{" "}
+              and team lead with <strong className="font-semibold">7+ years</strong>{" "}
+              in IT, building software since 2018.
+            </p>
+          </div>
+
+          <p className="mt-6 max-w-[60ch] text-base leading-8 text-slate-600 dark:text-slate-300">
+            I build and ship web, mobile, and backend systems, with experience in
+            system architecture, secure APIs, database design, and DevOps.
+          </p>
+
+          <div className="mt-7 space-y-7 border-t border-border pt-7">
+            <div className="space-y-2.5">
+              <h3 className="text-sm font-semibold tracking-normal text-foreground">
+                Leading with purpose
+              </h3>
+              <p className="max-w-[60ch] text-base leading-8 text-slate-600 dark:text-slate-300">
+                I lead a software development team, define system architecture,
+                and design scalable workflows. I guide development best practices,
+                mentor junior developers, and help the team collaborate to deliver
+                high-quality software.
+              </p>
+            </div>
+
+            <div className="space-y-2.5">
+              <h3 className="text-sm font-semibold tracking-normal text-foreground">
+                Always learning
+              </h3>
+              <p className="max-w-[60ch] text-base leading-8 text-slate-600 dark:text-slate-300">
+                I graduated with a <strong className="font-medium text-foreground">Bachelor of Computer Science</strong>{" "}
+                from Polytechnic University Maubin in 2026. I continue to grow
+                through hands-on projects and collaboration with development teams.
+              </p>
+            </div>
+          </div>
         </motion.div>
 
         {/* Right side: Cards */}
-        <div className="grid min-w-0 flex-1 grid-cols-2 gap-4 sm:gap-5">
+        <div className="grid min-w-0 flex-1 auto-rows-fr grid-cols-2 gap-4 sm:gap-5">
           {aboutCardData.map((item, index) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: reduceMotion ? 0 : 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: reduceMotion ? 0 : 0.5, delay: reduceMotion ? 0 : index * 0.1 }}
             >
               <AboutCard
                 title={item.title}

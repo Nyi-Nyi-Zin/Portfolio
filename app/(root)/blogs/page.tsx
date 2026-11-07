@@ -9,9 +9,9 @@ export default async function BlogPage() {
   let databasePosts: SerializedBlogPost[] = [];
 
   try {
-    const blogs = await prisma.blog.findMany({
+    const blogs = process.env.DATABASE_URL ? await prisma.blog.findMany({
       orderBy: { createdAt: "desc" },
-    });
+    }) : [];
 
     databasePosts = blogs.map((b) => {
       const translations = b.translations as unknown as {

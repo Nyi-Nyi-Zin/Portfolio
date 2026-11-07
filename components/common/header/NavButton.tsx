@@ -1,5 +1,4 @@
 import { NavLinkId } from "@/lib/constants";
-import { useEffect, useState } from "react";
 
 interface NavButtonProps {
   link: {

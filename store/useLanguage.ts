@@ -9,10 +9,7 @@ interface LanguageState {
 }
 
 export const useLanguage = create<LanguageState>((set) => ({
-  lang:
-    (typeof window !== "undefined"
-      ? (localStorage.getItem("lang") as Language)
-      : "en") || "en",
+  lang: "en",
   setLang: (l) => {
     localStorage.setItem("lang", l);
     set({ lang: l });

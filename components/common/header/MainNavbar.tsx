@@ -10,7 +10,7 @@ import { NavButton } from "@/components/common/header/NavButton";
 import { useSectionObserver } from "@/hooks/useSectionObserver";
 import { scrollToSection } from "@/utils/scroll";
 import Link from "next/link";
-import Image from "next/image";
+import { Brand } from "@/components/common/header/Brand";
 
 const mobileLinks: { id: NavLinkId; label: string }[] = [
   { id: "home", label: "Home" },
@@ -22,28 +22,6 @@ const mobileLinks: { id: NavLinkId; label: string }[] = [
   { id: "education", label: "Education" },
   { id: "contact", label: "Contact" },
 ];
-
-function Brand() {
-  return (
-    <Link href="/" className="flex shrink-0 items-center gap-2 rounded-xl p-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary">
-      <Image
-        alt="Nyi Nyi Zin portfolio logo"
-        src="/logo.png"
-        width={40}
-        height={40}
-        className="shrink-0 rounded-lg object-contain"
-        priority
-      />
-      <span className="text-base font-semibold tracking-tight xl:hidden">
-        Nyi Nyi Zin<span className="text-blue-600 dark:text-blue-400">.</span>
-      </span>
-      <span className="hidden leading-tight xl:block">
-        <span className="block text-base font-bold">NyiNyiZin</span>
-        <span className="block text-sm text-muted-foreground">Portfolio</span>
-      </span>
-    </Link>
-  );
-}
 
 function MainNavbar() {
   const [activeSection, setActiveSection] = useState<NavLinkId>("home");
@@ -81,10 +59,10 @@ function MainNavbar() {
         className="sticky top-0 z-50 bg-white text-foreground shadow-md dark:bg-[#101522]"
         aria-label="Main navigation"
       >
-        <div className="mx-4 flex items-center justify-between gap-4 py-4 md:mx-8 2xl:mx-10">
+        <div className="mx-4 flex items-center justify-between gap-4 py-2.5 md:mx-8 2xl:mx-10">
           <Brand />
 
-          <ul className="hidden items-center gap-1 rounded-2xl border p-2 shadow-lg xl:flex xl:[&_button]:px-2 xl:[&_button]:text-sm 2xl:gap-3 2xl:p-3 2xl:[&_button]:px-4 2xl:[&_button]:text-base dark:bg-[#1A222F]">
+          <ul className="hidden items-center gap-1 rounded-xl border p-1.5 shadow-lg xl:flex xl:[&_button]:px-2 xl:[&_button]:text-sm 2xl:gap-2 2xl:p-2 2xl:[&_button]:px-3 dark:bg-[#1A222F]">
             {navLinks.map((link) => (
               <li key={link.id}>
                 <NavButton
@@ -103,7 +81,7 @@ function MainNavbar() {
               Journal
             </Link>
             <ThemeToggle className="border-0 bg-transparent shadow-none hover:bg-muted" />
-            <Button onClick={() => handleScroll("contact")} className="h-12 gap-3 rounded-xl bg-[#2460f2] px-5 font-semibold text-white shadow-md shadow-blue-600/10 hover:bg-blue-700">
+            <Button onClick={() => handleScroll("contact")} className="h-10 gap-2 rounded-xl bg-[#2460f2] px-4 text-sm font-semibold text-white shadow-md shadow-blue-600/10 hover:bg-blue-700">
               Let’s talk
               <ArrowUpRight className="size-4" aria-hidden="true" />
             </Button>
@@ -128,7 +106,7 @@ function MainNavbar() {
         <Dialog.Overlay className="fixed inset-0 z-[60] bg-slate-950/30 xl:hidden" />
         <Dialog.Content aria-describedby={undefined} className="fixed inset-x-0 top-0 z-[70] max-h-dvh overflow-y-auto bg-white text-foreground shadow-xl focus:outline-none xl:hidden dark:bg-[#101522]">
           <Dialog.Title className="sr-only">Navigation menu</Dialog.Title>
-          <div className="mx-4 flex items-center justify-between gap-3 py-4 md:mx-8">
+          <div className="mx-4 flex items-center justify-between gap-3 py-2.5 md:mx-8">
             <Brand />
             <div className="flex items-center gap-3">
               <ThemeToggle className="border-0 bg-transparent shadow-none hover:bg-muted" />
