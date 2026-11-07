@@ -10,7 +10,7 @@ function About() {
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col items-center border-b border-zinc-300 dark:border-zinc-700/50 py-20"
+      className="flex flex-col items-center border-b border-zinc-300 py-16 sm:py-20 dark:border-zinc-700/50"
     >
       <SectionHeader
         label="Who I Am"
@@ -25,17 +25,15 @@ function About() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="lg:w-1/2"
+          className="min-w-0 flex-1 space-y-5"
         >
           <Text className="leading-relaxed">
             I am a Full-Stack Software Developer and team lead with 7+ years of experience in the IT field since 2018. I build and ship web, mobile, and backend systems, with experience in system architecture, secure APIs, database design, and DevOps.
           </Text>
-          <br />
           <Text className="leading-relaxed">
             I graduated with a Bachelor of Computer Science from
             <strong> Polytechnic University Maubin in 2025</strong>. Alongside my professional work, I continue to strengthen my skills through hands-on projects and collaboration with development teams.
           </Text>
-          <br />
           <Text className="leading-relaxed">
             I am currently leading a software development team, where I am
             responsible for defining system architecture, designing scalable and
@@ -47,7 +45,7 @@ function About() {
         </motion.div>
 
         {/* Right side: Cards */}
-        <div className="lg:w-1/2 grid lg:grid-cols-2 grid-cols-2 gap-5">
+        <div className="grid min-w-0 flex-1 grid-cols-2 gap-4 sm:gap-5">
           {aboutCardData.map((item, index) => (
             <motion.div
               key={item.title}

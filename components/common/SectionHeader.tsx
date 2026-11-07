@@ -22,7 +22,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="text-center mb-16 space-y-4"
+      className="mx-auto mb-10 w-full max-w-3xl space-y-4 text-center sm:mb-12"
     >
       {label && (
         <span className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-500/20">

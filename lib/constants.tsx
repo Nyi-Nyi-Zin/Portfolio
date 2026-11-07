@@ -6,7 +6,7 @@ import {
   Smartphone,
   Database,
   Cloud,
-  Code2,
+  GraduationCap,
   type LucideIcon,
 } from "lucide-react";
 
@@ -213,10 +213,10 @@ export const services: ServiceItem[] = [
     gradient: "from-pink-500 to-rose-400",
   },
   {
-    title: "API Integration",
+    title: "Programming Training",
     description:
-      "Seamless third-party API integration, payment gateways, OAuth, and custom middleware development.",
-    icon: Code2,
+      "Practical programming classes and hands-on guidance in web, mobile, and backend development. Build real projects and grow your skills with personalized mentoring.",
+    icon: GraduationCap,
     gradient: "from-indigo-500 to-blue-400",
   },
 ];

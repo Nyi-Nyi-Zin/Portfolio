@@ -18,9 +18,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ item, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative"
+      className="group relative h-full"
     >
-      <div className="relative h-full overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/5 p-8 transition-all duration-500 hover:border-transparent hover:shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-blue-500/5">
+      <div className="relative flex h-full flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/5 p-6 sm:p-8 transition-all duration-500 hover:border-transparent hover:shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-blue-500/5">
         {/* Gradient glow on hover */}
         <div
           className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-[0.06] transition-opacity duration-500 rounded-2xl`}
@@ -34,11 +34,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ item, index }) => {
         </div>
 
         {/* Content */}
-        <h3 className="relative text-xl font-bold text-zinc-900 dark:text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-cyan-400 transition-all duration-300">
+        <h3 className="relative mb-3 text-lg font-semibold leading-snug tracking-tight text-zinc-900 dark:text-white lg:text-xl">
           {item.title}
         </h3>
 
-        <p className="relative text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
+        <p className="relative text-sm leading-7 text-zinc-600 dark:text-zinc-400">
           {item.description}
         </p>
 

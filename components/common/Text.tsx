@@ -11,7 +11,7 @@ export const Text = ({ children, className, style }: TextProps) => {
   return (
     <p
       className={cn(
-        "text-base md:text-lg text-slate-600 dark:text-slate-300", // default styles
+        "text-base leading-7 text-slate-600 md:text-lg md:leading-8 dark:text-slate-300",
         className
       )}
       style={style}

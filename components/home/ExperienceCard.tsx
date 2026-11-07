@@ -20,43 +20,42 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ item }) => {
     <motion.div
       whileHover={{ y: -4 }}
       transition={{ type: "spring", stiffness: 260, damping: 20 }}
-      className="w-full"
+      className="h-full w-full"
     >
-      <Card className="relative w-full my-4 px-8 py-6 overflow-hidden">
+      <Card className="relative h-full w-full gap-5 overflow-hidden px-5 py-6 sm:px-7 sm:py-7">
       {/* Left accent strip */}
       <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-violet-500 rounded-l-lg" />
 
       {/* Header */}
-      <div className="flex items-start justify-between gap-4 mb-5">
-        <div className="space-y-1">
-          <h2 className="text-xl font-medium text-foreground leading-snug">
+      <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:gap-4">
+        <div className="min-w-0 space-y-2">
+          <h3 className="text-lg font-semibold leading-snug tracking-tight text-foreground lg:text-xl">
             {item.title}
-          </h2>
+          </h3>
 
           {item.companyUrl ? (
             <a
               href={item.companyUrl}
               target="_blank"
               rel="noreferrer"
-              className="text-lg font-medium text-violet-600 hover:text-violet-700 transition-colors"
+              className="inline-block text-base font-semibold leading-relaxed text-violet-700 transition-colors hover:text-violet-800 dark:text-violet-400 dark:hover:text-violet-300"
             >
               {item.company}
             </a>
           ) : (
-            <p className="text-lg font-medium text-violet-600">
+            <p className="text-base font-semibold leading-relaxed text-violet-700 dark:text-violet-400">
               {item.company}
             </p>
           )}
 
           {/* Meta row */}
-          <div className="flex items-center gap-3 flex-wrap">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 pt-1">
             <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
-              <Calendar size={14} />
+              <Calendar size={14} className="shrink-0" aria-hidden="true" />
               {item.period}
             </span>
-            <span className="w-[3px] h-[3px] rounded-full bg-muted-foreground/40" />
             <span className="flex items-center gap-1.5 text-sm text-muted-foreground">
-              <MapPin size={14} />
+              <MapPin size={14} className="shrink-0" aria-hidden="true" />
               {item.location}
             </span>
           </div>
@@ -89,7 +88,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ item }) => {
               className="flex items-start gap-2.5"
             >
               <span className="mt-2 shrink-0 w-1.5 h-1.5 rounded-full bg-violet-400" />
-              <span className="text-base text-muted-foreground leading-relaxed">
+              <span className="min-w-0 text-sm leading-7 text-muted-foreground lg:text-base">
                 {achieve}
               </span>
             </motion.li>

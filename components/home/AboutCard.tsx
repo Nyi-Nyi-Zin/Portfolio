@@ -44,7 +44,7 @@ export default function AboutCard({
 
   return (
     <div className="group relative h-full">
-      <div className="relative h-full overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-6 transition-all duration-500 hover:shadow-2xl hover:border-transparent hover:-translate-y-1 flex flex-col items-center justify-center gap-4">
+      <div className="relative flex h-full flex-col items-center justify-center gap-4 overflow-hidden rounded-2xl border border-zinc-200 bg-white p-4 transition-all duration-500 hover:-translate-y-1 hover:border-transparent hover:shadow-2xl sm:p-6 dark:border-white/10 dark:bg-white/[0.03]">
         {/* Background gradient on hover */}
         <div
           className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-[0.05] transition-opacity duration-500`}
@@ -76,7 +76,7 @@ export default function AboutCard({
         </motion.h3>
 
         {/* Title */}
-        <p className="text-sm font-medium text-center text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
+        <p className="text-center text-[11px] leading-relaxed font-semibold tracking-wide text-zinc-500 uppercase sm:text-xs dark:text-zinc-400">
           {title}
         </p>
       </div>

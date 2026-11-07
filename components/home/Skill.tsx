@@ -9,7 +9,7 @@ function Skill() {
   return (
     <section
       id="skill"
-      className="min-h-screen border-b border-zinc-300 dark:border-zinc-700/50 py-20"
+      className="border-b border-zinc-300 py-16 sm:py-20 dark:border-zinc-700/50"
     >
       <SectionHeader
         label="Tech Stack"

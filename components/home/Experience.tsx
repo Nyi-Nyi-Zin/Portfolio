@@ -10,7 +10,7 @@ function Experience() {
   return (
     <section
       id="experience"
-      className="min-h-screen flex flex-col items-center border-b border-zinc-300 dark:border-zinc-700/50 w-full py-20"
+      className="flex w-full flex-col items-center border-b border-zinc-300 py-16 sm:py-20 dark:border-zinc-700/50"
     >
       <SectionHeader
         label="Career Path"
@@ -18,15 +18,15 @@ function Experience() {
         subtitle="My professional journey in software development across multiple companies and roles"
       />
 
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 md:auto-rows-fr">
         {experience.map((item: ExperienceItem, index: number) => (
           <motion.div
-            key={index}
+            key={item.company}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5, delay: index * 0.15 }}
-            className={index === 0 ? "col-span-1 md:col-span-2" : "col-span-1"}
+            className="min-w-0 h-full"
           >
             <ExperienceCard item={item} />
           </motion.div>
