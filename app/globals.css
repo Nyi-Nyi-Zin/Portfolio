@@ -120,6 +120,11 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    /* Contain horizontal animation overflow at the viewport, including touch
+       scrolling on mobile. Body-only clipping is not sufficient in all browsers. */
+    overflow-x: clip;
+  }
   body {
     @apply bg-background text-foreground font-sans;
     overflow-x: clip;
@@ -171,6 +176,9 @@
   max-width: 80rem;
   min-width: 0;
   margin-inline: auto;
+  /* Off-screen entrance animations must not widen the document. Vertical
+     overflow stays visible so the page and sticky navigation scroll normally. */
+  overflow-x: clip;
 }
 
 /* Animated Onhover Effect */

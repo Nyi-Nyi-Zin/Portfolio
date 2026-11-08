@@ -4,6 +4,8 @@ import { defaultBlogPosts } from "@/lib/defaultBlogs";
 import type { BlogPost } from "@/components/blog/BlogDetail";
 import type { Metadata } from "next";
 import type { BlogTranslations, SerializedBlogPost } from "@/types/blogs";
+import { notFound } from "next/navigation";
+import { cache } from "react";
 
 export const dynamic = "force-dynamic";
 
@@ -11,7 +13,7 @@ type Props = {
   params: Promise<{ id: string }>;
 };
 
-async function findPost(id: string): Promise<SerializedBlogPost | null> {
+const findPost = cache(async (id: string): Promise<SerializedBlogPost | null> => {
   if (!process.env.DATABASE_URL) {
     return defaultBlogPosts.find((post) => post.id === id) ?? null;
   }
@@ -36,7 +38,7 @@ async function findPost(id: string): Promise<SerializedBlogPost | null> {
   }
 
   return defaultBlogPosts.find((post) => post.id === id) ?? null;
-}
+});
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
@@ -84,11 +86,7 @@ export default async function BlogPage({ params }: Props) {
   const post = await findPost(id);
 
   if (!post) {
-    return (
-      <div className="flex h-[50vh] items-center justify-center">
-        <h2 className="text-xl text-muted-foreground">Blog post not found.</h2>
-      </div>
-    );
+    notFound();
   }
 
   const serializedPost: BlogPost = {
