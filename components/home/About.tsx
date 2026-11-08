@@ -22,8 +22,8 @@ function About() {
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 lg:flex-row lg:items-stretch lg:gap-14">
         {/* Left side: Text */}
         <motion.div
-          initial={{ opacity: 0, x: reduceMotion ? 0 : -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: reduceMotion ? 0 : 0.6 }}
           className="min-w-0 flex-1"

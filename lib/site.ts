@@ -5,11 +5,11 @@ export const siteName = "Nyi Nyi Zin";
 
 /** Canonical site origin for metadataBase, Open Graph, sitemap, and robots. */
 export function getSiteUrl(): string {
-  const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
-  if (fromEnv) return fromEnv;
-  if (process.env.VERCEL_URL)
-    return `https://${process.env.VERCEL_URL.replace(/\/$/, "")}`;
-  return "https://nyinyizin-portfolio.vercel.app";
+  // Deployment URLs change on every Vercel build. Keep all search and social
+  // metadata on the public domain unless a canonical origin is explicitly set.
+  const origin = process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
+    "https://nyinyizin.cloudninemm.com";
+  return new URL(origin).origin;
 }
 
 export function getMetadataBase(): URL {
@@ -99,7 +99,7 @@ export function buildPersonJsonLd(): Record<string, unknown> {
     url,
     email: contactInfo.email,
     telephone: contactInfo.phone,
-    image: `${url}/logo.png`,
+    image: `${url}/Miracle.jpg`,
     sameAs: socialLinks.map((l) => l.url),
     knowsAbout: [
       "Full-stack web development",
@@ -148,7 +148,7 @@ export function buildProfilePageJsonLd(): Record<string, unknown> {
       name: siteName,
       url,
       jobTitle: "Full-Stack Developer",
-      image: `${url}/logo.png`,
+      image: `${url}/Miracle.jpg`,
     },
   };
 }

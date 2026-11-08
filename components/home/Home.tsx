@@ -47,8 +47,8 @@ function Home() {
       className="flex min-h-[calc(100svh-70px)] w-full flex-col items-center justify-center gap-12 border-b border-zinc-300 py-12 sm:py-16 lg:min-h-[calc(100svh-80px)] lg:flex-row lg:justify-between lg:gap-10 lg:py-20 dark:border-zinc-700/50"
     >
       <motion.div
-        initial={reduceMotion ? false : { opacity: 0, x: -60 }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={false}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
         className="w-full min-w-0 flex-1 sm:px-4 lg:w-auto xl:pl-4"
       >
@@ -102,7 +102,7 @@ function Home() {
         </div>
 
         <motion.div
-          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
           className="mt-6 flex flex-wrap gap-3"
@@ -163,12 +163,12 @@ function Home() {
       </motion.div>
 
       <motion.div
-        initial={reduceMotion ? false : { opacity: 0, x: 60 }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={false}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
         className="flex w-full shrink-0 justify-center lg:w-auto lg:justify-end"
       >
-        <div className="size-[250px] overflow-hidden rounded-full transition-transform duration-500 ease-in-out hover:scale-102 sm:size-[300px] md:size-[400px] xl:size-[440px]">
+        <div className="size-[250px] max-w-full overflow-hidden rounded-full transition-transform duration-500 ease-in-out hover:scale-102 sm:size-[300px] md:size-[400px] xl:size-[440px]">
           <Image
             src="/Miracle.jpg"
             alt="Nyi Nyi Zin - Full-Stack Developer portrait"
