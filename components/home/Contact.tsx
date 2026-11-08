@@ -112,8 +112,8 @@ function Contact() {
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 w-full">
         {/* Left column — Contact info + Socials */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="min-w-0 space-y-8 lg:col-span-2"
@@ -148,9 +148,9 @@ function Contact() {
 
           {/* Social Links */}
           <div>
-            <h4 className="text-sm font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-4">
+            <h3 className="text-sm font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-4">
               Follow Me
-            </h4>
+            </h3>
             <div className="flex gap-3">
               {socialLinks.map((social) => {
                 const SocialIcon = socialIconMap[social.icon] ?? Github;
@@ -190,8 +190,8 @@ function Contact() {
 
         {/* Right column — Contact Form */}
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.15 }}
           className="min-w-0 lg:col-span-3"

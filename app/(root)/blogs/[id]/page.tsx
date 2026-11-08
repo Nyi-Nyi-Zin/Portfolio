@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import type { BlogTranslations, SerializedBlogPost } from "@/types/blogs";
 import { notFound } from "next/navigation";
 import { cache } from "react";
+import { getSiteUrl, siteName } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
 
@@ -96,5 +97,29 @@ export default async function BlogPage({ params }: Props) {
     translations: post.translations,
   };
 
-  return <BlogDetail post={serializedPost} />;
+  const url = `${getSiteUrl()}/blogs/${id}`;
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.translations.en.title,
+    description: post.translations.en.description,
+    datePublished: post.createdAt,
+    dateModified: post.updatedAt,
+    mainEntityOfPage: url,
+    url,
+    ...(post.image ? { image: new URL(post.image, getSiteUrl()).href } : {}),
+    author: { "@type": "Person", name: siteName, url: getSiteUrl() },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleSchema).replace(/</g, "\\u003c"),
+        }}
+      />
+      <BlogDetail post={serializedPost} />
+    </>
+  );
 }

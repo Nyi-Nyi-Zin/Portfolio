@@ -56,11 +56,10 @@ const timelineLineVariants: Variants = {
 };
 
 const cardVariants: Variants = {
-  hidden: (i: number) => ({
+  hidden: {
     opacity: 0,
-    x: i % 2 === 0 ? -60 : 60,
     y: 20,
-  }),
+  },
   visible: (i: number) => ({
     opacity: 1,
     x: 0,

@@ -99,7 +99,7 @@ export function buildPersonJsonLd(): Record<string, unknown> {
     url,
     email: contactInfo.email,
     telephone: contactInfo.phone,
-    image: `${url}/logo.png`,
+    image: `${url}/Miracle.jpg`,
     sameAs: socialLinks.map((l) => l.url),
     knowsAbout: [
       "Full-stack web development",
@@ -148,7 +148,7 @@ export function buildProfilePageJsonLd(): Record<string, unknown> {
       name: siteName,
       url,
       jobTitle: "Full-Stack Developer",
-      image: `${url}/logo.png`,
+      image: `${url}/Miracle.jpg`,
     },
   };
 }
