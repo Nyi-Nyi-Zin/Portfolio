@@ -51,7 +51,7 @@
 .author { display: flex; align-items: center; gap: 12px; }
 .articleMetadata { display: flex; flex-wrap: wrap; gap: 12px 20px; font-size: 11px; color: var(--muted-foreground); }
 .articleMetadata > span { display: inline-flex; align-items: center; gap: 7px; }
-.articleHero { position: relative; width: 100%; aspect-ratio: 2.1; overflow: hidden; border: 1px solid var(--border); border-radius: 18px; background: var(--muted); }
+.articleHero { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid var(--border); border-radius: 18px; background: var(--muted); }
 .readingLayout { display: grid; grid-template-columns: 230px minmax(0, 740px); justify-content: center; gap: 64px; padding-block: 56px 80px; }
 .withoutContents { grid-template-columns: minmax(0, 740px); }
 .sidebarInner { position: sticky; top: 116px; }
