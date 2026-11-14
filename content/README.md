@@ -10,7 +10,8 @@ The selected posts explain database indexing, caching, cloud computing, software
 architecture, the JavaScript event loop, and OOP. Promotional and marketing posts
 are outside this import. Each entry keeps the original Facebook post ID, permalink,
 publication time, and Myanmar article text, alongside a full English translation.
-Facebook hashtag footers are omitted and paragraphs are formatted as article HTML.
+Facebook hashtag footers and requests to comment or share are omitted. Paragraphs
+are formatted as article HTML.
 
 The six original post images are stored in `public/blog/facebook/` as WebP files;
 the website does not depend on expiring Facebook CDN image URLs.
