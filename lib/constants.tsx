@@ -102,11 +102,11 @@ export const aboutCardData = [
 export const experience = [
   {
     "title": "Founder",
-    "company": "Cloud Nine Software Company",
+    "company": "Cloud Nine Innovations",
     "period": "2026 - Present",
     "location": "Yangon, Myanmar",
     "keyAchievements": [
-      "Founded Cloud Nine Software Company with a team of experienced developers to build tailored software for clients.",
+      "Founded Cloud Nine Innovations with a team of experienced developers to build tailored software for clients.",
       "Lead client delivery from requirements and custom UI through production deployment.",
       "Provide programming instruction to students, helping them build practical software development skills."
     ]
