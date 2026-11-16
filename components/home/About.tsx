@@ -32,7 +32,7 @@ function About() {
             <p className="max-w-[38ch] text-xl leading-[1.65] font-medium tracking-[-0.025em] text-foreground sm:text-2xl">
               I’m a <strong className="font-semibold text-blue-700 dark:text-blue-400">Full-Stack Software Developer</strong>{" "}
               and team lead with <strong className="font-semibold">7+ years</strong>{" "}
-              in IT, building software since 2018.
+              of experience in the IT field. I started my IT career in 2018.
             </p>
           </div>
 
