@@ -76,7 +76,7 @@ export default function BlogDetail({ post }: { post: BlogPost }) {
           <div className={styles.articleMetadata}><span><CalendarDays className="size-4" aria-hidden="true" /><time dateTime={post.createdAt}>{blogDate(post.createdAt, lang)}</time></span><span><Clock3 className="size-4" aria-hidden="true" />{readingTime(translation.detail, contentLang === "my" ? "mm" : "en")}</span></div>
         </div>
       </header>
-      {post.image && <div className={styles.articleHero}><Image src={post.image} alt={translation.title} fill sizes="(max-width: 1279px) 100vw, 1216px" className="object-cover" priority /></div>}
+      {post.image && <div className={styles.articleHero}><Image src={post.image} alt={translation.title} fill sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 863px) calc(100vw - 64px), 800px" className="object-contain" priority /></div>}
       <div className={`${styles.readingLayout} ${!sections.length ? styles.withoutContents : ""}`}>
         {sections.length > 0 && <aside className={styles.sidebar}>
           <div className={styles.sidebarInner}>
